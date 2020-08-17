@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem('token') || "";
-var url = `localhost:8000`;
+var url = `https://tc95us.herokuapp.com`;
 
 const state = {
     message:[],
@@ -43,7 +43,7 @@ const actions = {
           redirect: 'follow'
         };
         
-        fetch(`http://${url}/api/register`, requestOptions)
+        fetch(`${url}/api/register`, requestOptions)
           .then(response => response.json())
           .then(result =>  {
               commit('registerMessage',result);
@@ -69,7 +69,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/create`, requestOptions)
+      fetch(`${url}/api/create`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('createMessage',result);
@@ -94,7 +94,7 @@ const actions = {
 
         console.log(commit);
 
-        fetch(`http://${url}/api/login`, requestOptions)
+        fetch(`${url}/api/login`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('loginMessage',result);
@@ -126,7 +126,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/users/${form.id}`, requestOptions)
+      fetch(`${url}/api/users/${form.id}`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('updateMessage',result);
@@ -149,7 +149,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/users/me/`, requestOptions)
+            fetch(`${url}/api/users/me/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchUser',result))
             .catch(error => console.log('error', error));
@@ -166,7 +166,7 @@ const actions = {
                   redirect: 'follow'
                   };
       
-                  fetch(`http://${url}/api/users/${id}`, requestOptions)
+                  fetch(`${url}/api/users/${id}`, requestOptions)
                   .then(response => response.json())
                   .then(result => {
                     commit('UserById',result);
@@ -187,7 +187,7 @@ const actions = {
       redirect: 'follow'
       };
 
-      fetch(`http://${url}/api/users/${id}`, requestOptions)
+      fetch(`${url}/api/users/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         commit('deleteUserById',result);
@@ -208,7 +208,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/users/`, requestOptions)
+            fetch(`${url}/api/users/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllUsers',result))
             .catch(error => console.log('error', error));

@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem('token') || "";
-var url = `localhost:8000`;
+var url = `https://tc95us.herokuapp.com`;
 
 const state = {
     tarifmessage:[],
@@ -44,7 +44,7 @@ const actions = {
           redirect: 'follow'
         };
         
-        fetch(`http://${url}/api/tarifs`, requestOptions)
+        fetch(`${url}/api/tarifs`, requestOptions)
           .then(response => response.json())
           .then(result =>  {
               commit('createTarifMessage',result);
@@ -76,7 +76,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/tarifs/${form.id}`, requestOptions)
+      fetch(`${url}/api/tarifs/${form.id}`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('updateTarifMessage',result);
@@ -100,7 +100,7 @@ const actions = {
                   redirect: 'follow'
                   };
       
-                  fetch(`http://${url}/api/tarifs/${id}`, requestOptions)
+                  fetch(`${url}/api/tarifs/${id}`, requestOptions)
                   .then(response => response.json())
                   .then(result => {
                     commit('TarifById',result);
@@ -121,7 +121,7 @@ const actions = {
       redirect: 'follow'
       };
 
-      fetch(`http://${url}/api/tarifs/${id}`, requestOptions)
+      fetch(`${url}/api/tarifs/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         commit('deleteTarifById',result);
@@ -142,7 +142,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/tarifs/`, requestOptions)
+            fetch(`${url}/api/tarifs/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllTarifs',result))
             .catch(error => console.log('error', error));

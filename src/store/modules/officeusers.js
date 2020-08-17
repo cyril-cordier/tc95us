@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem('token') || "";
-var url = `localhost:8000`;
+var url = `https://tc95us.herokuapp.com`;
 
 const state = {
     officeusermessage:[],
@@ -41,7 +41,7 @@ const actions = {
           redirect: 'follow'
         };
         
-        fetch(`http://${url}/api/office`, requestOptions)
+        fetch(`${url}/api/office`, requestOptions)
           .then(response => response.json())
           .then(result =>  {
               commit('createOfficeuserMessage',result);
@@ -71,7 +71,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/office/${form.id}`, requestOptions)
+      fetch(`${url}/api/office/${form.id}`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('updateOfficeuserMessage',result);
@@ -95,7 +95,7 @@ const actions = {
                   redirect: 'follow'
                   };
       
-                  fetch(`http://${url}/api/office/${id}`, requestOptions)
+                  fetch(`${url}/api/office/${id}`, requestOptions)
                   .then(response => response.json())
                   .then(result => {
                     commit('OfficeuserById',result);
@@ -116,7 +116,7 @@ const actions = {
       redirect: 'follow'
       };
 
-      fetch(`http://${url}/api/office/${id}`, requestOptions)
+      fetch(`${url}/api/office/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         commit('deleteOfficeuserById',result);
@@ -137,7 +137,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/office/`, requestOptions)
+            fetch(`${url}/api/office/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllOfficeusers',result))
             .catch(error => console.log('error', error));

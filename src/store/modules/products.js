@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem('token') || "";
-var url = `localhost:8000`;
+var url = `https://tc95us.herokuapp.com`;
 
 const state = {
     productmessage:[],
@@ -42,7 +42,7 @@ const actions = {
           redirect: 'follow'
         };
         
-        fetch(`http://${url}/api/products`, requestOptions)
+        fetch(`${url}/api/products`, requestOptions)
           .then(response => response.json())
           .then(result =>  {
               commit('createProductMessage',result);
@@ -72,7 +72,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/products/${form.id}`, requestOptions)
+      fetch(`${url}/api/products/${form.id}`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('updateProductMessage',result);
@@ -96,7 +96,7 @@ const actions = {
                   redirect: 'follow'
                   };
       
-                  fetch(`http://${url}/api/products/${id}`, requestOptions)
+                  fetch(`${url}/api/products/${id}`, requestOptions)
                   .then(response => response.json())
                   .then(result => {
                     commit('ProductById',result);
@@ -117,7 +117,7 @@ const actions = {
       redirect: 'follow'
       };
 
-      fetch(`http://${url}/api/products/${id}`, requestOptions)
+      fetch(`${url}/api/products/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         commit('deleteProductById',result);
@@ -138,7 +138,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/products/`, requestOptions)
+            fetch(`${url}/api/products/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllProducts',result))
             .catch(error => console.log('error', error));

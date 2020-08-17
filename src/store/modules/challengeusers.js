@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem('token') || "";
-var url = `localhost:8000`;
+var url = `https://tc95us.herokuapp.com`;
 
 const state = {
     challengeusermessage:[],
@@ -45,7 +45,7 @@ const actions = {
           redirect: 'follow'
         };
         
-        fetch(`http://${url}/api/challengeusers`, requestOptions)
+        fetch(`${url}/api/challengeusers`, requestOptions)
           .then(response => response.json())
           .then(result =>  {
               commit('createChallengeuserMessage',result);
@@ -79,7 +79,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/challengeusers/${form.id}`, requestOptions)
+      fetch(`${url}/api/challengeusers/${form.id}`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('updateChallengeuserMessage',result);
@@ -103,7 +103,7 @@ const actions = {
                   redirect: 'follow'
                   };
       
-                  fetch(`http://${url}/api/challengeusers/${id}`, requestOptions)
+                  fetch(`${url}/api/challengeusers/${id}`, requestOptions)
                   .then(response => response.json())
                   .then(result => {
                     commit('ChallengeuserById',result);
@@ -124,7 +124,7 @@ const actions = {
       redirect: 'follow'
       };
 
-      fetch(`http://${url}/api/challengeusers/${id}`, requestOptions)
+      fetch(`${url}/api/challengeusers/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         commit('deleteChallengeuserById',result);
@@ -145,7 +145,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/challengeusers/`, requestOptions)
+            fetch(`${url}/api/challengeusers/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllChallengeusers',result))
             .catch(error => console.log('error', error));

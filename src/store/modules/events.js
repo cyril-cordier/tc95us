@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem('token') || "";
-var url = `localhost:8000`;
+var url = `https://tc95us.herokuapp.com`;
 
 const state = {
     eventmessage:[],
@@ -46,7 +46,7 @@ const actions = {
           redirect: 'follow'
         };
         
-        fetch(`http://${url}/api/events`, requestOptions)
+        fetch(`${url}/api/events`, requestOptions)
           .then(response => response.json())
           .then(result =>  {
               commit('createEventMessage',result);
@@ -80,7 +80,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/events/${form.id}`, requestOptions)
+      fetch(`${url}/api/events/${form.id}`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('updateEventMessage',result);
@@ -104,7 +104,7 @@ const actions = {
                   redirect: 'follow'
                   };
       
-                  fetch(`http://${url}/api/events/${id}`, requestOptions)
+                  fetch(`${url}/api/events/${id}`, requestOptions)
                   .then(response => response.json())
                   .then(result => {
                     commit('EventById',result);
@@ -125,7 +125,7 @@ const actions = {
       redirect: 'follow'
       };
 
-      fetch(`http://${url}/api/events/${id}`, requestOptions)
+      fetch(`${url}/api/events/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         commit('deleteEventById',result);
@@ -146,7 +146,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/events/`, requestOptions)
+            fetch(`${url}/api/events/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllEvents',result))
             .catch(error => console.log('error', error));

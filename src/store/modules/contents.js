@@ -1,5 +1,5 @@
 const token = window.localStorage.getItem('token') || "";
-var url = `localhost:8000`;
+var url = `https://tc95us.herokuapp.com`;
 
 const state = {
     contentmessage:[],
@@ -43,7 +43,7 @@ const actions = {
           redirect: 'follow'
         };
         
-        fetch(`http://${url}/api/contents`, requestOptions)
+        fetch(`${url}/api/contents`, requestOptions)
           .then(response => response.json())
           .then(result =>  {
               commit('createContentMessage',result);
@@ -74,7 +74,7 @@ const actions = {
         redirect: 'follow'
       };
       
-      fetch(`http://${url}/api/contents/${form.id}`, requestOptions)
+      fetch(`${url}/api/contents/${form.id}`, requestOptions)
         .then(response => response.json())
         .then(result =>  {
             commit('updateContentMessage',result);
@@ -98,7 +98,7 @@ const actions = {
                   redirect: 'follow'
                   };
       
-                  fetch(`http://${url}/api/contents/${id}`, requestOptions)
+                  fetch(`${url}/api/contents/${id}`, requestOptions)
                   .then(response => response.json())
                   .then(result => {
                     commit('ContentById',result);
@@ -119,7 +119,7 @@ const actions = {
       redirect: 'follow'
       };
 
-      fetch(`http://${url}/api/contents/${id}`, requestOptions)
+      fetch(`${url}/api/contents/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         commit('deleteContentById',result);
@@ -140,7 +140,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`http://${url}/api/contents/`, requestOptions)
+            fetch(`${url}/api/contents/`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllContents',result))
             .catch(error => console.log('error', error));
