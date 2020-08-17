@@ -21,7 +21,7 @@
                 <th>{{officeuser.id}}</th>
                 <th>{{officeuser.name}}</th>
                 <th>{{officeuser.fonction}}</th>
-                <th><img :src="`http://localhost:8000/storage/images/office/${officeuser.image_name}`"/></th>
+                <th><img :src="`https://tc95us.herokuapp.com/storage/images/office/${officeuser.image_name}`"/></th>
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDeleteOfficeuser(officeuser.id, index)" class="fa fa-trash"></i>
@@ -50,7 +50,7 @@
                    <h6>{{officeuser.fonction}}</h6>
                   </div>
                    <div class="signup-row">
-                   <img :src="`http://localhost:8000/storage/images/office/${officeuser.image_name}`"/>
+                   <img :src="`https://tc95us.herokuapp.com/storage/images/office/${officeuser.image_name}`"/>
                   </div>
                   
                   <div class="modal-footer">

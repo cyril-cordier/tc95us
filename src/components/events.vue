@@ -29,7 +29,7 @@
                 <th>{{event.date}}</th>
                 <th>{{event.hour}}</th>
                 <th>{{event.price}}</th>
-                <th><img :src="`http://localhost:8000/storage/images/event/${event.image_name}`"/></th>
+                <th><img :src="`https://tc95us.herokuapp.com/storage/images/event/${event.image_name}`"/></th>
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDeleteEvent(event.id, index)" class="fa fa-trash"></i>

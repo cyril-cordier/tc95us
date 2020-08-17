@@ -25,7 +25,7 @@
                 <th>{{content.content}}</th>
                 <th>{{content.name}}</th>
                 <th>{{content.fonction}}</th>
-                <th><img :src="`http://localhost:8000/storage/images/content/${content.image_name}`"/></th>
+                <th><img :src="`https://tc95us.herokuapp.com/storage/images/content/${content.image_name}`"/></th>
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDeleteContent(content.id, index)" class="fa fa-trash"></i>

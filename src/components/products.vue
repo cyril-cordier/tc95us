@@ -23,7 +23,7 @@
                 <th>{{product.name}}</th>
                 <th>{{product.details}}</th>
                 <th>{{product.price}}</th>
-                <th><img :src="`http://localhost:8000/storage/images/product/${product.image_name}`"/></th>
+                <th><img :src="`https://tc95us.herokuapp.com/storage/images/product/${product.image_name}`"/></th>
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDeleteProduct(product.id, index)" class="fa fa-trash"></i>
