@@ -23,7 +23,7 @@ const getters = {
 
 const actions = {
    
-    // CREATE
+    // CREATE contents
     async createContent({commit},form){
       var myHeaders = new Headers();
             myHeaders.append("Authorization", `Bearer ${token}`);
