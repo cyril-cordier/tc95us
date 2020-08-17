@@ -149,7 +149,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/users/me/`, requestOptions)
+            fetch(`${url}/api/users/me`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchUser',result))
             .catch(error => console.log('error', error));
@@ -208,7 +208,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/users/`, requestOptions)
+            fetch(`${url}/api/users`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllUsers',result))
             .catch(error => console.log('error', error));

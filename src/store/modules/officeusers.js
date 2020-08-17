@@ -137,7 +137,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/office/`, requestOptions)
+            fetch(`${url}/api/office`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllOfficeusers',result))
             .catch(error => console.log('error', error));

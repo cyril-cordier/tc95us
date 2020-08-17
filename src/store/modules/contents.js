@@ -140,7 +140,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/contents/`, requestOptions)
+            fetch(`${url}/api/contents`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllContents',result))
             .catch(error => console.log('error', error));

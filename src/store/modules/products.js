@@ -138,7 +138,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/products/`, requestOptions)
+            fetch(`${url}/api/products`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllProducts',result))
             .catch(error => console.log('error', error));

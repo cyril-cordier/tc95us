@@ -136,7 +136,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/championnats/`, requestOptions)
+            fetch(`${url}/api/championnats`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllChampionnats',result))
             .catch(error => console.log('error', error));

@@ -142,7 +142,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/tarifs/`, requestOptions)
+            fetch(`${url}/api/tarifs`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllTarifs',result))
             .catch(error => console.log('error', error));

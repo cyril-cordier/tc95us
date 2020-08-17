@@ -145,7 +145,7 @@ const actions = {
             redirect: 'follow'
             };
 
-            fetch(`${url}/api/challengeusers/`, requestOptions)
+            fetch(`${url}/api/challengeusers`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllChallengeusers',result))
             .catch(error => console.log('error', error));
