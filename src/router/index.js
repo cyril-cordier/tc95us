@@ -36,7 +36,7 @@ Vue.use(VueRouter)
     meta:{requiresVisitor: true},
   },
   {
-    path: '/MonCompte',
+    path: '/monCompte',
     name: 'MyAccount',
     component: MyAccount,
     meta:{requiresVisitor: false},

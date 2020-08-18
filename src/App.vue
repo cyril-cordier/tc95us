@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+      <img alt="Vue logo" src="./assets/logo_tcus.png" style="height:5rem">
       <router-link to="/">Accueil</router-link> |
       <router-link to="/about">A propos</router-link> |
       <router-link to="/register">S'inscrire</router-link> |
