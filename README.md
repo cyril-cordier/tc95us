@@ -1,4 +1,4 @@
-# tc95us_vue
+# tc95usc
 
 ## Project setup
 ```

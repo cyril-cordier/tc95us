@@ -7,6 +7,7 @@ import MyAccount from '../views/MyAccount.vue'
 import Map from '../views/Map.vue'
 import Events from '../views/Events.vue'
 import Calendarevents from '../views/Calendarevents.vue'
+import Tarifs from '../views/Tarifs.vue'
 
 
 Vue.use(VueRouter)
@@ -55,6 +56,12 @@ Vue.use(VueRouter)
     path:'/calendrier_events',
     name:'Calendarevents',
     component: Calendarevents,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path:'/tarifs',
+    name:'Tarifs',
+    component: Tarifs,
     meta:{requiresVisitor: true},
   },
   {
