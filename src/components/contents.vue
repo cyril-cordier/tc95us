@@ -11,7 +11,6 @@
               <tr>
                 <th scope="col">Id</th>
                 <th>Titre</th>
-                <th>Contenu</th>
                 <th>Nom</th>
                 <th>Fonction</th>
                 <th>Image</th>
@@ -22,7 +21,6 @@
               <tr v-for="(content, index) in getAllContents" :key="content.id">
                 <th>{{content.id}}</th>
                 <th>{{content.title}}</th>
-                <th><div v-html="content.content"></div>}</th>
                 <th>{{content.name}}</th>
                 <th>{{content.fonction}}</th>
                 <th><img :src="`https://tc95us.herokuapp.com/storage/images/content/${content.image_name}`"/></th>
@@ -51,7 +49,7 @@
                     <h3>{{content.title}}</h3>
                   </div>
                   <div class="signup-row">
-                   <h6>{{content.content}}</h6>
+                   <div v-html="content.content"></div>
                   </div>
                    <div class="signup-row">
                    <h6>{{content.name}}</h6>
@@ -60,7 +58,7 @@
                    <h6>{{content.fonction}}</h6>
                   </div>
                   <div class="signup-row">
-                   <h6>{{content.image}}</h6>
+                   <h6>{{content.image_name}}</h6>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
