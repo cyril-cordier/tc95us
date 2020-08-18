@@ -7,7 +7,7 @@
     </div>
 
     <!-- Start Main Container -->
-    <div class="main-container">
+    <div class="container">
       <div class="signup-form">
         <form @submit="onsubmit" class="sign-back">
           <h1>REGISTER FORM</h1>
@@ -41,7 +41,7 @@
 
           <p><br>ou connectez-vous <br>si vous avez déjà un compte</p>
           <div style="width: max;" align="center">
-            <router-link :to="'/Login'">
+            <router-link :to="'/login'">
               <button class="btn btn-success">Se connecter</button>
             </router-link>
           </div>

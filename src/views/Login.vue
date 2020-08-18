@@ -6,7 +6,7 @@
         <p>{{message.toString()}}</p>
       </div>
     </div>
- <div class="main-container">
+ <div class="container">
       <div class="signup-form">
 
     <form @submit="onsubmit" class="sign-back">

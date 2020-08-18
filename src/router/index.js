@@ -5,6 +5,9 @@ import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import MyAccount from '../views/MyAccount.vue'
 import Map from '../views/Map.vue'
+import Events from '../views/Events.vue'
+import Calendarevents from '../views/Calendarevents.vue'
+
 
 Vue.use(VueRouter)
 
@@ -22,7 +25,7 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'), 
-    meta:{requiresVisitor: false},
+    meta:{requiresVisitor: true},
   },
   {
     path:'/register',
@@ -40,6 +43,18 @@ Vue.use(VueRouter)
     path:'/carte',
     name:'Map',
     component: Map,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path:'/evennements',
+    name:'Animevents',
+    component: Events,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path:'/calendrier_events',
+    name:'Calendarevents',
+    component: Calendarevents,
     meta:{requiresVisitor: true},
   },
   {

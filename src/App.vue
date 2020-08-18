@@ -4,6 +4,7 @@
       <img alt="Vue logo" src="./assets/logo_tcus.png" style="height:5rem">
       <router-link to="/">Accueil</router-link> |
       <router-link to="/carte">Nous trouver</router-link> |
+      <router-link to="/evennements">Animations et Evennements</router-link> |
       <router-link to="/about">A propos</router-link> |
       <router-link to="/register">S'inscrire</router-link> |
       <router-link to="/login">S'identifier</router-link> |
@@ -12,6 +13,7 @@
     </div>
     <router-view/>
     <footer>
+      <br><br>
     <div class="row">
     
     <div class="partenaires">
@@ -60,11 +62,12 @@
     <div class="card-body">
       <strong><h5 class="card-title">Restez connectés</h5></strong>
       <p class="card-text"><a href="https://www.facebook.com/groups/406488439536879/" target="blank">Facebook</a></p>
-      <p class="card-text">Calendrier des évennements</p>
+      <p class="card-text"><router-link to="/calendrier_events">Calendrier des évennements</router-link></p>
     </div>
   </div>
 </div>
     </footer>
+    <router-view/>
   </div>
 </template>
 
