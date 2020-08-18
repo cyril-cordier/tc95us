@@ -7,7 +7,7 @@
   <div class="card">
     
     <div class="card-body">
-      <h5 class="card-title">Rejoignez le Tennis Club Us sur Facebook</h5>
+      <h5 class="card-title"><a href="https://www.facebook.com/groups/406488439536879" target="blank">Rejoignez le Tennis Club Us sur Facebook</a></h5>
       <div class="fb-group" data-href="https://www.facebook.com/groups/406488439536879" data-width="280" data-show-social-context="true" data-show-metadata="true"><blockquote cite="https://www.facebook.com/groups/406488439536879" class="fb-xfbml-parse-ignore">Tennis Club d&#039;Us</blockquote></div>
     </div>
   </div>
@@ -43,6 +43,7 @@ export default {
   props: {
     msg: String
   }
+
 }
 </script>
 

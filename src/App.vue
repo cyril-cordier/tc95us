@@ -6,6 +6,7 @@
       <router-link to="/carte">Nous trouver</router-link> |
       <router-link to="/evennements">Animations et Evennements</router-link> |
       <router-link to="/tarifs">Tarifs</router-link> |
+      <router-link to="/championnats">Championnats</router-link> |
       <router-link to="/about">A propos</router-link> |
       <router-link to="/register">S'inscrire</router-link> |
       <router-link to="/login">S'identifier</router-link> |

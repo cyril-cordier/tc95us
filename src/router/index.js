@@ -8,6 +8,7 @@ import Map from '../views/Map.vue'
 import Events from '../views/Events.vue'
 import Calendarevents from '../views/Calendarevents.vue'
 import Tarifs from '../views/Tarifs.vue'
+import Championnats from '../views/Rencontres.vue'
 
 
 Vue.use(VueRouter)
@@ -62,6 +63,12 @@ Vue.use(VueRouter)
     path:'/tarifs',
     name:'Tarifs',
     component: Tarifs,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path:'/championnats',
+    name:'championnats',
+    component: Championnats,
     meta:{requiresVisitor: true},
   },
   {

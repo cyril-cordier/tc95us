@@ -22,7 +22,7 @@
               <tr v-for="(content, index) in getAllContents" :key="content.id">
                 <th>{{content.id}}</th>
                 <th>{{content.title}}</th>
-                <th>{{content.content}}</th>
+                <th><div v-html="content.content"></div>}</th>
                 <th>{{content.name}}</th>
                 <th>{{content.fonction}}</th>
                 <th><img :src="`https://tc95us.herokuapp.com/storage/images/content/${content.image_name}`"/></th>
@@ -127,8 +127,8 @@
                     <textarea class="form-control" name="" value="" placeholder="Titre" v-model="title"></textarea>
                   </div>
                   <div class="signup-row">
-                    
-                    <textarea class="form-control" name="" value=""  placeholder="Contenu" v-model="content"></textarea>
+                    <vue-editor v-model="content" placeholder="Contenu"></vue-editor>
+                    <!-- <textarea class="form-control" name="" value=""  placeholder="Contenu" v-model="content"></textarea> -->
                   </div>
                   <div class="signup-row">
                     
@@ -174,7 +174,7 @@
 <script>
   // @ is an alias to /src
 
-
+import { VueEditor } from "vue2-editor";
   /* import Footer from '@/components/footer.vue' */
   import {
     mapActions,
@@ -185,6 +185,7 @@
     name: 'contents',
     components: {
       /*  Footer, */
+      VueEditor
 
 
     },
