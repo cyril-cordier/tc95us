@@ -3,6 +3,7 @@
     <div id="nav">
       <img alt="Vue logo" src="./assets/logo_tcus.png" style="height:5rem">
       <router-link to="/">Accueil</router-link> |
+      <router-link to="/carte">Nous trouver</router-link> |
       <router-link to="/about">A propos</router-link> |
       <router-link to="/register">S'inscrire</router-link> |
       <router-link to="/login">S'identifier</router-link> |
@@ -10,6 +11,60 @@
 
     </div>
     <router-view/>
+    <footer>
+    <div class="row">
+    
+    <div class="partenaires">
+  Nos partenaires
+    <img class="logopart"  id="logo ecosport" alt="Vue logo" src="./assets/ecosport_small.jpg">
+    <img class="logopart"  alt="logo crit center" src="./assets/critcenter_small.jpg">
+    <img class="logopart" alt="logo technifibre" src="./assets/technifibre_small.jpg">
+      
+  </div>
+
+
+</div>
+  <div class="card-group">
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Contact</h5>
+      <p class="card-text">Tennis Club de Us</p>
+      <p class="card-text">jardin public (RD 28)</p>
+      <p class="card-text">95450 Us</p>
+      <br>
+      <p class="card-text">Itinéraire pour venir au club</p>
+    </div>
+  </div>
+        <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Informations</h5>
+      <p class="card-text">Mentions légales</p>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-body">
+      <img alt="logo technifibre" src="./assets/logoclubaffilie.png" style="height:30%">
+    </div>
+  </div>
+      <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Vos liens utiles</h5>
+      <p class="card-text"><a href="https://tenup.fft.fr/" target="blank">Mon espace Tennis</a></p>
+      <p class="card-text"><a href="https://www.fft.fr/" target="blank">Site de la FFT</a> </p>
+      <p class="card-text"><a href="https://comite.fft.fr/val-d-oise/val-d-oise_a/cms/index_public.php?PHPSESSID=1c5b3471354cf4e0f185c548eaebf509&us_action=show_note_site&login_off=1&ui_id_site=1" target="blank">Le site du Comité du Val d'Oise</a></p>
+      
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <strong><h5 class="card-title">Restez connectés</h5></strong>
+      <p class="card-text"><a href="https://www.facebook.com/groups/406488439536879/" target="blank">Facebook</a></p>
+      <p class="card-text">Calendrier des évennements</p>
+    </div>
+  </div>
+</div>
+    </footer>
   </div>
 </template>
 
@@ -34,4 +89,17 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+.partenaires {
+  display: block;
+  margin: 100px;
+    margin-left: auto;
+    margin-right: auto
+  
+  }
+  .logopart {
+  
+  margin: 1rem;
+    
+  
+  }
 </style>

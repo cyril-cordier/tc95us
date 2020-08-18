@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import MyAccount from '../views/MyAccount.vue'
+import Map from '../views/Map.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,12 @@ Vue.use(VueRouter)
     path:'/login',
     name:'Login',
     component: Login,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path:'/carte',
+    name:'Map',
+    component: Map,
     meta:{requiresVisitor: true},
   },
   {

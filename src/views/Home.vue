@@ -15,7 +15,7 @@
 
 <script>
 // @ is an alias to /src
-import Accueil from '@/components/Accueil.vue'
+import Accueil from '@/components/accueil.vue'
 
 
 export default {
