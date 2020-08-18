@@ -9,9 +9,11 @@
       <router-link to="/register">S'inscrire</router-link> |
       <router-link to="/login">S'identifier</router-link> |
       <router-link to="/MonCompte">Mon Compte</router-link>
-
+<router-view/>
     </div>
-    <router-view/>
+    
+
+
     <footer>
       <br><br>
     <div class="row">
@@ -35,7 +37,7 @@
       <p class="card-text">jardin public (RD 28)</p>
       <p class="card-text">95450 Us</p>
       <br>
-      <p class="card-text">Itinéraire pour venir au club</p>
+      <p class="card-text"><router-link to="/carte">Itinéraire pour venir au club</router-link></p>
     </div>
   </div>
         <div class="card">
@@ -67,7 +69,7 @@
   </div>
 </div>
     </footer>
-    <router-view/>
+    
   </div>
 </template>
 
