@@ -4,7 +4,7 @@
 
 
 
-<div class="fb-group" data-href="https://www.facebook.com/groups/406488439536879" data-width="280" data-show-social-context="true" data-show-metadata="true"><blockquote cite="https://www.facebook.com/groups/406488439536879" class="fb-xfbml-parse-ignore">Tennis Club d&#039;Us</blockquote></div>
+
 
 
 <br>
@@ -22,7 +22,7 @@
 <!-- widget meteo -->
   
 
-  <iframe src="https://fr.tutiempo.net/s-widget/full/42145/ca5" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:500px;" allowTransparency="true"></iframe>
+  
 
 
 <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%234285F4&amp;ctz=Europe%2FParis&amp;src=dGM5NXVzQGdtYWlsLmNvbQ&amp;src=ZnIuZnJlbmNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%230B8043&amp;showTitle=0&amp;showTz=0&amp;showCalendars=0" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
