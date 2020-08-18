@@ -88,7 +88,7 @@
     data() {
       return {
         lastname: '',
-        challenge: '',
+        challengename: '',
         firstname: '',
         email: '',
         password: '',
@@ -101,7 +101,7 @@
         e.preventDefault();
         var obj = {
           'firstname': this.firstname,
-          'challenge': this.challenge,
+          'challengename': this.challengename,
           'lastname': this.lastname,
           'email': this.email,
           'password': this.password,

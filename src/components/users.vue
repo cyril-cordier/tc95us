@@ -19,8 +19,8 @@
             <tbody>
               <tr v-for="(user, index) in getAllUsers" :key="user.id">
                 <th>{{user.id}}</th>
-                <th>{{user.firstname}}</th>
                 <th>{{user.lastname}}</th>
+                <th>{{user.firstname}}</th>
                 <th>{{user.email}}</th>
                 <th>{{user.challengename}}</th>
                 <th>
@@ -72,21 +72,27 @@
               <div class="modal-content">
                 <form @submit.prevent="onEdit(user)" class="sign-back">
                   <h1>Modification Utilisateur</h1>
+ 
                   <div class="signup-row">
                     <i class="fa fa-user"></i>
-                    <input type="text" name="" value="" placeholder="Nom" v-model="user.lastname">
-                  </div>
-                  <div class="signup-row">
-                    <i class="fa fa-user"></i>
+                    <label>Prénom</label>
                     <input type="text" name="" value="" placeholder="Prénom" v-model="user.firstname">
                   </div>
                   <div class="signup-row">
+                    <i class="fa fa-user"></i>
+                    <label>Nom</label>
+                    <input type="text" name="" value="" placeholder="Nom" v-model="user.lastname">
+                  </div>
+                  
+                  <div class="signup-row">
                     <i class="fa fa-envelope"></i>
+                    <label>Email</label>
                     <input type="text" v-model="user.email" name="" value="" placeholder="Email">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-user"></i>
-                    <input type="text" name="" value="" placeholder="Nom pour le Challenge" v-model="user.challengename">
+                    <label>Pseudo </label>
+                    <input type="text" name="" value="" placeholder="Pseudo pour le Challenge" v-model="user.challengename">
                   </div>
 
 
@@ -113,26 +119,32 @@
                   <h1>Formulaire d'enregistrement</h1>
                   <div class="signup-row">
                     <i class="fa fa-user"></i>
+                    <label>Prénom</label>
                     <input type="text" name="" value=""  placeholder="Prénom" v-model="firstname">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-user"></i>
+                    <label>Nom</label>
                     <input type="text" name="" value=""  placeholder="Nom" v-model="lastname">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-user"></i>
+                    <label>Pseudo challenge</label>
                     <input type="text" name="" value=""  placeholder="Pseudo Challenge" v-model="challengename">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-envelope"></i>
+                    <label>Email</label>
                     <input type="text" v-model="email" name="" value="" placeholder="Email">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-key"></i>
+                    <label>Mot de passe</label>
                     <input type="password" v-model="password" name="" value="" placeholder="Mot de passe">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-key"></i>
+                    <label>Confirm MDP</label>
                     <input type="password" v-model="c_password" name="" value=""
                       placeholder="Confirmez le mot de passe">
                   </div>
