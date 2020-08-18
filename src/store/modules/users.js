@@ -32,6 +32,7 @@ const actions = {
         var formdata = new FormData();
         formdata.append("lastname", form.lastname);
         formdata.append("firstname", form.firstname);
+        formdata.append("challengename", form.challengename);
         formdata.append("email", form.email);
         formdata.append("password", form.password);
         formdata.append("c_password", form.c_password);
@@ -60,6 +61,8 @@ const actions = {
       formdata.append("firstname", form.firstname);
       formdata.append("email", form.email);
       formdata.append("challengename", form.challengename);
+      formdata.append("password", form.password);
+      formdata.append("c_password", form.c_password);
       
       
    

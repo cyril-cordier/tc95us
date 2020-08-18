@@ -11,13 +11,18 @@
       <div class="signup-form">
         <form @submit="onsubmit" class="sign-back">
           <h1>REGISTER FORM</h1>
+
           <div class="signup-row">
             <i class="fa fa-user"></i>
-            <input type="text" name="" value="" id="exampleInputName1" placeholder="Nom" v-model="lastname">
+            <input type="text" name="" value="" id="firstname" placeholder="Prénom" v-model="firstname">
           </div>
           <div class="signup-row">
             <i class="fa fa-user"></i>
-            <input type="text" name="" value="" id="exampleInputName1" placeholder="Prénom" v-model="firstname">
+            <input type="text" name="" value="" id="lastname" placeholder="Nom" v-model="lastname">
+          </div>
+          <div class="signup-row">
+            <i class="fa fa-user"></i>
+            <input type="text" name="" value="" id="challengename" placeholder="Pseudo pour le Challenge" v-model="challengename">
           </div>
           <div class="signup-row">
             <i class="fa fa-envelope"></i>
@@ -83,6 +88,7 @@
     data() {
       return {
         lastname: '',
+        challenge: '',
         firstname: '',
         email: '',
         password: '',
@@ -95,6 +101,7 @@
         e.preventDefault();
         var obj = {
           'firstname': this.firstname,
+          'challenge': this.challenge,
           'lastname': this.lastname,
           'email': this.email,
           'password': this.password,

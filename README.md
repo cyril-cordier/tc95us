@@ -1,4 +1,4 @@
-# tc95usc
+# tc95us
 
 ## Project setup
 ```

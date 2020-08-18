@@ -113,11 +113,15 @@
                   <h1>Formulaire d'enregistrement</h1>
                   <div class="signup-row">
                     <i class="fa fa-user"></i>
+                    <input type="text" name="" value=""  placeholder="Prénom" v-model="firstname">
+                  </div>
+                  <div class="signup-row">
+                    <i class="fa fa-user"></i>
                     <input type="text" name="" value=""  placeholder="Nom" v-model="lastname">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-user"></i>
-                    <input type="text" name="" value=""  placeholder="Prénom" v-model="firstname">
+                    <input type="text" name="" value=""  placeholder="Pseudo Challenge" v-model="challengename">
                   </div>
                   <div class="signup-row">
                     <i class="fa fa-envelope"></i>
@@ -192,6 +196,7 @@
         var obj = {
           'firstname': this.firstname,
           'lastname': this.lastname,
+          'challengename': this.challengename,
           'email': this.email,
           'password': this.password,
           'c_password': this.c_password,
