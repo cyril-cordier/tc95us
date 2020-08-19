@@ -67,10 +67,10 @@
         </div>
 
         <div class="col-9 bg-light" v-show="challengeusers_toggle">
-          <challengeusers />
+          <viewchallengeusers />
         </div>
         <div class="col-9 bg-light" v-show="challengeresults_toggle">
-          <challengeresults />
+          <viewchallengeresults />
         </div>
         <div class="col-9 bg-light" v-show="championships_toggle">
           <championnats />
@@ -102,8 +102,8 @@
   import viewuser from '@/components/viewuser.vue'
   import viewproducts from '@/components/viewproducts.vue'
 
-  import challengeusers from '@/components/challengeusers.vue'
-  import challengeresults from '@/components/challengeresults.vue'
+  import viewchallengeusers from '@/components/viewchallengeusers.vue'
+  import viewchallengeresults from '@/components/viewchallengeresults.vue'
 
 
   /* import Footer from '@/components/footer.vue' */
@@ -115,8 +115,8 @@
       /*  Footer, */
       viewuser,
       viewproducts, 
-      challengeusers, 
-      challengeresults, 
+      viewchallengeusers, 
+      viewchallengeresults, 
 
 
 
