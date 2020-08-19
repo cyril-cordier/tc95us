@@ -13,6 +13,7 @@
                 <th>Nom</th>
                 <th>Contact (mail/tel)</th>
                 <th>Classement FFT</th>
+                <th>Points</th>
                 <th>Nb Matchs</th>
                 <th>Match average</th>
                 <th>Set average</th>
@@ -27,6 +28,7 @@
                 <th>{{challengeuser.challengename}}</th>
                 <th>{{challengeuser.contact}}</th>
                 <th>{{challengeuser.ranking}}</th>
+                <th>{{challengeuser.points}}</th>
                 <th>{{challengeuser.nbmatchs}}</th>
                 <th>{{challengeuser.matchaverage}}</th>
                 <th>{{challengeuser.setaverage}}</th>
@@ -61,6 +63,9 @@
                   </div>
                    <div class="signup-row">
                    <h6>Classement : {{challengeuser.ranking}}</h6>
+                  </div>
+                  <div class="signup-row">
+                   <h6>Points : {{challengeuser.points}}</h6>
                   </div>
                   <div class="signup-row">
                    <h6>Nb matchs joués : {{challengeuser.nbmatchs}}</h6>
@@ -105,6 +110,9 @@
                   </div>
                   <div class="signup-row">
                     Classement : <textarea class="form-control" name="" value=""  placeholder="Détails" v-model="challengeuser.ranking"></textarea>
+                  </div>
+                  <div class="signup-row">
+                    Points : <textarea class="form-control" name="" value=""  placeholder="Points" v-model="challengeuser.points"></textarea>
                   </div>
                   <div class="signup-row">
                     Nb matchs joués : <textarea class="form-control" name="" value=""  placeholder="Détails" v-model="challengeuser.nbmatchs"></textarea>
@@ -160,6 +168,9 @@
                   </div>
                   <div class="signup-row">
                     Contact : <textarea class="form-control" name="" value="" placeholder="Contact (tel/mail)" v-model="contact" ></textarea>
+                  </div>
+                  <div class="signup-row">
+                    Pointss : <textarea class="form-control" name="" value="" placeholder="Points" v-model="points"></textarea>
                   </div>
                   <div class="signup-row">
                     Nb matchs joués : <textarea class="form-control" name="" value="" placeholder="Nombre de matchs" v-model="nbmatchs"></textarea>
@@ -223,6 +234,7 @@
         challengename: '',
         ranking: '',
         contact: '',
+        points: '',
         nbmatchs: '',
         matchaverage: '',
         setaverage: '',
@@ -241,6 +253,7 @@
           'challengename': this.challengename,
           'ranking': this.ranking,
           'contact': this.contact,
+          'points': this.points,
           'nbmatchs': this.nbmatchs,
           'matchaverage': this.matchaverage,
           'setaverage': this.setaverage,
@@ -258,6 +271,7 @@
           'challengename': challengeuser.challengename,
           'ranking': challengeuser.ranking,
           'contact': challengeuser.contact,
+          'points': this.points,
           'nbmatchs': challengeuser.nbmatchs,
           'matchaverage': challengeuser.matchaverage,
           'setaverage': challengeuser.setaverage,

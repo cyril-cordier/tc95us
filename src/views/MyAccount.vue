@@ -60,7 +60,7 @@
         </div>
 
         <div class="col-9 bg-light" v-show="products_toggle">
-          <products />
+          <viewproducts />
         </div>
         <div class="col-9 bg-light" v-show="events_toggle">
           <events />
@@ -100,7 +100,7 @@
   // @ is an alias to /src
 
   import viewuser from '@/components/viewuser.vue'
-  import products from '@/components/products.vue'
+  import viewproducts from '@/components/viewproducts.vue'
 
   import challengeusers from '@/components/challengeusers.vue'
   import challengeresults from '@/components/challengeresults.vue'
@@ -114,7 +114,7 @@
     components: {
       /*  Footer, */
       viewuser,
-      products, 
+      viewproducts, 
       challengeusers, 
       challengeresults, 
 
