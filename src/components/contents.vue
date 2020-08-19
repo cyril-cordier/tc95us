@@ -83,8 +83,8 @@
                     <textarea class="form-control" name="" value=""  placeholder="Titre" v-model="content.title"></textarea>
                   </div>
                   <div class="signup-row">
-                    
-                    <textarea class="form-control" name="" value=""  placeholder="Contenu" v-model="content.content"></textarea>
+                    <vue-editor v-model="content.content" placeholder="Contenu"></vue-editor>
+                    <!-- <textarea class="form-control" name="" value=""  placeholder="Contenu" v-model="content.content"></textarea> -->
                   </div>
                   <div class="signup-row">
                     

@@ -9,6 +9,7 @@ import Events from '../views/Events.vue'
 import Calendarevents from '../views/Calendarevents.vue'
 import Tarifs from '../views/Tarifs.vue'
 import Championnats from '../views/Rencontres.vue'
+import Challenge from '../views/Challenge.vue'
 
 
 Vue.use(VueRouter)
@@ -75,6 +76,12 @@ Vue.use(VueRouter)
     path: '/monCompte',
     name: 'MyAccount',
     component: MyAccount,
+    meta:{requiresVisitor: false},
+  },
+  {
+    path: '/challenge',
+    name: 'Challenge',
+    component: Challenge,
     meta:{requiresVisitor: false},
   },
 ]

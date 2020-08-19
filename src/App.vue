@@ -7,6 +7,7 @@
       <router-link to="/evennements">Animations et Evennements</router-link> |
       <router-link to="/tarifs">Tarifs</router-link> |
       <router-link to="/championnats">Championnats</router-link> |
+      <router-link to="/challenge">Challenge</router-link> |
       <router-link to="/about">A propos</router-link> |
       <router-link to="/register">S'inscrire</router-link> |
       <router-link to="/login">S'identifier</router-link> |
@@ -50,7 +51,7 @@
   </div>
     <div class="card">
     <div class="card-body">
-      <img alt="logo technifibre" src="./assets/logoclubaffilie.png" style="height:30%">
+      <img alt="logo technifibre" src="./assets/logoclubaffilie.png" style="height:5rem">
     </div>
   </div>
       <div class="card">

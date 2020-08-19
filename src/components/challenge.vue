@@ -1,26 +1,13 @@
 <template>
-  <div class="animevents">
+  <div class="challengergt">
 
-   <router-link to="/calendrier_events">Voir le calendrier des évennements</router-link>
-
-    
-
+   <!-- <router-link to="/calendrier_events">Voir le calendrier des évennements</router-link> -->
 
     <br><br><br>
-    <div v-for="(event) in getAllEvents" :key="event.id">
-      <div class="card">
-        <div class="card-header">
-          <h3>{{event.title}} - {{event.date}}</h3>
-        </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>{{event.details}}</p>
-            <footer class="blockquote-footer">{{event.place}} / {{event.hour}} - <cite
-                title="Source Title">{{event.price}}</cite></footer>
-          </blockquote>
-        </div>
-      </div><br><br>
-    </div>
+<div v-for="(content) in getAllContents" :key="content.id">
+<div v-if="content.title == 'Règlement du Challenge'"><div v-html="content.content"></div>
+</div>
+</div>
 
     
 <router-view/>
@@ -40,7 +27,7 @@
   } from 'vuex'
 
   export default {
-    name: 'animevents',
+    name: 'challengergt',
     components: {
       /*  Footer, */
 
@@ -50,28 +37,26 @@
       return {
         id: '',
         title: '',
-        details: '',
-        place: '',
-        date: '',
-        hour: '',
-        price: '',
-        image: '',
-        image_name: '',
-        extension: ''
+        content: '',
+        name: '',
+        fonction: '',
+        image_name:'',
+        extension:'',
+        image: '',   
 
       }
     },
     methods: {
 
 
-      ...mapActions(['fetchAllEvents']),
+      ...mapActions(['fetchAllContents']),
 
 
     },
-    computed: mapGetters(['getEventMessage', 'getAllEvents', 'getEvent', 'infoEventById', 'getUpdateEventMessage']),
+    computed: mapGetters(['getContentMessage', 'getAllContents', 'getContent', 'infoContentById', 'getUpdateContentMessage']),
     created() {
 
-      this.fetchAllEvents();
+      this.fetchAllContents();
 
       //this.fetchEventById(this.$route.params.id);
     }
