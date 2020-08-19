@@ -11,6 +11,7 @@ import Tarifs from '../views/Tarifs.vue'
 import Championnats from '../views/Rencontres.vue'
 import Challenge from '../views/Challenge.vue'
 import Admin from '../views/Admin.vue'
+import Equipments from '../views/Equipments.vue'
 
 
 Vue.use(VueRouter)
@@ -89,6 +90,12 @@ Vue.use(VueRouter)
     path: '/challenge',
     name: 'Challenge',
     component: Challenge,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path: '/club',
+    name: 'Equipments',
+    component: Equipments,
     meta:{requiresVisitor: true},
   },
 ]

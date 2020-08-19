@@ -14,6 +14,7 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">Le Club</a>
           <div class="dropdown-menu">
+            <router-link to="/club" class="dropdown-item">Nos installations</router-link>
             <router-link to="/carte" class="dropdown-item">Nous trouver</router-link>
             <router-link to="/evennements" class="dropdown-item">Animations et Evennements</router-link>
             <router-link to="/tarifs" class="dropdown-item">Tarifs</router-link>

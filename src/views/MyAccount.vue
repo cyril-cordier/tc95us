@@ -62,9 +62,6 @@
         <div class="col-9 bg-light" v-show="products_toggle">
           <viewproducts />
         </div>
-        <div class="col-9 bg-light" v-show="events_toggle">
-          <events />
-        </div>
 
         <div class="col-9 bg-light" v-show="challengeusers_toggle">
           <viewchallengeusers />
@@ -72,18 +69,7 @@
         <div class="col-9 bg-light" v-show="challengeresults_toggle">
           <viewchallengeresults />
         </div>
-        <div class="col-9 bg-light" v-show="championships_toggle">
-          <championnats />
-        </div>
-        <div class="col-9 bg-light" v-show="tarifs_toggle">
-          <tarifs />
-        </div>
-        <div class="col-9 bg-light" v-show="contents_toggle">
-          <contents />
-        </div>
-        <div class="col-9 bg-light" v-show="officeusers_toggle">
-          <officeusers />
-        </div>
+
       
 
       </div>
