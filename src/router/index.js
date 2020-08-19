@@ -89,7 +89,7 @@ Vue.use(VueRouter)
     path: '/challenge',
     name: 'Challenge',
     component: Challenge,
-    meta:{requiresVisitor: false},
+    meta:{requiresVisitor: true},
   },
 ]
 
