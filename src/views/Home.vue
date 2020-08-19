@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img id="logotcus" alt="Vue logo" src="../assets/logo_tcus.png" style="width:15rem">
-    <img alt="Tc Us" src="../assets/tcus.jpg" style="width:100%">
+    
+    <img alt="Tc Us" src="../assets/bandeau_tcus.jpg" style="width:100%">
 
     
     
