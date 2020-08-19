@@ -35,6 +35,10 @@
             <router-link to="/register" class="dropdown-item">S'inscrire</router-link>
             <router-link to="/login" class="dropdown-item">S'identifier</router-link>
             <router-link to="/MonCompte" class="dropdown-item">Mon Compte</router-link>
+            <div v-for="user in getUser" :key="user.id">
+        <div v-if="user.admin!=false in getUser">
+            <router-link to="/admin" class="dropdown-item">Admin</router-link>
+        </div></div>
             <router-link to="/">
               <div @click="logout()" class="dropdown-item">Déconnection</div>
             </router-link>
@@ -125,15 +129,48 @@
 </template>
 
 <script>
+  import {
+    mapActions,
+    mapGetters
+  } from 'vuex'
+
   export default {
 
+    
+        data() {
+      return {
+        
+        users_toggle: true,
+        products_toggle: false,
+        events_toggle: false,
+        challengeusers_toggle: false,
+        challengeresults_toggle: false,
+        championships_toggle: false,
+        tarifs_toggle: false,
+        contents_toggle: false,
+        officeusers_toggle: false,
+                id:'',
+        lastname: '',
+        firstname: '',
+        admin:'',
+      }
+    },
     methods: {
+
+      ...mapActions(['fetchUser']),
       logout() {
         window.localStorage.removeItem('token');
         window.location.href = "/";
       }
+ 
+
+    },
+    computed: mapGetters(['getMessage', 'getAllUsers', 'getUser', 'infoUserById', ]),
+    created() {
+      this.fetchUser();
     }
   }
+   
 </script>
 
 

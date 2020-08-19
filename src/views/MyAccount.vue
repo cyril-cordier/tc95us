@@ -1,6 +1,6 @@
 <template>
   <div class="MyAccount">
-    <h1>Admin</h1>
+    <h1>Mon compte</h1>
 
     <div class="container-fluid">
       <div class="row">
@@ -15,7 +15,7 @@
             contents_toggle = false,
             officeusers_toggle = false,
             championships_toggle = false, 
-            tarifs_toggle = false" class="List-group-item list-group-item-action">Gestion Utilisateurs
+            tarifs_toggle = false" class="List-group-item list-group-item-action">Mes informations
             </ul>
             <ul class="List-group-item list-group-item-action" @click="products_toggle = !products_toggle, 
             users_toggle = false,
@@ -26,19 +26,9 @@
             contents_toggle = false,
             officeusers_toggle = false,
             tarifs_toggle = false">
-              Gestion Produits
+              Les Produits du Club
             </ul>
-            <ul class="List-group-item list-group-item-action" @click="events_toggle = !events_toggle, 
-            products_toggle = false,
-            users_toggle = false, 
-            challengeusers_toggle = false,
-            challengeresults_toggle = false,
-            championships_toggle = false, 
-            contents_toggle = false,
-            officeusers_toggle = false,
-            tarifs_toggle = false">
-              Gestion Evennements
-            </ul>
+
             <ul class="List-group-item list-group-item-action" @click="challengeusers_toggle = !challengeusers_toggle, 
             products_toggle = false,
             events_toggle = false, 
@@ -48,7 +38,7 @@
             contents_toggle = false,
             officeusers_toggle = false,
             tarifs_toggle = false">
-              Gestion Joueurs Challenge
+              Les Joueurs du Challenge
             </ul>
             <ul class="List-group-item list-group-item-action" @click="challengeresults_toggle = !challengeresults_toggle, 
             products_toggle = false,
@@ -59,57 +49,14 @@
             championships_toggle = false, 
             officeusers_toggle = false,
             tarifs_toggle = false">
-              Gestion Résultats Challenge
+              Résultats du Challenge
             </ul>
-            <ul class="List-group-item list-group-item-action" @click="championships_toggle = !championships_toggle, 
-            products_toggle = false, 
-            events_toggle = false, 
-            challengeusers_toggle = false,
-            challengeresults_toggle = false,
-            users_toggle = false,
-            contents_toggle = false,
-            officeusers_toggle = false,
-            tarifs_toggle = false">
-              Gestion Championnats
-            </ul>
-            <ul class="List-group-item list-group-item-action" @click="tarifs_toggle = !tarifs_toggle, 
-            products_toggle = false, 
-            events_toggle = false, 
-            challengeusers_toggle = false,
-            challengeresults_toggle = false,
-            users_toggle = false,
-            contents_toggle = false,
-            officeusers_toggle = false,
-            championships_toggle = false">
-              Gestion Tarifs
-            </ul>
-            <ul class="List-group-item list-group-item-action" @click="contents_toggle = !contents_toggle, 
-            products_toggle = false, 
-            events_toggle = false, 
-            challengeusers_toggle = false,
-            challengeresults_toggle = false,
-            users_toggle = false,
-            tarifs_toggle = false,
-            officeusers_toggle = false,
-            championships_toggle = false">
-              Gestion Contenus
-            </ul>
-            <ul class="List-group-item list-group-item-action" @click="officeusers_toggle = !officeusers_toggle, 
-            products_toggle = false, 
-            events_toggle = false, 
-            challengeusers_toggle = false,
-            challengeresults_toggle = false,
-            users_toggle = false,
-            tarifs_toggle = false,
-            contents_toggle = false,
-            championships_toggle = false">
-              Gestion Membres du bureau
-            </ul>
+
           </li>
         </div>
 
         <div class="col-9 bg-light" v-show="users_toggle">
-          <users />
+          <viewuser />
         </div>
 
         <div class="col-9 bg-light" v-show="products_toggle">
@@ -137,14 +84,7 @@
         <div class="col-9 bg-light" v-show="officeusers_toggle">
           <officeusers />
         </div>
-        
-<!--        <div class="col-9 bg-light" v-show="users_toggle">
-          <users />
-        </div>
-
-        <div class="col-9 bg-light" v-show="products_toggle">
-          <products />
-        </div> -->
+      
 
       </div>
 
@@ -159,15 +99,12 @@
 <script>
   // @ is an alias to /src
 
-  import users from '@/components/users.vue'
+  import viewuser from '@/components/viewuser.vue'
   import products from '@/components/products.vue'
-  import events from '@/components/events.vue'
+
   import challengeusers from '@/components/challengeusers.vue'
   import challengeresults from '@/components/challengeresults.vue'
-  import championnats from '@/components/championnats.vue'
-  import tarifs from '@/components/tarifs.vue'
-  import contents from '@/components/contents.vue'
-  import officeusers from '@/components/officeusers.vue'
+
 
   /* import Footer from '@/components/footer.vue' */
 
@@ -176,15 +113,12 @@
     name: 'MyAccount',
     components: {
       /*  Footer, */
-      users,
+      viewuser,
       products, 
-      events,
       challengeusers, 
       challengeresults, 
-      championnats, 
-      tarifs,
-      contents, 
-      officeusers
+
+
 
 
 
@@ -194,13 +128,10 @@
         
         users_toggle: true,
         products_toggle: false,
-        events_toggle: false,
+
         challengeusers_toggle: false,
         challengeresults_toggle: false,
-        championships_toggle: false,
-        tarifs_toggle: false,
-        contents_toggle: false,
-        officeusers_toggle: false,
+
         
       }
     },

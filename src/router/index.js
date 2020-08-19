@@ -10,6 +10,7 @@ import Calendarevents from '../views/Calendarevents.vue'
 import Tarifs from '../views/Tarifs.vue'
 import Championnats from '../views/Rencontres.vue'
 import Challenge from '../views/Challenge.vue'
+import Admin from '../views/Admin.vue'
 
 
 Vue.use(VueRouter)
@@ -76,6 +77,12 @@ Vue.use(VueRouter)
     path: '/monCompte',
     name: 'MyAccount',
     component: MyAccount,
+    meta:{requiresVisitor: false},
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
     meta:{requiresVisitor: false},
   },
   {

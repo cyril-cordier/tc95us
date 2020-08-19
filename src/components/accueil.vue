@@ -29,7 +29,7 @@
     </div>
   </div>
 </div>
-<img alt="Bureau TC Us" src="../assets/bureau_small.jpg" style="width:60%">
+<img alt="Bureau TC Us" src="../assets/bureau_small.jpg" style="width:70%">
   
   
   
