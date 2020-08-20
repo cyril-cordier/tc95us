@@ -52,6 +52,9 @@
                   <div class="signup-row">
                     <h6>Nom pour challenge :{{user.challengename}}</h6>
                   </div>
+                  <div class="signup-row">
+                    <h6>Statut admin : {{user.admin}}</h6>
+                  </div>
 
 
                   <div class="modal-footer">
@@ -93,6 +96,17 @@
                     <i class="fa fa-user"></i>
                     <label>Pseudo </label>
                     <input type="text" name="" value="" placeholder="Pseudo pour le Challenge" v-model="user.challengename">
+                  </div>
+                  <div class="signup-row">
+                    <label>Statut </label>
+                   <input type="radio" id="one" value="true" v-model="user.admin">
+                    <label for="one">Administrateur</label>
+                    <br>
+                    <input type="radio" id="two" value="false" v-model="user.admin">
+                    <label for="two">Visiteur</label>
+                    <br>
+                    <span>Choisi : {{ user.admin }}</span>
+                      
                   </div>
 
 
@@ -148,6 +162,17 @@
                     <input type="password" v-model="c_password" name="" value=""
                       placeholder="Confirmez le mot de passe">
                   </div>
+                  <div class="signup-row">
+                    <label>Statut </label>
+                   <input type="radio" id="one" value="true" v-model="admin">
+                    <label for="one">Administrateur</label>
+                    <br>
+                    <input type="radio" id="two" value="false" v-model="admin">
+                    <label for="two">Visiteur</label>
+                    <br>
+                    <span>Choisi : {{ admin }}</span>
+                      
+                  </div>
 
 
                   <div class="modal-footer">
@@ -188,6 +213,7 @@
         firstname: '',
         email: '',
         challengename: '',
+        admin: '',
         password: '',
         c_password: '',
         editUser: {
@@ -210,6 +236,7 @@
           'lastname': this.lastname,
           'challengename': this.challengename,
           'email': this.email,
+          'admin': this.admin,
           'password': this.password,
           'c_password': this.c_password,
 
@@ -225,6 +252,7 @@
           'firstname': user.firstname,
           'lastname': user.lastname,
           'email': user.email,
+          'admin': user.admin,
           'challengename': user.challengename
         }
         this.editForm(obj);

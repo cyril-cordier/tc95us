@@ -12,6 +12,8 @@ import Championnats from '../views/Rencontres.vue'
 import Challenge from '../views/Challenge.vue'
 import Admin from '../views/Admin.vue'
 import Equipments from '../views/Equipments.vue'
+import Legal from '../views/Legal.vue'
+import Reglement from '../views/Reglement_club.vue'
 
 
 Vue.use(VueRouter)
@@ -96,6 +98,18 @@ Vue.use(VueRouter)
     path: '/club',
     name: 'Equipments',
     component: Equipments,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path: '/legal',
+    name: 'Legal',
+    component: Legal,
+    meta:{requiresVisitor: true},
+  },
+  {
+    path: '/reglement_club',
+    name: 'Reglement',
+    component: Reglement,
     meta:{requiresVisitor: true},
   },
 ]

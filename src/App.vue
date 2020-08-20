@@ -92,7 +92,10 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Informations</h5>
-            <p class="card-text">Mentions légales</p>
+            <p class="card-text">
+            <router-link to="/legal">Mentions légales</router-link></p>
+            <p class="card-text">
+            <router-link to="/reglement_club">Règlement du Club</router-link></p>
           </div>
         </div>
         <div class="card">

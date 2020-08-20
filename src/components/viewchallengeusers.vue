@@ -8,7 +8,7 @@
     <table class="table">
       <thead>
         <tr>
-          
+
           <th scope="col">Nom</th>
           <th>Contact (mail/tel)</th>
           <th>Classement FFT</th>
@@ -79,16 +79,24 @@
     methods: {
 
       ...mapActions(['fetchAllChallengeusers', 'fetchChallengeuserById']),
-      
-      },
-            filteredChallengeusers(){
-        return this.getAllChallengeusers.reverse(challengeuser => challengeuser.points);
-        },
-    
-    computed: mapGetters(['getChallengeuserMessage', 'getAllChallengeusers', 'getChallengeuser',
-      'infoChallengeuserById', 'getUpdateChallengeuserMessage'
-    ]),
-    
+
+    },
+
+
+    computed: {
+      ...mapGetters(['getChallengeuserMessage', 'getAllChallengeusers', 'getChallengeuser',
+        'infoChallengeuserById', 'getUpdateChallengeuserMessage'
+      ]),
+      filteredChallengeusers() {
+        var sort= [...this.getAllChallengeusers].sort((a, b) => {
+          return parseInt(a.points) - parseInt(b.points)
+            
+        });
+
+        console.log(sort);
+        return sort;
+      }
+    },
     created() {
 
       this.fetchAllChallengeusers();

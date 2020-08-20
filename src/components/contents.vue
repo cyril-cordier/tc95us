@@ -100,9 +100,10 @@
                       placeholder="Fonction"></textarea>
                   </div>
                   <div class="signup-row">
+                    <strong>Image:</strong>
 
-                    <textarea class="form-control" v-model="content.image" name="" value=""
-                      placeholder="Image"></textarea>
+              <input type="file" name="image" class="form-control" @change="onImageChange"> 
+                    
                   </div>
 
                   <div class="modal-footer">
@@ -133,6 +134,7 @@
                   <option selected></option>
                   <option>Texte page Accueil</option>
                   <option>Les installations</option>
+                  <option>Règlement du Club</option>
                   <option>Le mot du Président (page Installations)</option>
                   <option>Le mot du Trésorier (page Tarifs)</option>
                   <option>Le mot de la Secrétaire (page Nous trouver)</option>
