@@ -16,7 +16,7 @@
           <div class="dropdown-menu">
             <router-link to="/club" class="dropdown-item">Nos installations</router-link>
             <router-link to="/carte" class="dropdown-item">Nous trouver</router-link>
-            <router-link to="/evennements" class="dropdown-item">Animations et Evennements</router-link>
+            <router-link to="/evenements" class="dropdown-item">Animations et Evènements</router-link>
             <router-link to="/tarifs" class="dropdown-item">Tarifs</router-link>
             <div class="dropdown-divider"></div>
           </div>
@@ -122,7 +122,7 @@
             <p class="card-text"><a href="https://www.facebook.com/groups/406488439536879/" target="blank">Facebook</a>
             </p>
             <p class="card-text">
-              <router-link to="/calendrier_events">Calendrier des évennements</router-link>
+              <router-link to="/calendrier_events">Calendrier des évènements</router-link>
             </p>
           </div>
         </div>

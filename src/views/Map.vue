@@ -1,9 +1,26 @@
 <template>
   <div class="map">
+
+        <Map msg="Nous trouver"/>
+
+
+        <br><br>
+
+            <h1>Le mot de la Secrétaire</h1>
+            <br><br><br>
+            <div v-for="content in getAllContents" :key="content.id">
+              <div v-if="content.title == 'Le mot de la Secrétaire (page Nous trouver)'">
+                <div v-html="content.content"></div>
+                <p>{{content.name}}</p>
+                <p>{{content.fonction}}</p>
+                <img :src="content.image" style="width:10rem;">
+
+              </div>
+            </div>
+          </div>
+     
     
-    <Map msg="Nous trouver"/>
-  
-  </div>
+
 
   
 </template>
@@ -13,13 +30,50 @@
 import Map from '@/components/carte.vue'
 
 
-export default {
-  name: 'map',
-  components: {
+
+import {
+    mapActions,
+    mapGetters
+  } from 'vuex'
+
+  export default {
+    name: 'map',
+    components: {
+      /*  Footer, */
     Map, 
-    
+
+    },
+    data() {
+      return {
+        id: '',
+        title: '',
+        content: '',
+        name: '',
+        fonction: '',
+        image_name: '',
+        extension: '',
+        image: '',
+
+      }
+    },
+    methods: {
+
+
+      ...mapActions(['fetchAllContents']),
+
+
+    },
+    computed: mapGetters(['getContentMessage', 'getAllContents', 'getContent', 'infoContentById',
+      'getUpdateContentMessage'
+    ]),
+    created() {
+
+      this.fetchAllContents();
+
+      //this.fetchEventById(this.$route.params.id);
+    }
   }
-}
+  
 </script>
 
 <style scoped>

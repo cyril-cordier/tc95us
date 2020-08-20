@@ -13,6 +13,7 @@
                 <th>Prénom</th>
                 <th>Email</th>
                 <th>Nom pour Challenge</th>
+                <th>Administrateur</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -23,6 +24,7 @@
                 <th>{{user.firstname}}</th>
                 <th>{{user.email}}</th>
                 <th>{{user.challengename}}</th>
+                <th>{{user.admin}}</th>
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDelete(user.id, index)" class="fa fa-trash"></i>

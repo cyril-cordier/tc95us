@@ -1,22 +1,20 @@
 <template>
   <div class="events">
-    <h1>Gestion évennements</h1>
+    <h1>Gestion évènements</h1>
     
                  
         
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".eventaddmodal">+ Ajouter un
-      Evennement</button>
+      Evènement</button>
           <table class="table">
             <thead>
               <tr>
                 <th scope="col">Id</th>
-                <th>Titre</th>
-                <th>Détails</th>
+                <th>Titre</th>                
                 <th>Lieu</th>
                 <th>Date</th>
                 <th>Horaires</th>
-                <th>Prix</th>
-                <th>Image</th>
+                <th>Prix</th>                
                 <th>Actions</th>
               </tr>
             </thead>
@@ -24,12 +22,10 @@
               <tr v-for="(event, index) in getAllEvents" :key="event.id">
                 <th>{{event.id}}</th>
                 <th>{{event.title}}</th>
-                <th>{{event.details}}</th>
                 <th>{{event.place}}</th>
                 <th>{{event.date}}</th>
                 <th>{{event.hour}}</th>
-                <th>{{event.price}}</th>
-                <th><img :src="`https://tc95us.herokuapp.com/storage/images/event/${event.image_name}`"/></th>
+                <th>{{event.price}}</th>                
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDeleteEvent(event.id, index)" class="fa fa-trash"></i>
@@ -50,12 +46,12 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <form class="sign-back">
-                  <h6>Détails évennement</h6><br><br>
+                  <h6>Détails évènement</h6><br><br>
                   <div class="signup-row">
                     <h3>{{event.title}}</h3>
                   </div>
                   <div class="signup-row">
-                   <h6>{{event.details}}</h6>
+                   <p>{{event.details}}</p>
                   </div>
                   <div class="signup-row">
                    <h6>{{event.place}}</h6>
@@ -70,7 +66,7 @@
                    <h6>{{event.price}}</h6>
                   </div>
                   <div class="signup-row">
-                   <h6>{{event.image}}</h6>
+                   <img :src="event.image" style="width:10rem;">
                   </div>
                   
                   <div class="modal-footer">
@@ -90,7 +86,7 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <form @submit.prevent="onEventEdit(event)" class="sign-back">
-                  <h1>Modification évennement</h1>
+                  <h1>Modification évènnement</h1>
                   <div class="signup-row">
                     
                     <textarea class="form-control" name="" value=""  placeholder="Titre" v-model="event.title"></textarea>
@@ -117,7 +113,7 @@
                   </div>
                   <div class="signup-row">
                     
-                    <input type="text" v-model="event.image" name="" value="" placeholder="Image">
+                    <input type="file" id="files" class="form-control" @change="onImageChange">
                   </div>
 
                   <div class="modal-footer">
@@ -140,7 +136,7 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <form @submit="onEventsubmit" class="sign-back" enctype="multipart/form-data">
-                  <h1>Ajout évennement</h1>
+                  <h1>Ajout évènement</h1>
                   <div class="signup-row">
                     
                     <textarea class="form-control" name="" value="" placeholder="Titre" v-model="title"></textarea>
@@ -164,9 +160,9 @@
                   </div>
                   <div class="signup-row">
                     
-                    <strong>Image:</strong>
+                    
 
-                        <input type="file" name="image" class="form-control" @change="onImageChange">
+                        <input type="file" id="files" class="form-control" @change="onImageChange">
                   </div>
 
 
@@ -220,22 +216,51 @@
         place: '',
         date: '',
         hour: '',
-        price: '',
         image: '',
+        price: '',
         image_name:'',
-        extension:''
+      
         
       }
     },
     methods: {
 
       ...mapActions(['createEvent', 'editEvent', 'fetchAllEvents', 'fetchEventById', 'deleteEvent']),
-      onImageChange(e){
-        //console.log(e.target.files[0]);
-        this.image = e.target.files[0];
-      },
+  
+  onImageChange(event){
+
+
+var formdata = new FormData();
+formdata.append("fileUpload", event.target.files[0]);
+
+
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+ 
+
+fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    
+    this.image = result.url;
+      console.log(result,'ok');
+      
+      
+      })
+
+  .catch(error => console.log('Error image', error));
+  },
+
+
+
+  
       onEventsubmit(e) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
         e.preventDefault();
         var obj = {
           'title': this.title,
@@ -245,16 +270,17 @@
           'hour': this.hour,
           'price': this.price,
           'image': this.image,
-          'image_name':Date.now(),
-          'extension': ext
+          'image_name':this.image,
+          
 
         }
+        console.log(obj);
         this.createEvent(obj);
         this.fetchAllEvents();
 
       },
       onEventEdit(event) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
         //e.preventDefault();
         var obj = {
           'id':event.id,
@@ -265,8 +291,8 @@
           'hour': event.hour,
           'price': event.price,
           'image': event.image,
-          'image_name':Date.now(),
-          'extension': ext
+          'image_name': event.image,
+          
         }
         this.editEvent(obj);
         this.fetchAllEvents();

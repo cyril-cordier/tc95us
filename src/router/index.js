@@ -53,7 +53,7 @@ Vue.use(VueRouter)
     meta:{requiresVisitor: true},
   },
   {
-    path:'/evennements',
+    path:'/evenements',
     name:'Animevents',
     component: Events,
     meta:{requiresVisitor: true},

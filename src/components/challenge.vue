@@ -5,7 +5,7 @@
 
     <br><br><br>
 <div v-for="(content) in getAllContents" :key="content.id">
-<div v-if="content.title == 'Règlement du Challenge'"><div v-html="content.content"></div>
+<div v-if="content.title == 'Règlement du Challenge (page rglt challenge)'"><div v-html="content.content"></div>
 </div>
 </div>
 

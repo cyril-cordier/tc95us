@@ -87,7 +87,7 @@
                   </div>
                   <div class="signup-row">
                     
-                    <input type="text" v-model="product.image" name="" value="" placeholder="Image">
+                    <input type="file" name="image" class="form-control" @change="onImageChange">
                   </div>
 
                   <div class="modal-footer">
@@ -181,27 +181,50 @@
         price: '',
         image: '',
         image_name:'',
-        extension:''
+        
         
       }
     },
     methods: {
 
       ...mapActions(['createProduct', 'editProduct', 'fetchAllProducts', 'fetchProductById', 'deleteProduct']),
-      onImageChange(e){
-        //console.log(e.target.files[0]);
-        this.image = e.target.files[0];
-      },
+      onImageChange(event){
+        var formdata = new FormData();
+formdata.append("fileUpload", event.target.files[0]);
+
+
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+ 
+
+fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    
+    this.image = result.url;
+      console.log(result,'ok');
+      
+      
+      })
+
+  .catch(error => console.log('Error image', error));
+  },
+      
       onProductsubmit(e) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
         e.preventDefault();
         var obj = {
           'name': this.name,
           'details': this.details,
           'price': this.price,
           'image': this.image,
-          'image_name':Date.now(),
-          'extension': ext
+          'image_name':this.image,
+         
 
         }
         this.createProduct(obj);
@@ -209,7 +232,7 @@
 
       },
       onProductEdit(product) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
         //e.preventDefault();
         var obj = {
           'id':product.id,
@@ -217,8 +240,8 @@
           'details': product.details,
           'price': product.price,
           'image': product.image,
-          'image_name':Date.now(),
-          'extension': ext
+          'image_name':product.image,
+     
         }
         this.editProduct(obj);
         this.fetchAllProducts();

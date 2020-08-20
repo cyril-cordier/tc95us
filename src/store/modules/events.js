@@ -35,7 +35,8 @@ const actions = {
         formdata.append("hour", form.hour);
         formdata.append("price", form.price);
         formdata.append("image", form.image);
-        formdata.append("image_name", form.image_name+'.'+form.extension);
+        formdata.append("image_name", form.image);
+       
        
         
      
@@ -55,6 +56,9 @@ const actions = {
              
             })
           .catch(error => console.log('error', error));
+
+
+          
     },
     
     // EDIT
@@ -70,7 +74,7 @@ const actions = {
               "hour": form.hour,
               "price": form.price,
               "image": form.image,
-              "image_name": form.image_name+'.'+form.extension
+              "image_name": form.image_name
             });
    
       var requestOptions = {

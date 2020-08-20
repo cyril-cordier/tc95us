@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "filestack-js": "^3.16.0",
+    "filestack-vue": "^2.0.0",
     "serialize-javascript": "^4.0.0",
     "vue": "^2.6.11",
     "vue-image-crop-upload": "^2.5.0",

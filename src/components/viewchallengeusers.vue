@@ -87,21 +87,22 @@
       ...mapGetters(['getChallengeuserMessage', 'getAllChallengeusers', 'getChallengeuser',
         'infoChallengeuserById', 'getUpdateChallengeuserMessage'
       ]),
-      filteredChallengeusers() {
-        var sort= [...this.getAllChallengeusers].sort((a, b) => {
-          return parseInt(a.points) - parseInt(b.points)
-            
-        });
-
-        console.log(sort);
-        return sort;
-      }
+      /* filteredChallengeusers: function() {
+        function compare(a,b) {
+          if (a.points < b.points)
+          return -1;
+          if (a.points > b.points)
+          return 1;
+          return 0;
+          }
+          return this.getAllChallengeusers.sort(compare);
+      } */
     },
     created() {
 
       this.fetchAllChallengeusers();
 
-
+console.log(this.getAllChallengeusers);
     }
   }
 </script>

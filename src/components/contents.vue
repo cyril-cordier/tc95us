@@ -13,7 +13,7 @@
           <th>Titre</th>
           <th>Nom</th>
           <th>Fonction</th>
-          <th>Image</th>
+          
           <th>Actions</th>
         </tr>
       </thead>
@@ -23,7 +23,7 @@
           <th>{{content.title}}</th>
           <th>{{content.name}}</th>
           <th>{{content.fonction}}</th>
-          <th><img :src="`https://tc95us.herokuapp.com/storage/images/content/${content.image_name}`" /></th>
+          
           <th>
             <a href="#" class="icon">
               <i v-on:click="onDeleteContent(content.id, index)" class="fa fa-trash"></i>
@@ -60,7 +60,7 @@
                     <h6>{{content.fonction}}</h6>
                   </div>
                   <div class="signup-row">
-                    <h6>{{content.image_name}}</h6>
+                    <img :src="content.image" style="width:10rem;">
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -226,12 +226,35 @@
     methods: {
 
       ...mapActions(['createContent', 'editContent', 'fetchAllContents', 'fetchContentById', 'deleteContent']),
-      onImageChange(e) {
-        //console.log(e.target.files[0]);
-        this.image = e.target.files[0];
-      },
+      onImageChange(event) {
+        
+var formdata = new FormData();
+formdata.append("fileUpload", event.target.files[0]);
+
+
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+ 
+
+fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    
+    this.image = result.url;
+      console.log(result,'ok');
+      
+      
+      })
+
+  .catch(error => console.log('Error image', error));
+  },
       onContentsubmit(e) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
         e.preventDefault();
         var obj = {
           'title': this.title,
@@ -239,17 +262,18 @@
           'name': this.name,
           'fonction': this.fonction,
           'image': this.image,
-          'image_name': Date.now(),
-          'extension': ext
+          'image_name': this.image,
+          
 
         }
+        console.log(obj);
         this.createContent(obj);
         this.fetchAllContents();
 
       },
       onContentEdit(content) {
-        //e.preventDefault();
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
+        
         var obj = {
           'id': content.id,
           'title': content.title,
@@ -257,8 +281,8 @@
           'name': content.name,
           'fonction': content.fonction,
           'image': this.image,
-          'image_name': Date.now(),
-          'extension': ext
+          'image_name': this.image,
+          
         }
         this.editContent(obj);
         this.fetchAllContents();
