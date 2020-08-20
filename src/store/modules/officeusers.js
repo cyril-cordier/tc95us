@@ -30,9 +30,9 @@ const actions = {
         var formdata = new FormData();
         //var image_name =  form.id;
         formdata.append("name", form.name);
-        formdata.append("fonction", form.fonction);
+        formdata.append("function", form.function);
         formdata.append("image", form.image);
-        formdata.append("image_name", form.image_name+'.'+form.extension);
+        formdata.append("image_name", form.image_name);
      
         var requestOptions = {
           method: 'POST',
@@ -58,9 +58,9 @@ const actions = {
             myHeaders.append('Content-Type','application/json');
             var raw=JSON.stringify({
               "name": form.name,
-              "fonction": form.fonction,
+              "function": form.function,
               "image": form.image,
-              "image_name": form.image_name+'.'+form.extension
+              "image_name": form.image_name
             });
             console.log(form.image);
             

@@ -3,8 +3,9 @@
     <h1>Mon compte</h1>
 
     <div class="container-fluid">
+      <div class="grid">
       <div class="row">
-        <div class="col-3">
+        <div class="col-2">
 
           <li class="list-group">
             <ul @click="users_toggle = !users_toggle, 
@@ -55,22 +56,22 @@
           </li>
         </div>
 
-        <div class="col-9 bg-light" v-show="users_toggle">
+        <div class="col-10 bg-light" v-show="users_toggle">
           <viewuser />
         </div>
 
-        <div class="col-9 bg-light" v-show="products_toggle">
+        <div class="col-10 bg-light" v-show="products_toggle">
           <viewproducts />
         </div>
 
-        <div class="col-9 bg-light" v-show="challengeusers_toggle">
+        <div class="col-10 bg-light" v-show="challengeusers_toggle">
           <viewchallengeusers />
         </div>
-        <div class="col-9 bg-light" v-show="challengeresults_toggle">
+        <div class="col-10 bg-light" v-show="challengeresults_toggle">
           <viewchallengeresults />
         </div>
 
-      
+      </div>
 
       </div>
 

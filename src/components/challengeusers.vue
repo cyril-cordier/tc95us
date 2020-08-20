@@ -127,11 +127,11 @@
                     Jeu average : <textarea class="form-control" name="" value=""  placeholder="Détails" v-model="challengeuser.gameaverage"></textarea>
                   </div>
                   <div class="signup-row">
-                   <input type="radio" id="one" value="Dans le challenge" v-model="challengeuser.visible">
-                    <label for="one">Dans le challenge</label>
+                   <input type="radio" id="uno" value="Dans le challenge" v-model="challengeuser.visible">
+                    <label for="uno">Dans le challenge</label>
                     <br>
-                    <input type="radio" id="two" value="Eliminé" v-model="challengeuser.visible">
-                    <label for="two">Eliminé</label>
+                    <input type="radio" id="dos" value="Eliminé" v-model="challengeuser.visible">
+                    <label for="dos">Eliminé</label>
                     <br>
                     <span>Choisi : {{ challengeuser.visible }}</span>
                       

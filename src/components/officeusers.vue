@@ -12,7 +12,7 @@
                 <th scope="col">Id</th>
                 <th>Nom</th>
                 <th>Fonction</th>
-                <th>Image</th>
+                
                 <th>Actions</th>
               </tr>
             </thead>
@@ -20,8 +20,8 @@
               <tr v-for="(officeuser, index) in getAllOfficeusers" :key="officeuser.id">
                 <th>{{officeuser.id}}</th>
                 <th>{{officeuser.name}}</th>
-                <th>{{officeuser.fonction}}</th>
-                <th><img :src="`https://tc95us.herokuapp.com/storage/images/office/${officeuser.image_name}`"/></th>
+                <th>{{officeuser.function}}</th>
+                
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDeleteOfficeuser(officeuser.id, index)" class="fa fa-trash"></i>
@@ -47,10 +47,10 @@
                     <h3>{{officeuser.name}}</h3>
                   </div>
                   <div class="signup-row">
-                   <h6>{{officeuser.fonction}}</h6>
+                   <h6>{{officeuser.function}}</h6>
                   </div>
                    <div class="signup-row">
-                   <img :src="`https://tc95us.herokuapp.com/storage/images/office/${officeuser.image_name}`"/>
+                   <img :src="officeuser.image" style="width:10rem;">
                   </div>
                   
                   <div class="modal-footer">
@@ -77,7 +77,7 @@
                   </div>
                   <div class="signup-row">
                     
-                    <textarea class="form-control" name="" value=""  placeholder="Fonction" v-model="officeuser.fonction"></textarea>
+                    <textarea class="form-control" name="" value=""  placeholder="Fonction" v-model="officeuser.function"></textarea>
                   </div>
                   <div class="signup-row">
                     
@@ -117,7 +117,7 @@
                     <strong>Image:</strong>
 
                         <input type="file" name="image" class="form-control" @change="onImageChange">
-                    <!-- <input type="text" class="form-control" v-model="image" name="" value="" placeholder="Image"> @change="onImageChange"-->
+                    
                   </div>
 
 
@@ -167,10 +167,11 @@
       return {
         id: '',
         name: '',
-        fonction: '',
+        function: '',
+        fonction:'',
         image: '',
         image_name:'',
-        extension:''
+        
         //message ?
         
       }
@@ -179,19 +180,43 @@
 
       ...mapActions(['createOfficeuser', 'editOfficeuser', 'fetchAllOfficeusers', 'fetchOfficeuserById', 'deleteOfficeuser']),
       
-            onImageChange(e){
-        //console.log(e.target.files[0]);
-        this.image = e.target.files[0];
-      },
+            onImageChange(event){
+
+
+var formdata = new FormData();
+formdata.append("fileUpload", event.target.files[0]);
+
+
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+ 
+
+fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    
+    this.image = result.url;
+      console.log(result,'ok');
+      
+      
+      })
+
+  .catch(error => console.log('Error image', error));
+  },
       onOfficeusersubmit(e) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
         e.preventDefault();
         var obj = {
           'name': this.name,
-          'fonction': this.fonction,
+          'function': this.fonction,
           'image': this.image,
-          'image_name':Date.now(),
-          'extension': ext
+          'image_name':this.image,
+          
           
 
         }
@@ -200,15 +225,14 @@
 
       },
       onOfficeuserEdit(officeuser) {
-        //e.preventDefault();
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
+        
         var obj = {
           'id':officeuser.id,
           'name': officeuser.name,
-          'fonction': officeuser.fonction,
+          'function': officeuser.function,
           'image': this.image,
-          'image_name':Date.now(),
-          'extension': ext
+          'image_name': this.image,
+          
         }
         console.log(obj);
         this.editOfficeuser(obj);

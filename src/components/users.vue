@@ -101,11 +101,11 @@
                   </div>
                   <div class="signup-row">
                     <label>Statut </label>
-                   <input type="radio" id="one" value="true" v-model="user.admin">
-                    <label for="one">Administrateur</label>
+                   <input type="radio" id="un" value="true" v-model="user.admin">
+                    <label for="un">Administrateur</label>
                     <br>
-                    <input type="radio" id="two" value="false" v-model="user.admin">
-                    <label for="two">Visiteur</label>
+                    <input type="radio" id="deux" value="false" v-model="user.admin">
+                    <label for="deux">Visiteur</label>
                     <br>
                     <span>Choisi : {{ user.admin }}</span>
                       
@@ -166,11 +166,11 @@
                   </div>
                   <div class="signup-row">
                     <label>Statut </label>
-                   <input type="radio" id="one" value="true" v-model="admin">
-                    <label for="one">Administrateur</label>
+                   <input type="radio" id="eins" value="true" v-model="admin">
+                    <label for="eins">Administrateur</label>
                     <br>
-                    <input type="radio" id="two" value="false" v-model="admin">
-                    <label for="two">Visiteur</label>
+                    <input type="radio" id="zwei" value="false" v-model="admin">
+                    <label for="zwei">Visiteur</label>
                     <br>
                     <span>Choisi : {{ admin }}</span>
                       

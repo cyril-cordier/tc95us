@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="challengeuser in filteredChallengeusers" :key="challengeuser.id">
+        <tr v-for="challengeuser in getAllChallengeusers" :key="challengeuser.id">
 
           <th>{{challengeuser.challengename}}</th>
           <th>{{challengeuser.contact}}</th>

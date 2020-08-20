@@ -1,14 +1,14 @@
 <template>
   <div id="app">
 
-
+<div id="barnav">
     <div id="nav">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <router-link to="/"><img alt="Vue logo" src="./assets/logo_tcus.png" style="height:5rem"></router-link>
+          <router-link to="/"><div @click="refresh()"><img alt="Vue logo" src="./assets/logo_tcus.png" style="height:5rem"></div></router-link>
         </li>
         <li>
-          <router-link to="/" class="nav-link active">Accueil</router-link>
+          <router-link to="/" class="nav-link "><div @click="refresh()">Accueil</div></router-link>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -18,6 +18,7 @@
             <router-link to="/carte" class="dropdown-item">Nous trouver</router-link>
             <router-link to="/evenements" class="dropdown-item">Animations et Evènements</router-link>
             <router-link to="/tarifs" class="dropdown-item">Tarifs</router-link>
+            <router-link to="/bureau" class="dropdown-item">Les membres du bureau</router-link>
             <div class="dropdown-divider"></div>
           </div>
         </li>
@@ -46,6 +47,7 @@
           </div>
         </li>
       </ul>
+      </div>
       <router-view />
     </div>
 
@@ -165,6 +167,9 @@
       logout() {
         window.localStorage.removeItem('token');
         window.location.href = "/";
+      }, 
+      refresh() {
+        window.location.href = "/";
       }
  
 
@@ -194,19 +199,28 @@
   #nav a {
     font-weight: bold;
     color: #2c3e50;
+    
   }
 
   #nav a.router-link-exact-active {
     color: #42b983;
   }
-
+#barnav{
+  background-color: #f0d44a;
+background-image: linear-gradient(315deg, #f0d44a 0%, #eca794 74%);
+}
   .partenaires {
     display: block;
     margin: 100px;
     margin-left: auto;
     margin-right: auto
   }
+.card{
+  
+ border: none;
+ background: transparent;
 
+}
   .logopart {
 
     margin: 1rem;

@@ -148,6 +148,7 @@ const actions = {
             fetch(`${url}/api/challengeusers`, requestOptions)
             .then(response => response.json())
             .then(result => commit('fetchAllChallengeusers',result))
+            
             .catch(error => console.log('error', error));
                 },
 

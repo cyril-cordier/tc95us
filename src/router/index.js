@@ -14,6 +14,7 @@ import Admin from '../views/Admin.vue'
 import Equipments from '../views/Equipments.vue'
 import Legal from '../views/Legal.vue'
 import Reglement from '../views/Reglement_club.vue'
+import Office from '../views/Office.vue'
 
 
 Vue.use(VueRouter)
@@ -110,6 +111,12 @@ Vue.use(VueRouter)
     path: '/reglement_club',
     name: 'Reglement',
     component: Reglement,
+    meta:{requiresVisitor: true},
+  },
+    {
+    path: '/bureau',
+    name: 'Office',
+    component: Office,
     meta:{requiresVisitor: true},
   },
 ]

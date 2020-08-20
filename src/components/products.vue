@@ -13,7 +13,7 @@
                 <th>Nom</th>
                 <th>Détail</th>
                 <th>Prix</th>
-                <th>Image</th>
+                
                 <th>Actions</th>
               </tr>
             </thead>
@@ -23,7 +23,7 @@
                 <th>{{product.name}}</th>
                 <th>{{product.details}}</th>
                 <th>{{product.price}}</th>
-                <th><img :src="`https://tc95us.herokuapp.com/storage/images/product/${product.image_name}`"/></th>
+                
                 <th>
                   <a href="#" class="icon">
                     <i v-on:click="onDeleteProduct(product.id, index)" class="fa fa-trash"></i>
@@ -52,7 +52,7 @@
                    <h6>{{product.details}}</h6>
                   </div>
                    <div class="signup-row">
-                   <h6>{{product.price}}</h6>
+                   <img :src="product.image" style="width:10rem;">
                   </div>
                   
                   <div class="modal-footer">
@@ -239,8 +239,8 @@ fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", re
           'name': product.name,
           'details': product.details,
           'price': product.price,
-          'image': product.image,
-          'image_name':product.image,
+          'image': this.image,
+          'image_name':this.image,
      
         }
         this.editProduct(obj);

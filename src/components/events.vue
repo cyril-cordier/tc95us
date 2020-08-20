@@ -290,8 +290,8 @@ fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", re
           'date': event.date,
           'hour': event.hour,
           'price': event.price,
-          'image': event.image,
-          'image_name': event.image,
+          'image': this.image,
+          'image_name': this.image,
           
         }
         this.editEvent(obj);
