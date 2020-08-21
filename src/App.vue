@@ -34,16 +34,22 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">Mon compte</a>
           <div class="dropdown-menu">
+            
             <router-link to="/register" class="dropdown-item">S'inscrire</router-link>
             <router-link to="/login" class="dropdown-item">S'identifier</router-link>
+            
             <router-link to="/MonCompte" class="dropdown-item">Mon Compte</router-link>
             <div v-for="user in getUser" :key="user.id">
         <div v-if="user.admin!=false in getUser">
             <router-link to="/admin" class="dropdown-item">Admin</router-link>
         </div></div>
+       
             <router-link to="/">
+             <!-- <div v-if="localStorage.getItem('token')"> -->
               <div @click="logout()" class="dropdown-item">Déconnection</div>
+              <!-- </div> -->
             </router-link>
+            
           </div>
         </li>
       </ul>
@@ -64,7 +70,7 @@
 
 
     <footer>
-      <br><br>
+      
       <div class="row">
 
         <div class="partenaires">
@@ -208,10 +214,12 @@
 #barnav{
   background-color: #f0d44a;
 background-image: linear-gradient(315deg, #f0d44a 0%, #eca794 74%);
+
+
 }
   .partenaires {
     display: block;
-    margin: 100px;
+    margin: 50px;
     margin-left: auto;
     margin-right: auto
   }
