@@ -6,32 +6,33 @@
         <p>{{message.toString()}}</p>
       </div>
     </div>
- <div class="container">
+    <div class="container">
       <div class="signup-form">
 
-    <form @submit="onsubmit" class="sign-back">
-                <h1>LOGIN</h1>
+        <form @submit="onsubmit" class="sign-back">
+          <h1>Connexion</h1>
+          <br>
+          <p>Accédez aux produits du Club et aux résultats du Challenge</p>
 
-      <div class="signup-row">
-        <input type="email" v-model="email"  id="exampleInputEmail1" aria-describedby="emailHelp"
-          autocomplete="off" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <div class="signup-row">
+            <input type="email" v-model="email" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre adresse email</small>
+          </div>
+          <div class="signup-row">
+            <input type="password" v-model="password" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="footers" style="width: max;" align="center">
+            <button type="submit" class="btn btn-success">Se Connecter</button>
+            <p><br>ou s'inscrire si vous n'avez pas de compte</p>
+            <router-link :to="'/Register'">
+              <button class="btn btn-success">Créer un compte</button>
+            </router-link>
+          </div>
+        </form>
+
       </div>
-      <div class="signup-row">
-        <input type="password" v-model="password"  id="exampleInputPassword1"
-          placeholder="Password">
-      </div>
-<div class="footers" style="width: max;" align="center">
-        <button type="submit" class="btn btn-success">Login</button>
-  <p><br>or register if you don't have an account</p>
-    <router-link :to="'/Register'">
-      <button class="btn btn-success">Register</button>
-    </router-link>
     </div>
-    </form>
-    
-     </div>
-      </div>
     <!-- <Footer /> -->
   </div>
 </template>
@@ -77,9 +78,6 @@
   }
 </script>
 <style scoped>
-
-
-
   body {
     background-size: cover;
     height: 100vh;
@@ -199,5 +197,4 @@
     display: none;
     position: relative;
   }
-
 </style>

@@ -1,5 +1,12 @@
 <template>
   <div class="MyAccount">
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <router-link to="/">
+              <div @click="logout()" class="btn btn-primary">Déconnection</div>
+            </router-link>
+  </li>
+    </ul>
     <h1>Mon compte</h1>
 
     <div class="container-fluid">
@@ -121,7 +128,13 @@
 
         
       }
-    },
-   
+    }, 
+    methods: {
+
+      logout() {
+        window.localStorage.removeItem('token');
+        window.location.href = "/";
+      },
+    }
   }
 </script>

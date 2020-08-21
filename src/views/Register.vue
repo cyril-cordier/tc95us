@@ -10,8 +10,9 @@
     <div class="container">
       <div class="signup-form">
         <form @submit="onsubmit" class="sign-back">
-          <h1>REGISTER FORM</h1>
-
+          <h1>Créer mon compte</h1>
+          <br>
+          <p>Accédez aux produits du Club et aux résultats du Challenge</p>
           <div class="signup-row">
             <i class="fa fa-user"></i>
             <input type="text" name="" value="" id="firstname" placeholder="Prénom" v-model="firstname">
@@ -22,7 +23,8 @@
           </div>
           <div class="signup-row">
             <i class="fa fa-user"></i>
-            <input type="text" name="" value="" id="challengename" placeholder="Pseudo pour le Challenge" v-model="challengename">
+            <input type="text" name="" value="" id="challengename" placeholder="Pseudo pour le Challenge"
+              v-model="challengename">
           </div>
           <div class="signup-row">
             <i class="fa fa-envelope"></i>
@@ -37,7 +39,7 @@
             <input type="password" v-model="c_password" name="" value="" placeholder="Confirmez votre mot de passe">
           </div>
 
-          
+
 
           <div style="width: max;" align="center">
             <button type="submit" class="btn btn-success">S'enregistrer</button>
@@ -81,7 +83,7 @@
   export default {
     name: 'Register',
     components: {
-     /*  Footer, */
+      /*  Footer, */
 
 
     },
@@ -96,7 +98,7 @@
       }
     },
     methods: {
-      ...mapActions(['registerForm', /* 'addPokemon' */]),
+      ...mapActions(['registerForm', /* 'addPokemon' */ ]),
       onsubmit(e) {
         e.preventDefault();
         var obj = {
@@ -112,7 +114,7 @@
 
       }
     },
-    computed: mapGetters(['getMessage', /* 'addPokemonMessage' */]),
+    computed: mapGetters(['getMessage', /* 'addPokemonMessage' */ ]),
   }
 </script>
 <style scoped>
@@ -149,7 +151,7 @@
     border-radius: 10px;
   }
 
- /*  .sign-back {
+  /*  .sign-back {
     background: linear-gradient(rgba(255, 202, 0, 0.4), #FFCA00 35%);
     border-radius: 10px;
     padding: 25px 0;
@@ -236,5 +238,4 @@
     display: none;
     position: relative;
   }
-
 </style>

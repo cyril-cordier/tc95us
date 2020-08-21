@@ -15,9 +15,14 @@
     
     <div class="card-body">
       <h2 class="card-title">Actualités</h2>
-      <p class="card-text">Le Club de tennis de Us se dote d'un nouveau site web !</p>
-      <p class="card-text">L'arrivée du nouveau Président du Club Philippe Béroule, le club a entamé un renouveau, à la fois dans ses installations et dans sa stratégie de visibilité. Ce nouveau site s'inscrit dans cette démarche de modernisation.</p>
-      <p class="card-text"><small class="text-muted">C. Cordier</small></p>
+      <div v-for="content in getAllContents" :key="content.id">
+              <div v-if="content.title == 'Texte page Accueil'">
+                <div v-html="content.content"></div>
+                
+      <p class="card-text"><small class="text-muted">{{content.name}}</small></p>
+      <img :src="content.image" style="width:10rem;">
+    </div>
+    </div>
     </div>
   </div>
   <div class="card">
@@ -38,13 +43,44 @@
 </template>
 
 <script>
+import {
+    mapActions,
+    mapGetters
+  } from 'vuex'
+
 export default {
   name: 'Accueil',
   props: {
     msg: String
-  }
+  },
+    data() {
+      return {
+        id: '',
+        title: '',
+        content: '',
+        name: '',
+        fonction: '',
+        image_name: '',
+        extension: '',
+        image: '',
 
-}
+      }
+    },
+    methods: {
+
+
+      ...mapActions(['fetchAllContents']),
+
+
+    },
+    computed: mapGetters(['getContentMessage', 'getAllContents', 'getContent', 'infoContentById',
+      'getUpdateContentMessage'
+    ]),
+    created() {
+
+      this.fetchAllContents();
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -61,7 +97,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #116e44;
 }
 
 </style>

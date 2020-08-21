@@ -24,7 +24,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-            aria-expanded="false">Competitions</a>
+            aria-expanded="false">Compétitions</a>
           <div class="dropdown-menu">
             <router-link to="/championnats" class="dropdown-item">Les Championnats par équipe</router-link>
             <router-link to="/challenge" class="dropdown-item">Le Challenge</router-link>
@@ -34,22 +34,16 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">Mon compte</a>
           <div class="dropdown-menu">
-            
-            <router-link to="/register" class="dropdown-item">S'inscrire</router-link>
-            <router-link to="/login" class="dropdown-item">S'identifier</router-link>
-            
+            <!-- <router-link to="/register" class="dropdown-item">S'inscrire</router-link>
+            <router-link to="/login" class="dropdown-item">S'identifier</router-link> -->
             <router-link to="/MonCompte" class="dropdown-item">Mon Compte</router-link>
             <div v-for="user in getUser" :key="user.id">
         <div v-if="user.admin!=false in getUser">
             <router-link to="/admin" class="dropdown-item">Admin</router-link>
         </div></div>
-       
-            <router-link to="/">
-             <!-- <div v-if="localStorage.getItem('token')"> -->
+            <!-- <router-link to="/">
               <div @click="logout()" class="dropdown-item">Déconnection</div>
-              <!-- </div> -->
-            </router-link>
-            
+            </router-link> -->
           </div>
         </li>
       </ul>
@@ -170,10 +164,10 @@
     methods: {
 
       ...mapActions(['fetchUser']),
-      logout() {
+      /* logout() {
         window.localStorage.removeItem('token');
         window.location.href = "/";
-      }, 
+      },  */
       refresh() {
         window.location.href = "/";
       }

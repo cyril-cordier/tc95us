@@ -1,6 +1,13 @@
 <template>
   <div class="Admin">
-    
+        <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <router-link to="/">
+              <div @click="logout()" class="btn btn-primary">Déconnection</div>
+            </router-link>
+  </li>
+    </ul>
+
       <div v-for="user in getUser" :key="user.id">
         <div v-if="user.admin==false in getUser">
       <p>Bonjour {{user.firstname}} {{user.lastname}} !</p>
@@ -237,6 +244,12 @@
       ...mapActions(['fetchUser']),
  
 
+
+      logout() {
+        window.localStorage.removeItem('token');
+        window.location.href = "/";
+      },
+    
     },
     computed: mapGetters(['getMessage', 'getAllUsers', 'getUser', 'infoUserById', ]),
     created() {
