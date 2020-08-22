@@ -98,7 +98,7 @@
       }
     },
     methods: {
-      ...mapActions(['registerForm', /* 'addPokemon' */ ]),
+      ...mapActions(['registerForm',  ]),
       onsubmit(e) {
         e.preventDefault();
         var obj = {
@@ -114,7 +114,7 @@
 
       }
     },
-    computed: mapGetters(['getMessage', /* 'addPokemonMessage' */ ]),
+    computed: mapGetters(['getMessage',  ]),
   }
 </script>
 <style scoped>

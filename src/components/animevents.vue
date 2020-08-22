@@ -1,7 +1,7 @@
 <template>
   <div class="animevents">
 
-   <router-link to="/calendrier_events">Voir le calendrier des évènements</router-link>
+   <router-link to="/calendrier_events"><h3>Voir le calendrier des évènements</h3></router-link>
 
     
 

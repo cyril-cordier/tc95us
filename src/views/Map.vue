@@ -1,10 +1,16 @@
 <template>
   <div class="map">
 
-        <Map msg="Nous trouver"/>
-
-
-        <br><br>
+    <div class="container-fluid">
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col 9">
+          <div class="card">
+            <Map msg="Nous trouver" />
+          </div>
+        </div>
+         <div class="col 3">
+          <div class="card">
+            <br><br>
 
             <h1>Le mot de la Secrétaire</h1>
             <br><br><br>
@@ -14,24 +20,32 @@
                 <p>{{content.name}}</p>
                 <p>{{content.fonction}}</p>
                 <img :src="content.image" style="width:10rem;">
-
+<br><br>
               </div>
             </div>
           </div>
-     
-    
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-  
+
+
+
+
+
+
+
 </template>
 
 <script>
-// @ is an alias to /src
-import Map from '@/components/carte.vue'
+  // @ is an alias to /src
+  import Map from '@/components/carte.vue'
 
 
 
-import {
+  import {
     mapActions,
     mapGetters
   } from 'vuex'
@@ -40,7 +54,7 @@ import {
     name: 'map',
     components: {
       /*  Footer, */
-    Map, 
+      Map,
 
     },
     data() {
@@ -73,7 +87,6 @@ import {
       //this.fetchEventById(this.$route.params.id);
     }
   }
-  
 </script>
 
 <style scoped>

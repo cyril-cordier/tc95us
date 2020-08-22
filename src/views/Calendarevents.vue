@@ -1,8 +1,8 @@
 <template>
   <div class="calendar">
-    <h1>Animations et Evennements</h1>
+    <h1>Animations et Evènements</h1>
 
-    <p>Vous trouverez ici le Calendrier de toutes les animations et évennements du TC Us</p>
+    <p>Vous trouverez ici le Calendrier de toutes les animations et évènements du TC Us</p>
 
   
 <Calendarevents/>

@@ -29,7 +29,7 @@
                 <p>{{content.name}}</p>
                 <p>{{content.fonction}}</p>
                 <img :src="content.image" style="width:10rem;">
-
+<br><br>
               </div>
             </div>
           </div>
