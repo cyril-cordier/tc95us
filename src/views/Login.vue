@@ -30,8 +30,9 @@
             </router-link>
           </div>
         </form>
-
+<br><br>
       </div>
+      <br><br>
     </div>
     <!-- <Footer /> -->
   </div>

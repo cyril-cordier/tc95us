@@ -21,11 +21,11 @@
             <i class="fa fa-user"></i>
             <input type="text" name="" value="" id="lastname" placeholder="Nom" v-model="lastname">
           </div>
-          <div class="signup-row">
+          <!-- <div class="signup-row">
             <i class="fa fa-user"></i>
             <input type="text" name="" value="" id="challengename" placeholder="Pseudo pour le Challenge"
               v-model="challengename">
-          </div>
+          </div> -->
           <div class="signup-row">
             <i class="fa fa-envelope"></i>
             <input type="text" v-model="email" name="" value="" placeholder="Email">
@@ -52,6 +52,7 @@
               <button class="btn btn-success">Se connecter</button>
             </router-link>
           </div>
+          <br><br>
         </form>
 
       </div>
@@ -64,7 +65,7 @@
 
 
 
-
+<br><br>
 
     <!-- <Footer /> -->
   </div>
@@ -98,18 +99,19 @@
       }
     },
     methods: {
-      ...mapActions(['registerForm',  ]),
+      ...mapActions(['registerForm', 'createForm' ]),
       onsubmit(e) {
         e.preventDefault();
         var obj = {
           'firstname': this.firstname,
-          'challengename': this.challengename,
+          //'challengename': this.challengename,
           'lastname': this.lastname,
           'email': this.email,
           'password': this.password,
           'c_password': this.c_password,
 
         }
+        console.log(obj);
         this.registerForm(obj);
 
       }

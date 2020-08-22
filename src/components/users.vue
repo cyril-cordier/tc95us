@@ -243,7 +243,7 @@
           'c_password': this.c_password,
 
         }
-        this.registerForm(obj);
+        this.createForm(obj);
         this.fetchAllUsers();
 
       },

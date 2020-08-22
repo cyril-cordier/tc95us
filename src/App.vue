@@ -163,7 +163,7 @@
     },
     methods: {
 
-      ...mapActions(['fetchUser']),
+      ...mapActions(['fetchUser', 'fetchUserById']),
       /* logout() {
         window.localStorage.removeItem('token');
         window.location.href = "/";
