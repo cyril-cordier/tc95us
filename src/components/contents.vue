@@ -135,6 +135,7 @@
                   <option>Texte page Accueil</option>
                   <option>Les installations</option>
                   <option>Règlement du Club</option>
+                  <option>Année tarifs (page Tarifs)</option>
                   <option>Le mot du Président (page Installations)</option>
                   <option>Le mot du Trésorier (page Tarifs)</option>
                   <option>Le mot de la Secrétaire (page Nous trouver)</option>
