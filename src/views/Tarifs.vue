@@ -5,7 +5,9 @@
         <div class="col 9">
           <div class="card">
             <br>
-            <h1>Tarifs année 2020/2021</h1>
+            <div v-for="content in getAllContents" :key="content.id">
+              <div v-if="content.title == 'Année tarifs (page Tarifs)'">
+                <h1 v-html="content.content"></h1>>
 
             <br><br>
 
