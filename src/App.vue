@@ -20,7 +20,7 @@
             <router-link to="/tarifs" class="dropdown-item">Tarifs</router-link>
             <router-link to="/bureau" class="dropdown-item">Les membres du bureau</router-link>
             <router-link to="/reglement_club" class="dropdown-item">Règlement du Club</router-link>
-            <div class="dropdown-divider"></div>
+            <!-- <div class="dropdown-divider"></div> -->
           </div>
         </li>
         <li class="nav-item dropdown">
