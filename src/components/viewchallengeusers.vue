@@ -10,26 +10,60 @@
         <tr>
 
           <th scope="col">Nom</th>
-          <th>Contact (mail/tel)</th>
           <th>Classement FFT</th>
           <th>Points</th>
           <th>Nb Matchs</th>
           <th>Match average</th>
           <th>Set average</th>
           <th>Jeux average</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="challengeuser in getAllChallengeusers" :key="challengeuser.id">
 
           <th>{{challengeuser.challengename}}</th>
-          <th>{{challengeuser.contact}}</th>
           <th>{{challengeuser.ranking}}</th>
           <th>{{challengeuser.points}}</th>
           <th>{{challengeuser.nbmatchs}}</th>
           <th>{{challengeuser.matchaverage}}</th>
           <th>{{challengeuser.setaverage}}</th>
           <th>{{challengeuser.gameaverage}}</th>
+          <th><a href="#" class="icon">
+                    <i  @click="id=challengeuser.id" class="fas fa-eye" data-toggle="modal" :data-target="'#challengeusershowmodal'+challengeuser.id"></i>
+                  </a>
+          </th>
+
+
+
+ <!-- Show Challengeuser modal -->
+
+
+          <div class="modal fade" :id="'challengeusershowmodal'+challengeuser.id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <form class="sign-back">
+                  <h6>Détails joueur</h6><br><br>
+                  <div class="signup-row">
+                    <h3>{{challengeuser.challengename}}</h3>
+                  </div>
+                  <div class="signup-row">
+                   <h6>Contact : {{challengeuser.contact}}</h6>
+                  </div>
+                   <div class="signup-row">
+                   <h6>Classement : {{challengeuser.ranking}}</h6>
+                  </div>
+
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
 
         </tr>
       </tbody>

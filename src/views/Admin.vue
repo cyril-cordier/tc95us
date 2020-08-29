@@ -1,4 +1,5 @@
 <template>
+
   <div class="Admin">
         <ul class="nav justify-content-end">
   <li class="nav-item">
@@ -31,7 +32,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-3">
+        <div class="col-md-2">
 
           <li class="list-group">
             <ul @click="users_toggle = !users_toggle, 
@@ -172,9 +173,9 @@
         <div class="col-9 bg-light" v-show="products_toggle">
           <products />
         </div> -->
-
+      
       </div>
-
+<br><br>
 
 
     </div>

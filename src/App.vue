@@ -82,10 +82,11 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Contact</h5>
-            <p class="card-text">Tennis Club de Us</p>
-            <p class="card-text">jardin public (RD 28)</p>
-            <p class="card-text">95450 Us</p>
-            <br>
+            <p class="card-text"><strong>Tennis Club de Us</strong><br>
+              jardin public (RD 28)<br>
+              95450 Us<br>
+              <a href="mailto:tc95us@gmail.com">tc95us@gmail.com</a></p>
+            
             <p class="card-text">
               <router-link to="/carte">Itinéraire pour venir au club</router-link>
             </p>
@@ -217,6 +218,9 @@ background-image: linear-gradient(315deg, #f0d44a 0%, #eca794 74%);
     margin-left: auto;
     margin-right: auto
   }
+.grid{
+  grid-auto-rows: minmax(100px, auto);
+}
 .card{
   
  border: none;

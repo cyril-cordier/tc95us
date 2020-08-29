@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="grid">
       <div class="row">
-        <div class="col-2">
+        <div class="col-md-2">
 
           <li class="list-group">
             <ul @click="users_toggle = !users_toggle, 
@@ -81,7 +81,7 @@
       </div>
 
       </div>
-
+<br><br>
 
 
     </div>

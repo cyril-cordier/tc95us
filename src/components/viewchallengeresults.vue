@@ -14,8 +14,8 @@
           <th>Set 1</th>
           <th>Set 2</th>
           <th>Set 3</th>
-          <th>Points vainqueur</th>
-          <th>Points perdant</th>
+          <th>Pts V</th>
+          <th>Pts P</th>
           <th>Détails</th>
 
         </tr>
