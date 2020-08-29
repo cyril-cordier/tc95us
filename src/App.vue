@@ -71,7 +71,6 @@
         <div class="partenaires">
           Nos partenaires
           <img class="logopart" id="logo ecosport" alt="Vue logo" src="./assets/ecosport_small.jpg">
-          <img class="logopart" alt="logo crit center" src="./assets/critcenter_small.jpg">
           <img class="logopart" alt="logo technifibre" src="./assets/technifibre_small.jpg">
 
         </div>
