@@ -7,7 +7,7 @@
             <br>
             <div v-for="content in getAllContents" :key="content.id">
               <div v-if="content.title == 'Année tarifs (page Tarifs)'">
-                <h1 v-html="content.content"></h1>>
+                <h1 v-html="content.content"></h1>
               </div>
             </div>
 
