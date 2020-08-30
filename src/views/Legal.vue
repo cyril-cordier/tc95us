@@ -8,7 +8,7 @@
     <br>
     <p>Siege social :</p>
     <p>Tennis Club de Us</p>
-    <p>rue du Fort</p>
+    <p>10 Résidence du Fort</p>
     <p>95450 Us</p>
 
     <br>
