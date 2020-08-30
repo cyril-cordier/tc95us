@@ -3,6 +3,12 @@
   <div class="Admin">
         <ul class="nav justify-content-end">
   <li class="nav-item">
+        <router-link to="/Moncompte">
+          <div class="btn btn-primary">Mon Compte</div>
+        </router-link>
+        
+      </li> |
+  <li class="nav-item">
     <router-link to="/">
               <div @click="logout()" class="btn btn-primary">Déconnection</div>
             </router-link>

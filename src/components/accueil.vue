@@ -30,11 +30,12 @@
     <div class="card-body">
       <h5 class="card-title">Quel temps fait-il sur nos courts ?</h5>
       <iframe src="https://fr.tutiempo.net/s-widget/full/42145/ca5" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:500px;" allowTransparency="true"></iframe>
-      <p class="card-text"><small class="text-muted">votre météo locale à Us, toujours à jour !</small></p>
+      <p class="card-text"><small class="text-muted">Votre météo locale à Us, toujours à jour !</small></p>
     </div>
   </div>
 </div>
-<img alt="Bureau TC Us" src="../assets/bureau_small.jpg" style="width:80%">
+
+<img alt="Bureau TC Us" src="../assets/bureau_small.jpg" style="width:80%; margin-bottom:1rem">
   
   
   

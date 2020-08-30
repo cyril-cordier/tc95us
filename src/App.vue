@@ -31,22 +31,22 @@
             <router-link to="/challenge" class="dropdown-item">Le Challenge</router-link>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">Mon compte</a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu"> -->
             <!-- <router-link to="/register" class="dropdown-item">S'inscrire</router-link>
             <router-link to="/login" class="dropdown-item">S'identifier</router-link> -->
-            <router-link to="/MonCompte" class="dropdown-item">Mon Compte</router-link>
+            <!-- <router-link to="/MonCompte" class="dropdown-item">Mon Compte</router-link>
             <div v-for="user in getUser" :key="user.id">
         <div v-if="user.admin!=false in getUser">
             <router-link to="/admin" class="dropdown-item">Admin</router-link>
-        </div></div>
+        </div></div> -->
             <!-- <router-link to="/">
               <div @click="logout()" class="dropdown-item">Déconnection</div>
             </router-link> -->
-          </div>
-        </li>
+          <!-- </div>
+        </li> -->
       </ul>
       </div>
       <router-view />
@@ -65,7 +65,7 @@
 
 
     <footer>
-      
+      <div class="container-fluid">
       <div class="row">
 
         <div class="partenaires">
@@ -88,7 +88,7 @@
               <a href="mailto:tc95us@gmail.com">tc95us@gmail.com</a></p>
             
             <p class="card-text">
-              <router-link to="/carte">Itinéraire pour venir au club</router-link>
+              <router-link to="/carte"><div @click="refreshiti()">Itinéraire pour venir au club</div></router-link>
             </p>
           </div>
         </div>
@@ -96,9 +96,9 @@
           <div class="card-body">
             <h5 class="card-title">Informations</h5>
             <p class="card-text">
-            <router-link to="/legal">Mentions légales</router-link></p>
+            <router-link to="/legal"><div @click="refreshleg()">Mentions légales</div></router-link></p>
             <p class="card-text">
-            <router-link to="/reglement_club">Règlement du Club</router-link></p>
+            <router-link to="/reglement_club"><div @click="refreshrgt()">Règlement du Club</div></router-link></p>
           </div>
         </div>
         <div class="card">
@@ -125,12 +125,17 @@
             <p class="card-text"><a href="https://www.facebook.com/groups/406488439536879/" target="blank">Facebook</a>
             </p>
             <p class="card-text">
-              <router-link to="/calendrier_events">Calendrier des évènements</router-link>
+              <router-link to="/calendrier_events"><div @click="refreshcal()">Calendrier des évènements</div></router-link>
             </p>
           </div>
         </div>
       </div>
+      </div>
     </footer>
+
+  <div class="footer">
+    Site créé par Cyril CORDIER - <router-link to="/admin"><div class="footer">Accès Admin</div></router-link>
+  </div>
 
   </div>
 </template>
@@ -171,8 +176,19 @@
       },  */
       refresh() {
         window.location.href = "/";
+      },
+      refreshiti() {
+        window.location.href = "/carte";
+      },
+      refreshcal() {
+        window.location.href = "/calendrier_events";
+      },
+      refreshrgt() {
+        window.location.href = "/reglement_club";
+      },
+      refreshleg() {
+        window.location.href = "/legal";
       }
- 
 
     },
     computed: mapGetters(['getMessage', 'getAllUsers', 'getUser', 'infoUserById', ]),
@@ -230,7 +246,9 @@ background-image: linear-gradient(315deg, #f0d44a 0%, #eca794 74%);
   .logopart {
 
     margin: 1rem;
-
-
+  }
+   .footer{
+    text-align: center;
+    color: lightgrey;
   }
 </style>

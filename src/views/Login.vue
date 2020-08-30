@@ -12,7 +12,7 @@
         <form @submit="onsubmit" class="sign-back">
           <h1>Connexion</h1>
           <br>
-          <p>Accédez aux produits du Club et aux résultats du Challenge</p>
+          <p>Accès réservé à l'administration du site</p>
 
           <div class="signup-row">
             <input type="email" v-model="email" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"
@@ -24,10 +24,10 @@
           </div>
           <div class="footers" style="width: max;" align="center">
             <button type="submit" class="btn btn-success">Se Connecter</button>
-            <p><br>ou s'inscrire si vous n'avez pas de compte</p>
+            <!-- <p><br>ou s'inscrire si vous n'avez pas de compte</p>
             <router-link :to="'/Register'">
               <button class="btn btn-success">Créer un compte</button>
-            </router-link>
+            </router-link> -->
           </div>
         </form>
 <br><br>

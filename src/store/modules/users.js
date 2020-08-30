@@ -104,7 +104,7 @@ const actions = {
             commit('loginMessage',result);
             window.localStorage.setItem('token',result.success.token);
             if(!result.error){
-              window.location.href="/MonCompte";
+              window.location.href="/admin";
             }
           })
         .catch(error => console.log('error', error));
