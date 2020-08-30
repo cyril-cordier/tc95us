@@ -14,6 +14,7 @@
     "filestack-vue": "^2.0.0",
     "serialize-javascript": "^4.0.0",
     "vue": "^2.6.11",
+    "vue-analytics": "^5.22.1",
     "vue-image-crop-upload": "^2.5.0",
     "vue-router": "^3.4.3",
     "vue-weather-widget": "^3.0.6",
