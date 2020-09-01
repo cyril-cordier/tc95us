@@ -44,6 +44,7 @@
                 <th>Temps/semaine</th>
                 <th>45 minutes</th>
                 <th>1 heure</th>
+                <th>1 heure 30</th>
                 <th>2 heures</th>
 
               </tr>
@@ -53,6 +54,7 @@
                 <th v-if="tarif.type == 'Cours'">{{tarif.price1}}</th>
                 <th v-if="tarif.type == 'Cours'">{{tarif.price2}}</th>
                 <th v-if="tarif.type == 'Cours'">{{tarif.price3}}</th>
+                <th v-if="tarif.type == 'Cours'">{{tarif.details}}</th>
 </tr>
 </table>
     
