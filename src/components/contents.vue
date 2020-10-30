@@ -143,6 +143,7 @@
                   <option>Le mot des Animateurs (page Anim et Evts)</option>
                   <option>Expérience de Challenger (page rglt challenge)</option>
                   <option>Règlement du Challenge (page rglt challenge)</option>
+                  <option>Contenu sauvegardé (non affiché)</option>
                 </select>
               </div>
               <!-- <textarea class="form-control" name="" value="" placeholder="Titre" ></textarea> -->
