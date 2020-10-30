@@ -82,9 +82,28 @@
                 <form @submit.prevent="onContentEdit(content)" class="sign-back">
                   <h1>Modification contenu</h1>
                   <div class="signup-row">
+                    <div class="form-group col-md-4">
+                      <label for="title">Choix du contenu</label>
+                      <select id="title" class="form-control" v-model="content.title">
+                        <option selected></option>
+                        <option>Texte page Accueil</option>
+                        <option>Les installations</option>
+                        <option>Règlement du Club</option>
+                        <option>Année tarifs (page Tarifs)</option>
+                        <option>Le mot du Président (page Installations)</option>
+                        <option>Le mot du Trésorier (page Tarifs)</option>
+                        <option>Le mot de la Secrétaire (page Nous trouver)</option>
+                        <option>Le mot du Responsable Equipes (page Championnats)</option>
+                        <option>Le mot des Animateurs (page Anim et Evts)</option>
+                        <option>Expérience de Challenger (page rglt challenge)</option>
+                        <option>Règlement du Challenge (page rglt challenge)</option>
+                        <option>Contenu sauvegardé (non affiché)</option>
+                      </select>
+                    </div>
 
-                    <textarea class="form-control" name="" value="" placeholder="Titre"
-                      v-model="content.title"></textarea>
+
+                    <!-- <textarea class="form-control" name="" value="" placeholder="Titre"
+                      v-model="content.title"></textarea> -->
                   </div>
                   <div class="signup-row">
                     <vue-editor v-model="content.content" placeholder="Contenu"></vue-editor>

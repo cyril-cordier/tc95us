@@ -6,7 +6,7 @@
     
     
 
-    <Accueil msg="Bienvenue sur le nouveau site du TC Us"/>
+    <Accueil msg="Bienvenue sur le site du TC Us"/>
   
   </div>
 
