@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="barnav">
-      <div id="nav">
-        <nav class="navbar nav-tabs navbar-expand-lg navbar-light">
+      <div id="nav" class="">
+        <nav class="navbar nav-tabs navbar-expand-lg navbar-light fixed-top">
           <router-link to="/">
-            <div @click="refresh()">
+            <div @click="refresh()" class="mr-4">
               <img
                 alt="Vue logo"
                 src="./assets/logo_tcus.png"
@@ -18,11 +18,12 @@
             data-toggle="collapse"
             data-target="#navbarText"
             aria-controls="navbarText"
-            aria-expanded="false"
+            aria-expanded="true"
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
@@ -123,7 +124,7 @@
 
         </ul>
       </div> -->
-      <router-view class="contenu" />
+      <router-view class="contenu pt-4" style="margin-top: 2.5rem" />
     </div>
 
     <!-- <li class="nav-item dropdown">
@@ -143,7 +144,7 @@
     <!-- </div>
         </li> -->
 
-    <footer>
+    <footer class="global-footer">
       <div class="container-fluid">
         <div class="row">
           <div class="partenaires">
@@ -169,12 +170,16 @@
                 <strong>Tennis Club de Us</strong><br />
                 jardin public (RD 28)<br />
                 95450 Us<br />
-                <a href="mailto:tc95us@gmail.com">tc95us@gmail.com</a>
+                <a href="mailto:tc95us@gmail.com" class="footer-link"
+                  >tc95us@gmail.com</a
+                >
               </p>
 
               <p class="card-text">
                 <router-link to="/carte">
-                  <div @click="refreshiti()">Itinéraire pour venir au club</div>
+                  <div class="footer-link" @click="refreshiti()">
+                    Itinéraire pour venir au club
+                  </div>
                 </router-link>
               </p>
             </div>
@@ -184,12 +189,16 @@
               <h5 class="card-title">Informations</h5>
               <p class="card-text">
                 <router-link to="/legal">
-                  <div @click="refreshleg()">Mentions légales</div>
+                  <div class="footer-link" @click="refreshleg()">
+                    Mentions légales
+                  </div>
                 </router-link>
               </p>
               <p class="card-text">
                 <router-link to="/reglement_club">
-                  <div @click="refreshrgt()">Règlement du Club</div>
+                  <div class="footer-link" @click="refreshrgt()">
+                    Règlement du Club
+                  </div>
                 </router-link>
               </p>
             </div>
@@ -207,15 +216,21 @@
             <div class="card-body">
               <h5 class="card-title">Vos liens utiles</h5>
               <p class="card-text">
-                <a href="https://tenup.fft.fr/" target="blank"
+                <a
+                  class="footer-link"
+                  href="https://tenup.fft.fr/"
+                  target="blank"
                   >Mon espace Tennis</a
                 >
               </p>
               <p class="card-text">
-                <a href="https://www.fft.fr/" target="blank">Site de la FFT</a>
+                <a class="footer-link" href="https://www.fft.fr/" target="blank"
+                  >Site de la FFT</a
+                >
               </p>
               <p class="card-text">
                 <a
+                  class="footer-link"
                   href="https://comite.fft.fr/val-d-oise/val-d-oise_a/cms/index_public.php?PHPSESSID=1c5b3471354cf4e0f185c548eaebf509&us_action=show_note_site&login_off=1&ui_id_site=1"
                   target="blank"
                   >Le site du Comité du Val d'Oise</a
@@ -230,6 +245,7 @@
               </strong>
               <p class="card-text">
                 <a
+                  class="footer-link"
                   href="https://www.facebook.com/groups/406488439536879/"
                   target="blank"
                   >Facebook</a
@@ -237,7 +253,9 @@
               </p>
               <p class="card-text">
                 <router-link to="/calendrier_events">
-                  <div @click="refreshcal()">Calendrier des évènements</div>
+                  <div class="footer-link" @click="refreshcal()">
+                    Calendrier des évènements
+                  </div>
                 </router-link>
               </p>
             </div>
@@ -321,7 +339,8 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 20px;
+  position: relative;
 }
 
 #nav a {
@@ -330,19 +349,23 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #1ea8ca;
 }
-
-.barnav {
+.navbar {
+  /* background-color: white; */
+  background-image: linear-gradient(315deg, #c95a1b 40%, #f0d44aa2 100%);
+}
+/* .barnav {
   background-color: #f0d44a;
   background-image: linear-gradient(315deg, #f0d44a 0%, #eca794 74%);
-}
+} */
 
 .partenaires {
   display: block;
   margin: 50px;
   margin-left: auto;
   margin-right: auto;
+  color: lightgrey;
 }
 
 .grid {
@@ -352,6 +375,16 @@ export default {
 .card {
   border: none;
   background: transparent;
+  color: #333333;
+}
+.card-title {
+  color: #c95a1b;
+  font-weight: 750;
+}
+.card-text {
+  border: none;
+  background: transparent;
+  color: 333333;
 }
 
 .logopart {
@@ -360,10 +393,27 @@ export default {
 
 .footer {
   text-align: center;
+  color: grey;
+  background-color: #1ea8cb;
+}
+
+.global-footer {
+  background-color: #1ea8cb;
+}
+
+.footer-link {
   color: lightgrey;
 }
 
 .contenu {
   padding: 1.5rem;
 }
+
+/* .navbar-toggler > .close {
+  display: inline;
+}
+.navbar-toggler.collapsed > .close,
+.navbar-toggler:not(.collapsed) > .navbar-toggler-icon {
+  display: none;
+} */
 </style>
