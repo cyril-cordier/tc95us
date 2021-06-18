@@ -10,7 +10,7 @@
             <a
               href="https://www.facebook.com/groups/406488439536879"
               target="blank"
-              >Rejoignez le Tennis Club Us sur Facebook</a
+              >Rejoignez le Tennis Club de Us sur Facebook</a
             >
           </h5>
           <div
@@ -39,7 +39,7 @@
               <p class="card-text">
                 <small class="text-muted">{{ content.name }}</small>
               </p>
-              <img :src="content.image" style="width: 25rem" />
+              <img :src="content.image" style="width: 15rem" />
             </div>
           </div>
         </div>
