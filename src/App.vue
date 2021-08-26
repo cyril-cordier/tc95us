@@ -7,7 +7,7 @@
             <div @click="refresh()" class="mr-4">
               <img
                 alt="Vue logo"
-                src="./assets/logo_tcus.png"
+                src="./assets/LOGO_T_US_RVB.png"
                 style="height: 5rem"
               />
             </div>
@@ -265,7 +265,7 @@
     </footer>
 
     <div class="footer">
-      Site créé par Cyril CORDIER - Dernière mise à jour : 18/06/2021
+      Site créé par Cyril CORDIER - Dernière mise à jour : 26/08/2021
       <router-link to="/admin">
         <div class="footer">Accès Admin</div>
       </router-link>
