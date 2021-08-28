@@ -46,7 +46,7 @@
                     >Nos installations</router-link
                   >
                   <router-link to="/carte" class="dropdown-item"
-                    >Nous trouver</router-link
+                    >Contact et plan d'accès</router-link
                   >
                   <router-link to="/evenements" class="dropdown-item"
                     >Animations et Evènements</router-link
@@ -105,7 +105,7 @@
               aria-expanded="false">Le Club</a>
             <div class="dropdown-menu">
               <router-link to="/club" class="dropdown-item">Nos installations</router-link>
-              <router-link to="/carte" class="dropdown-item">Nous trouver</router-link>
+              <router-link to="/carte" class="dropdown-item">Contact et plan d'accès</router-link>
               <router-link to="/evenements" class="dropdown-item">Animations et Evènements</router-link>
               <router-link to="/tarifs" class="dropdown-item">Tarifs</router-link>
               <router-link to="/bureau" class="dropdown-item">Les membres du bureau</router-link>
@@ -170,7 +170,37 @@
                 <strong>Tennis Club de Us</strong><br />
                 jardin public (RD 28)<br />
                 95450 Us<br />
-                <a href="mailto:tc95us@gmail.com" class="footer-link"
+                <button
+                  v-show="phone_button_toggle"
+                  @click="
+                    (phone_toggle = !phone_toggle),
+                      (phone_button_toggle = !phone_button_toggle)
+                  "
+                  class="btn btn-outline-light my-2"
+                >
+                  Contacter le club par téléphone
+                </button>
+                <a
+                  href="tel:0642093035"
+                  class="footer-link"
+                  v-show="phone_toggle"
+                  >06 42 09 30 35</a
+                ><br />
+
+                <button
+                  v-show="email_button_toggle"
+                  @click="
+                    (email_toggle = !email_toggle),
+                      (email_button_toggle = !email_button_toggle)
+                  "
+                  class="btn btn-outline-light my-2"
+                >
+                  Contacter le club par email
+                </button>
+                <a
+                  href="mailto:tc95us@gmail.com"
+                  class="footer-link"
+                  v-show="email_toggle"
                   >tc95us@gmail.com</a
                 >
               </p>
@@ -265,7 +295,7 @@
     </footer>
 
     <div class="footer">
-      Site créé par Cyril CORDIER - Dernière mise à jour : 26/08/2021
+      Site créé par Cyril CORDIER - Dernière mise à jour : 28/08/2021
       <router-link to="/admin">
         <div class="footer">Accès Admin</div>
       </router-link>
@@ -279,6 +309,10 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
+      email_toggle: false,
+      email_button_toggle: true,
+      phone_toggle: false,
+      phone_button_toggle: true,
       users_toggle: true,
       products_toggle: false,
       events_toggle: false,

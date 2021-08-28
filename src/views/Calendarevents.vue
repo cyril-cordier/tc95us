@@ -1,27 +1,25 @@
 <template>
   <div class="calendar">
-    <h1>Animations et Evènements</h1>
+    <h1 class="card-title">Animations et Evènements</h1>
 
-    <p>Vous trouverez ici le Calendrier de toutes les animations et évènements du TC Us</p>
+    <p>
+      Vous trouverez ici le Calendrier de toutes les animations et évènements du
+      TC Us
+    </p>
 
-  
-<Calendarevents/>
-  
+    <Calendarevents />
   </div>
-
 </template>
 
 <script>
-import Calendarevents from '@/components/calendar.vue'
-
+import Calendarevents from "@/components/calendar.vue";
 
 export default {
-  name: 'calendar',
+  name: "calendar",
   components: {
-    Calendarevents, 
-    
-  }
-}
+    Calendarevents,
+  },
+};
 </script>
 
 

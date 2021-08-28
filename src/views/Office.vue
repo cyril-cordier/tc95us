@@ -1,28 +1,21 @@
 <template>
   <div class="challenge">
-    <br><br>
-    <h1>Les membres du Bureau du TC Us</h1>
+    <br /><br />
+    <h1 class="card-title">Les membres du Bureau du TC Us</h1>
 
-    
-
-  
-<Office/>
-  <br><br>
+    <Office />
+    <br /><br />
   </div>
-
 </template>
 
 <script>
-import Office from '@/components/viewoffice.vue'
-
+import Office from "@/components/viewoffice.vue";
 
 export default {
-  name: 'office',
+  name: "office",
   components: {
-    Office, 
-    
-  }
-}
+    Office,
+  },
+};
 </script>
-
 

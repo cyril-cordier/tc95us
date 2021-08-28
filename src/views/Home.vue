@@ -4,7 +4,7 @@
     <!-- <img alt="Tc Us" src="../assets/bandeau_tcus.jpg" style="width: 100%" /> -->
     <!-- <img alt="Tc Us" src="../assets/bandeau_tcus2.jpg" style="width: 100%" /> -->
 
-    <Accueil msg="Bienvenue sur le site du TC Us" />
+    <Accueil class="card-title" msg="Bienvenue sur le site du TC Us" />
   </div>
 </template>
 

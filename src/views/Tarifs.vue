@@ -7,7 +7,7 @@
             <br />
             <div v-for="content in getAllContents" :key="content.id">
               <div v-if="content.title == 'Année tarifs (page Tarifs)'">
-                <h1 v-html="content.content"></h1>
+                <h1 class="card-title" v-html="content.content"></h1>
               </div>
             </div>
 
@@ -28,7 +28,7 @@
           <div class="card">
             <br /><br />
 
-            <h1>Le mot du Trésorier</h1>
+            <h1 class="card-title">Le mot du Trésorier</h1>
             <br /><br /><br />
             <div v-for="content in getAllContents" :key="content.id">
               <div v-if="content.title == 'Le mot du Trésorier (page Tarifs)'">

@@ -1,7 +1,7 @@
 <template>
   <div class="accueil">
     <br /><br />
-    <h1>{{ msg }}</h1>
+    <h1 class="card-title">{{ msg }}</h1>
     <br /><br />
     <div class="card-deck">
       <div class="card">
@@ -121,6 +121,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #116e44;
+  color: #c95a1b;
 }
 </style>

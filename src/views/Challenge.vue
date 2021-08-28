@@ -1,27 +1,20 @@
 <template>
   <div class="challenge">
-    <h1>Règlement</h1> 
+    <h1 class="card-title">Règlement</h1>
 
-    
-
-  
-<Challenge/>
-  
+    <Challenge />
   </div>
-
 </template>
 
 <script>
-import Challenge from '@/components/challenge.vue'
-
+import Challenge from "@/components/challenge.vue";
 
 export default {
-  name: 'challenge',
+  name: "challenge",
   components: {
-    Challenge, 
-    
-  }
-}
+    Challenge,
+  },
+};
 </script>
 
 

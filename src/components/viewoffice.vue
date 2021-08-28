@@ -8,10 +8,14 @@
             <div class="col">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title">{{ office.name }}</h3>
-                  <h5 class="card-text">{{ office.function }}</h5>
+                  <h3 class="card-title" style="color: #1ea8ca">
+                    {{ office.name }}
+                  </h3>
+                  <h5 class="card-text">
+                    {{ office.function }}
+                  </h5>
                   <img :src="office.image" style="width: 10rem" />
-                  <div v-for="content in getAllContents" :key="content.id">
+                  <!-- <div v-for="content in getAllContents" :key="content.id">
                     <div
                       v-if="
                         (content.id == 9 && office.id == 5) ||
@@ -23,7 +27,7 @@
                     >
                       <div v-html="content.content"></div>
                     </div>
-                  </div>
+                  </div> -->
                   <br />
                 </div>
               </div>
@@ -73,3 +77,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#functionname {
+  color: #1ea8ca;
+}
+</style>
