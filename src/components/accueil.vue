@@ -7,7 +7,11 @@
       <div class="card col-sm-12 col-md-8">
         <div class="card-body">
           <h2 class="card-title">Actualités</h2>
-          <div class="my-2" v-for="content in getAllContents" :key="content.id">
+          <div
+            class="my-2"
+            v-for="content in getAllContents.slice().reverse()"
+            :key="content.id"
+          >
             <div v-if="content.title == 'Texte page Accueil'">
               <div v-html="content.content"></div>
 
