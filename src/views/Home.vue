@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Tc Us" src="../assets/bg-tennis3.jpg" style="width: 100%" />
+    <img alt="Tc Us" src="../assets/bg-tennis4.jpg" style="width: 100%" />
     <!-- <img alt="Tc Us" src="../assets/bandeau_tcus.jpg" style="width: 100%" /> -->
     <!-- <img alt="Tc Us" src="../assets/bandeau_tcus2.jpg" style="width: 100%" /> -->
 

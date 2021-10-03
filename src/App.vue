@@ -295,7 +295,7 @@
     </footer>
 
     <div class="footer">
-      Site créé par Cyril CORDIER - Dernière mise à jour : 28/08/2021
+      Site créé par Cyril CORDIER - Dernière mise à jour : 03/10/2021
       <router-link to="/admin">
         <div class="footer">Accès Admin</div>
       </router-link>
