@@ -10,15 +10,58 @@
                 <h1 class="card-title" v-html="content.content"></h1>
               </div>
             </div>
-
-            <button
-              type="button"
-              class="btn btn-primary"
-              @click="downloadSubscriptionForm"
-            >
-              Télécharger la fiche d'inscription
-            </button>
-
+            <h3>Téléchargement des documents d'inscription</h3>
+            <div class="col 6">
+              <button
+                type="button"
+                class="btn btn-primary mx-2 my-2"
+                @click="downloadSubscriptionForm"
+              >
+                Fiche d'inscription
+              </button>
+              <a
+                class="footer-link"
+                href="https://www.fft.fr/sites/default/files/documents/modele_certificat_medical_0%20(1).pdf_0.pdf"
+                target="blank"
+                ><button type="button" class="btn btn-primary mx-2 my-2">
+                  Modèle de certificat médical FFT
+                </button></a
+              >
+            </div>
+            <div class="col 6">
+              <a
+                class="footer-link"
+                href="https://www.fft.fr/sites/default/files/documents/cerfa_15699-01_0.pdf"
+                target="blank"
+                ><button type="button" class="btn btn-info mx-2 my-1">
+                  Questionnaire santé (adultes)
+                </button></a
+              >
+              <a
+                class="footer-link"
+                href="https://www.fft.fr/sites/default/files/documents/QUESTIONNAIRE%20DE%20SANTE%20MINEURS.pdf"
+                target="blank"
+                ><button type="button" class="btn btn-info mx-2 my-1">
+                  Questionnaire santé (mineurs)
+                </button></a
+              >
+              <a
+                class="footer-link"
+                href="https://www.fft.fr/sites/default/files/documents/modele_attestation_adulte.pdf.pdf"
+                target="blank"
+                ><button type="button" class="btn btn-info mx-2 my-1">
+                  Attestation questionnaire de santé (adultes)
+                </button></a
+              >
+              <a
+                class="footer-link"
+                href="https://www.fft.fr/sites/default/files/documents/modele_attestation_mineur.pdf.pdf"
+                target="blank"
+                ><button type="button" class="btn btn-info mx-2 my-1">
+                  Attestation questionnaire de santé (mineurs)
+                </button></a
+              >
+            </div>
             <Tarifs />
             <br /><br /><br />
           </div>

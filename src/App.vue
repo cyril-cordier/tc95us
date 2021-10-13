@@ -52,7 +52,7 @@
                     >Animations et Evènements</router-link
                   >
                   <router-link to="/tarifs" class="dropdown-item"
-                    >Tarifs</router-link
+                    >Tarifs et inscription</router-link
                   >
                   <router-link to="/bureau" class="dropdown-item"
                     >Les membres du bureau</router-link
@@ -295,7 +295,7 @@
     </footer>
 
     <div class="footer">
-      Site créé par Cyril CORDIER - Dernière mise à jour : 03/10/2021
+      Site créé par Cyril CORDIER - Dernière mise à jour : 13/10/2021
       <router-link to="/admin">
         <div class="footer">Accès Admin</div>
       </router-link>
