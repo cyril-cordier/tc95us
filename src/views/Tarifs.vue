@@ -45,6 +45,8 @@
                   Questionnaire santé (mineurs)
                 </button></a
               >
+            </div>
+            <div class="col 6">
               <a
                 class="footer-link"
                 href="https://www.fft.fr/sites/default/files/documents/modele_attestation_adulte.pdf.pdf"
