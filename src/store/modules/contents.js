@@ -1,5 +1,16 @@
-const token = window.localStorage.getItem('token') || "";
-var url = `https://tc95us.herokuapp.com`;
+const axios = require('axios');
+
+const url = process.env.VUE_APP_API_URL + `/classes`;
+let headers = { 
+  'X-Parse-Application-Id': process.env.VUE_APP_APPLICATION_ID, 
+  'X-Parse-REST-API-Key': process.env.VUE_APP_REST_API_KEY,
+  'X-Parse-Session-Token': window.localStorage.getItem('session-token') || "",
+  'X-Parse-Javascript-Key': process.env.VUE_APP_JAVASCRIPT_KEY,
+  'Content-Type': 'application/json'
+}
+if (window.localStorage.getItem('session-token')) {
+  headers['X-Parse-Session-Token']= window.localStorage.getItem('session-token')
+}
 
 const state = {
     contentmessage:[],
@@ -25,128 +36,138 @@ const actions = {
    
     // CREATE contents
     async createContent({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-        var formdata = new FormData();
-        formdata.append("title", form.title);
-        formdata.append("content", form.content);
-        formdata.append("name", form.name);
-        formdata.append("fonction", form.fonction);
-        formdata.append("image", form.image);
-        formdata.append("image_name", form.image_name+'.'+form.extension);
+      
+        const body = {
+          "title": form.title,
+          "content": form.content,
+          "name": form.name,
+          "fonction": form.fonction,
+          "image": form.image,
+          "weight": form.weight,
+        }
         
-     
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: formdata,
-          redirect: 'follow'
+        var config = {
+          method: 'post',
+          url: `${url}/contents`,
+          headers: headers,
+          data: body
         };
-        
-        fetch(`${url}/api/contents`, requestOptions)
-          .then(response => response.json())
-          .then(result =>  {
-              commit('createContentMessage',result);
-              /* location.reload(); */
-             
-            })
-          .catch(error => console.log('error', error));
+
+        axios(config)
+            .then(response => response.json())
+            .then(result =>  {
+                    commit('createContentMessage',result)})
+            .catch(function (error) {
+              console.log(error);
+            });
     },
     
     // EDIT
     async editContent({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-            myHeaders.append('Content-Type','application/json');
-            var raw=JSON.stringify({
-              "title": form.title,
-              "content": form.content,
-              "name": form.name,
-              "fonction": form.fonction,
-              "image": form.image,
-              "image_name": form.image_name+'.'+form.extension
-            });
-   
-      var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-      };
+    console.log("🚀 ~ file: contents.js ~ line 67 ~ editContent ~ form", form)
+
+      const body = {
+        "title": form.title,
+        "content": form.content,
+        "name": form.name,
+        "fonction": form.fonction,
+        "image": form.image,
+        "weight": form.weight,
+      }
       
-      fetch(`${url}/api/contents/${form.id}`, requestOptions)
-        .then(response => response.json())
-        .then(result =>  {
-            commit('updateContentMessage',result);
-            //location.reload();
-           
-          })
-        .catch(error => console.log('error', error));
+      var config = {
+        method: 'put',
+        url: `${url}/contents/${form.objectId}`,
+        headers: headers,
+        data: body
+      };
+
+      axios(config)
+          .then(response => response.json())
+          .then(result =>  {
+                  commit('createContentMessage',result)})
+          .catch(function (error) {
+            console.log(error);
+          });
   },
 
    
       
 // FETCH BY ID
-    async fetchContentById({commit},id){
-                  var myHeaders = new Headers();
-                  myHeaders.append("Authorization", `Bearer ${token}`);
-      
-                  var requestOptions = {
-                  method: 'GET',
-                  headers: myHeaders,
-                  
-                  redirect: 'follow'
-                  };
-      
-                  fetch(`${url}/api/contents/${id}`, requestOptions)
-                  .then(response => response.json())
-                  .then(result => {
-                    commit('ContentById',result);
+    // async fetchContentById({commit},id){
     
-                  })
-                  .catch(error => console.log('error', error));
-                      },
+      // var config = {
+      //   method: 'get',
+      //   url: `${url}/contents`,
+      //   headers: headers,
+      //   data: body
+      // };
+
+      // axios(config)
+      //     .then(response => response.json())
+      //     .then(result =>  {
+      //             commit('createContentMessage',result)})
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
+
+
+      //             var myHeaders = new Headers();
+      //             myHeaders.append("Authorization", `Bearer ${token}`);
+      
+      //             var requestOptions = {
+      //             method: 'GET',
+      //             headers: myHeaders,
+                  
+      //             redirect: 'follow'
+      //             };
+      
+      //             fetch(`${url}/contents/${id}`, requestOptions)
+      //             .then(response => response.json())
+      //             .then(result => {
+      //               commit('ContentById',result);
+    
+      //             })
+      //             .catch(error => console.log('error', error));
+                      // },
 
     // DELETE BY ID
-    async deleteContent({commit},id){
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
+    async deleteContent({commit},objectId){
 
-      var requestOptions = {
-      method: 'DELETE',
-      headers: myHeaders,
-      
-      redirect: 'follow'
+      var config = {
+        method: 'delete',
+        url: `${url}/contents/${objectId}`,
+        headers: headers
       };
-
-      fetch(`${url}/api/contents/${id}`, requestOptions)
+      
+      axios(config)
       .then(response => response.json())
       .then(result => {
-        commit('deleteContentById',result);
-
-      })
-      .catch(error => console.log('error', error));
+          commit('deleteContentById',result);
+  
+        })
+      .catch(function (error) {
+        console.log(error);
+      });
           },
 
         //FETCH ALL
      async fetchAllContents({commit}){
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-
-            var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
             
-            redirect: 'follow'
+            var config = {
+              method: 'get',
+              url: 'https://parseapi.back4app.com/classes/contents',
+              headers: headers
             };
-
-            fetch(`${url}/api/contents`, requestOptions)
-            .then(response => response.json())
-            .then(result => commit('fetchAllContents',result))
-            .catch(error => console.log('error', error));
-                },
-
+            
+            axios(config)
+            .then(response => response.data)
+            .then(result => {console.log(result.results); commit('fetchAllContents',result.results.sort((a, b) => b.description - a.description))})
+            .catch(function (error) {
+              console.log(error);
+            });
     }
+  }
   
 
 const mutations = {

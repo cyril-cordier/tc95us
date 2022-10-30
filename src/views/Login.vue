@@ -28,10 +28,28 @@
           <div class="signup-row">
             <input
               type="password"
-              v-model="password"
+              v-model="password1"
               id="exampleInputPassword1"
-              placeholder="Password"
+              placeholder="Password1"
             />
+          </div>
+          <div class="signup-row">
+            <input
+              type="username"
+              v-model="username"
+              id="InputUsername"
+              autocomplete="off"
+              placeholder="Enter username"
+            />
+            </div>
+          <div class="signup-row">
+            <input
+              type="password"
+              v-model="password2"
+              id="exampleInputPassword2"
+              placeholder="Password2"
+            />
+            
           </div>
           <div class="footers" style="width: max" align="center">
             <button type="submit" class="btn btn-success">Se Connecter</button>
@@ -63,7 +81,9 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
+      password1: "",
+      username: "",
+      password2: "",
     };
   },
   methods: {
@@ -72,7 +92,9 @@ export default {
       e.preventDefault();
       var obj = {
         email: this.email,
-        password: this.password,
+        password1: this.password1,
+        username: this.username,
+        password2: this.password2,
       };
       this.loginForm(obj);
     },
