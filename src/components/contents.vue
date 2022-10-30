@@ -223,7 +223,7 @@
                       class="form-control"
                       @change="onImageChange"
                     />
-                    <img :src="content.image" style="width:10%/">
+                    <img :src="content.image" style="width:10rem"/>
                   </div>
 
                   <div class="modal-footer">
@@ -371,8 +371,9 @@ export default {
       fonction: "",
       image_name: "",
       extension: "",
+      description: "",
       image: "",
-      weight: 10,
+      weight: 0,
     };
   },
   methods: {
@@ -414,7 +415,7 @@ export default {
         fonction: this.fonction,
         image: this.image,
         description: this.description,
-        weight: this.weight ? this.weight : 10
+        weight: this.weight
       };
       console.log(obj);
       this.createContent(obj);
@@ -429,7 +430,7 @@ export default {
         fonction: content.fonction,
         description: content.description,
         image: this.image ? this.image : content.image,
-        weight: this.weight ? this.weight : 10
+        weight: content.weight
 
       };
       this.editContent(obj);

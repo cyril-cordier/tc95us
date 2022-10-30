@@ -118,9 +118,8 @@ export default {
     "getUpdateContentMessage",
   ]),
   created() {
-    const content = this.fetchAllContents();
+    this.fetchAllContents();
     this.isLoading = false
-    console.log("🚀 ~ file: accueil.vue ~ line 108 ~ created ~ content", content)
   },
 };
 </script>

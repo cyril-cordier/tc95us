@@ -20,8 +20,6 @@ const state = {
     ContentById:[],
     deleteContentById:[],
 
-   
-
 }
 
 const getters = {
@@ -42,6 +40,7 @@ const actions = {
           "content": form.content,
           "name": form.name,
           "fonction": form.fonction,
+          "description": form.description,
           "image": form.image,
           "weight": form.weight,
         }
@@ -64,15 +63,15 @@ const actions = {
     
     // EDIT
     async editContent({commit},form){
-    console.log("🚀 ~ file: contents.js ~ line 67 ~ editContent ~ form", form)
 
       const body = {
         "title": form.title,
-        "content": form.content,
+        "content": form.content.toString(),
         "name": form.name,
         "fonction": form.fonction,
+        "description": form.description,
         "image": form.image,
-        "weight": form.weight,
+        "weight": Number(form.weight),
       }
       
       var config = {
@@ -162,7 +161,7 @@ const actions = {
             
             axios(config)
             .then(response => response.data)
-            .then(result => {console.log(result.results); commit('fetchAllContents',result.results.sort((a, b) => b.description - a.description))})
+            .then(result => {commit('fetchAllContents',result.results.sort((a, b) => b.weight - a.weight))})
             .catch(function (error) {
               console.log(error);
             });
