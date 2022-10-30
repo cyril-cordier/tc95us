@@ -69,10 +69,13 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <form class="sign-back">
-                  <h6>Détails content</h6>
+                  <h6>Détails contenu</h6>
                   <br /><br />
                   <div class="signup-row">
-                    <h3>{{ content.title }}</h3>
+                    <h3>Description : {{ content.description }}</h3>
+                  </div>
+                  <div class="signup-row">
+                    <h6>{{ content.title }}</h6>
                   </div>
                   <div class="signup-row">
                     <div v-html="content.content"></div>
@@ -264,7 +267,7 @@
           >
             <h1>Ajout contenu</h1>
             <div class="signup-row d-flex flex-row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-3">
                 <label for="title">Choix du contenu</label>
                 <select id="title" class="form-control" v-model="title">
                   <option selected></option>
@@ -286,17 +289,30 @@
                   <option :key="Math.random()">Contenu sauvegardé (non affiché)</option>
                 </select>
               </div>
-              <div class="form-group col-md-4">
-                <label for="importance">Importance</label>
-                  <input
-                  id="importance"
-                  class="form-control"
-                  v-model="content.weight"
-                  name=""
-                  value=""
-                  placeholder="Poids"
-                />
-              </div>
+              <div class="form-group col-md-7">
+
+              <label for="description">Description</label>
+                <input
+                id="description"
+                class="form-control"
+                v-model="content.description"
+                name=""
+                value=""
+                placeholder="Description"
+              />
+            </div>
+            <div class="form-group col-md-2">
+
+              <label for="importance">Importance</label>
+                <input
+                id="importance"
+                class="form-control"
+                v-model="content.weight"
+                name=""
+                value=""
+                placeholder="Poids"
+              />
+            </div>
               <!-- <textarea class="form-control" name="" value="" placeholder="Titre" ></textarea> -->
             </div>
             <div class="signup-row">
