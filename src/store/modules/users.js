@@ -1,5 +1,15 @@
+const axios = require('axios');
 const token = window.localStorage.getItem('token') || "";
 var url = `https://tc95us.herokuapp.com`;
+const new_url = process.env.VUE_APP_API_URL;
+const headers = { 
+  'X-Parse-Application-Id': process.env.VUE_APP_APPLICATION_ID, 
+  'X-Parse-REST-API-Key': process.env.VUE_APP_REST_API_KEY,
+  'X-Parse-Session-Token': window.localStorage.getItem('session-token') || "",
+  'X-Parse-Javascript-Key': process.env.VUE_APP_JAVASCRIPT_KEY,
+  'X-Parse-Revocable-Session': 1,
+  'accept': 'application/json'
+}
 
 const state = {
     message:[],
@@ -86,9 +96,26 @@ const actions = {
     //LOGIN 
 
     async loginForm({commit},obj){
+
+      var config = {
+        method: 'get',
+        url: `${new_url}/login?username=${obj.username}&password=${obj.password2}`,
+        headers: headers,
+      };
+
+      axios(config)
+          .then(result =>  {
+            console.log("🚀 ~ file: users.js ~ line 109 ~ loginForm ~ result", result)
+                window.localStorage.setItem('session-token',result.data.sessionToken);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
         var formdata = new FormData();
         formdata.append("email", obj.email);
-        formdata.append("password", obj.password);
+        formdata.append("password", obj.password1);
 
         var requestOptions = {
         method: 'POST',
@@ -108,6 +135,8 @@ const actions = {
             }
           })
         .catch(error => console.log('error', error));
+
+        
     },
     // EDIT USER 
     async editForm({commit},form){
@@ -156,29 +185,32 @@ const actions = {
 
             fetch(`${url}/api/users/me`, requestOptions)
             .then(response => response.json())
-            .then(result => commit('fetchUser',result))
+            .then(result => {
+              console.log("🚀 ~ file: users.js ~ line 189 ~ fetchUser ~ result", result)
+              return commit('fetchUser',result)
+            })
             .catch(error => console.log('error', error));
                 },
 // FETCH USER BY ID
     async fetchUserById({commit},id){
-                  var myHeaders = new Headers();
-                  myHeaders.append("Authorization", `Bearer ${token}`);
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+
+      var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
       
-                  var requestOptions = {
-                  method: 'GET',
-                  headers: myHeaders,
-                  
-                  redirect: 'follow'
-                  };
-      
-                  fetch(`${url}/api/users/${id}`, requestOptions)
-                  .then(response => response.json())
-                  .then(result => {
-                    commit('UserById',result);
-    
-                  })
-                  .catch(error => console.log('error', error));
-                      },
+      redirect: 'follow'
+      };
+
+      fetch(`${url}/api/users/${id}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        commit('UserById',result);
+
+      })
+      .catch(error => console.log('error', error));
+          },
 
     // DELETE USER BY ID
     async deleteUser({commit},id){

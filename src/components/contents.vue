@@ -13,9 +13,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Id</th>
-          <th>Titre</th>
-          <th>Contenu</th>
+          <th scope="col">Titre</th>
+          <th>Description</th>
           <th>Nom</th>
           <th>Fonction</th>
 
@@ -23,36 +22,36 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(content, index) in getAllContents" :key="content.id">
-          <th>{{ content.id }}</th>
+        <tr  v-for="(content, index) in getAllContents" :key="content.objectId">
+
           <th>{{ content.title }}</th>
-          <th v-html="content.content.substr(0, 100)"></th>
+          <th>{{ content.description }}</th>
           <th>{{ content.name }}</th>
           <th>{{ content.fonction }}</th>
 
           <th>
             <a href="#" class="icon">
               <i
-                v-on:click="onDeleteContent(content.id, index)"
+                v-on:click="onDeleteContent(content.objectId, index)"
                 class="fa fa-trash"
               ></i>
             </a>
             |
             <a href="#" class="icon">
               <i
-                @click="id = content.id"
+                @click="objectId = content.objectId"
                 class="fas fa-edit"
                 data-toggle="modal"
-                :data-target="'#contenteditmodal' + content.id"
+                :data-target="'#contenteditmodal' + content.objectId"
               ></i>
             </a>
             |
             <a href="#" class="icon">
               <i
-                @click="id = content.id"
+                @click="objectId = content.objectId"
                 class="fas fa-eye"
                 data-toggle="modal"
-                :data-target="'#contentshowmodal' + content.id"
+                :data-target="'#contentshowmodal' + content.objectId"
               ></i>
             </a>
           </th>
@@ -61,7 +60,7 @@
 
           <div
             class="modal fade"
-            :id="'contentshowmodal' + content.id"
+            :id="'contentshowmodal' + content.objectId"
             tabindex="-1"
             role="dialog"
             aria-labelledby="myLargeModalLabel"
@@ -96,9 +95,9 @@
                       Fermer
                     </button>
                     <button
-                      @click="id = content.id"
+                      @click="objectId = content.objectId"
                       data-toggle="modal"
-                      :data-target="'#contenteditmodal' + content.id"
+                      :data-target="'#contenteditmodal' + content.objectId"
                       class="btn btn-primary"
                     >
                       Modifier
@@ -113,7 +112,7 @@
 
           <div
             class="modal fade"
-            :id="'contenteditmodal' + content.id"
+            :id="'contenteditmodal' + content.objectId"
             tabindex="-1"
             role="dialog"
             aria-labelledby="myLargeModalLabel"
@@ -126,8 +125,8 @@
                   class="sign-back"
                 >
                   <h1>Modification contenu</h1>
-                  <div class="signup-row">
-                    <div class="form-group col-md-4">
+                  <div class="signup-row  d-flex flex-row">
+                    <div class="form-group col-md-3">
                       <label for="title">Choix du contenu</label>
                       <select
                         id="title"
@@ -135,31 +134,56 @@
                         v-model="content.title"
                       >
                         <option selected></option>
-                        <option>Texte page Accueil</option>
-                        <option>Les installations</option>
-                        <option>Règlement du Club</option>
-                        <option>Année tarifs (page Tarifs)</option>
-                        <option>
+                        <option :key="Math.random()">Texte page Accueil</option>
+                        <option :key="Math.random()">Les installations</option>
+                        <option :key="Math.random()">Règlement du Club</option>
+                        <option :key="Math.random()">Année tarifs (page Tarifs)</option>
+                        <option :key="Math.random()">
                           Le mot du Président (page Installations)
                         </option>
-                        <option>Le mot du Trésorier (page Tarifs)</option>
-                        <option>
+                        <option :key="Math.random()">Le mot du Trésorier (page Tarifs)</option>
+                        <option :key="Math.random()">
                           Le mot de la Secrétaire (page Nous trouver)
                         </option>
-                        <option>
+                        <option :key="Math.random()">
                           Le mot du Responsable Equipes (page Championnats)
                         </option>
-                        <option>
+                        <option :key="Math.random()">
                           Le mot des Animateurs (page Anim et Evts)
                         </option>
-                        <option>
+                        <option :key="Math.random()">
                           Expérience de Challenger (page rglt challenge)
                         </option>
-                        <option>
+                        <option :key="Math.random()">
                           Règlement du Challenge (page rglt challenge)
                         </option>
-                        <option>Contenu sauvegardé (non affiché)</option>
+                        <option :key="Math.random()">Contenu sauvegardé (non affiché)</option>
                       </select>
+
+                    </div>
+                    <div class="form-group col-md-7">
+
+                      <label for="description">Description</label>
+                        <input
+                        id="description"
+                        class="form-control"
+                        v-model="content.description"
+                        name=""
+                        value=""
+                        placeholder="Description"
+                      />
+                    </div>
+                    <div class="form-group col-md-2">
+
+                      <label for="importance">Importance</label>
+                        <input
+                        id="importance"
+                        class="form-control"
+                        v-model="content.weight"
+                        name=""
+                        value=""
+                        placeholder="Poids"
+                      />
                     </div>
 
                     <!-- <textarea class="form-control" name="" value="" placeholder="Titre"
@@ -199,6 +223,7 @@
                       class="form-control"
                       @change="onImageChange"
                     />
+                    <img :src="content.image" style="width:10%/">
                   </div>
 
                   <div class="modal-footer">
@@ -237,29 +262,40 @@
             class="sign-back"
             enctype="multipart/form-data"
           >
-            <h1>Ajout content</h1>
-            <div class="signup-row">
+            <h1>Ajout contenu</h1>
+            <div class="signup-row d-flex flex-row">
               <div class="form-group col-md-4">
                 <label for="title">Choix du contenu</label>
                 <select id="title" class="form-control" v-model="title">
                   <option selected></option>
-                  <option>Texte page Accueil</option>
-                  <option>Les installations</option>
-                  <option>Règlement du Club</option>
-                  <option>Année tarifs (page Tarifs)</option>
-                  <option>Le mot du Président (page Installations)</option>
-                  <option>Le mot du Trésorier (page Tarifs)</option>
-                  <option>Le mot de la Secrétaire (page Nous trouver)</option>
-                  <option>
+                  <option :key="Math.random()">Texte page Accueil</option>
+                  <option :key="Math.random()">Les installations</option>
+                  <option :key="Math.random()">Règlement du Club</option>
+                  <option :key="Math.random()">Année tarifs (page Tarifs)</option>
+                  <option :key="Math.random()">Le mot du Président (page Installations)</option>
+                  <option :key="Math.random()">Le mot du Trésorier (page Tarifs)</option>
+                  <option :key="Math.random()">Le mot de la Secrétaire (page Nous trouver)</option>
+                  <option :key="Math.random()">
                     Le mot du Responsable Equipes (page Championnats)
                   </option>
-                  <option>Le mot des Animateurs (page Anim et Evts)</option>
-                  <option>
+                  <option :key="Math.random()">Le mot des Animateurs (page Anim et Evts)</option>
+                  <option :key="Math.random()">
                     Expérience de Challenger (page rglt challenge)
                   </option>
-                  <option>Règlement du Challenge (page rglt challenge)</option>
-                  <option>Contenu sauvegardé (non affiché)</option>
+                  <option :key="Math.random()">Règlement du Challenge (page rglt challenge)</option>
+                  <option :key="Math.random()">Contenu sauvegardé (non affiché)</option>
                 </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="importance">Importance</label>
+                  <input
+                  id="importance"
+                  class="form-control"
+                  v-model="content.weight"
+                  name=""
+                  value=""
+                  placeholder="Poids"
+                />
               </div>
               <!-- <textarea class="form-control" name="" value="" placeholder="Titre" ></textarea> -->
             </div>
@@ -336,6 +372,7 @@ export default {
       image_name: "",
       extension: "",
       image: "",
+      weight: 10,
     };
   },
   methods: {
@@ -376,7 +413,8 @@ export default {
         name: this.name,
         fonction: this.fonction,
         image: this.image,
-        image_name: this.image,
+        description: this.description,
+        weight: this.weight ? this.weight : 10
       };
       console.log(obj);
       this.createContent(obj);
@@ -384,21 +422,24 @@ export default {
     },
     onContentEdit(content) {
       var obj = {
-        id: content.id,
+        objectId: content.objectId,
         title: content.title,
         content: content.content,
         name: content.name,
         fonction: content.fonction,
-        image: this.image,
-        image_name: this.image,
+        description: content.description,
+        image: this.image ? this.image : content.image,
+        weight: this.weight ? this.weight : 10
+
       };
       this.editContent(obj);
       this.fetchAllContents();
     },
-    onDeleteContent(id, index) {
-      this.deleteContent(id);
+    onDeleteContent(objectId, index) {
+      this.deleteContent(objectId);
       this.getAllContents.splice(index, 1);
     },
+
   },
   computed: mapGetters([
     "getContentMessage",
@@ -408,9 +449,9 @@ export default {
     "getUpdateContentMessage",
   ]),
   created() {
-    this.fetchAllContents();
+    this.fetchAllContents()
 
-    //this.fetchContentById(this.$route.params.id);
+    //this.fetchContentById(this.$route.params.objectId);
   },
 };
 </script>
