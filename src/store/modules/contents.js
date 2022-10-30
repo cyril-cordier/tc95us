@@ -42,7 +42,7 @@ const actions = {
           "fonction": form.fonction,
           "description": form.description,
           "image": form.image,
-          "weight": form.weight,
+          "weight": Number(form.weight),
         }
         
         var config = {
