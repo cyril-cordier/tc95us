@@ -295,7 +295,7 @@
                 <input
                 id="description"
                 class="form-control"
-                v-model="content.description"
+                v-model="description"
                 name=""
                 value=""
                 placeholder="Description"
@@ -307,7 +307,7 @@
                 <input
                 id="importance"
                 class="form-control"
-                v-model="content.weight"
+                v-model="weight"
                 name=""
                 value=""
                 placeholder="Poids"
@@ -389,7 +389,7 @@ export default {
       extension: "",
       description: "",
       image: "",
-      weight: 0,
+      weight: "",
     };
   },
   methods: {
