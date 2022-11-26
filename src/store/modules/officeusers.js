@@ -1,166 +1,156 @@
-const token = window.localStorage.getItem('token') || "";
-var url = `https://tc95us.herokuapp.com`;
+const axios = require('axios');
+
+const newurl = process.env.VUE_APP_API_URL + `/classes/office`;
+let headers = {
+  'X-Parse-Application-Id': process.env.VUE_APP_APPLICATION_ID,
+  'X-Parse-REST-API-Key': process.env.VUE_APP_REST_API_KEY,
+  'X-Parse-Session-Token': window.localStorage.getItem('session-token') || "",
+  'X-Parse-Javascript-Key': process.env.VUE_APP_JAVASCRIPT_KEY,
+  'Content-Type': 'application/json'
+}
+if (window.localStorage.getItem('session-token')) {
+  headers['X-Parse-Session-Token'] = window.localStorage.getItem('session-token')
+}
 
 const state = {
-    officeusermessage:[],
-    updateofficeusermessage:[],
-    officeuser:[],
-    officeusers:[],
-    OfficeuserById:[],
-    deleteOfficeuserById:[],
-
-   
-
+  officeusermessage: [],
+  updateofficeusermessage: [],
+  officeuser: [],
+  officeusers: [],
+  OfficeuserById: [],
+  deleteOfficeuserById: [],
 }
 
 const getters = {
-    getOfficeuserMessage:(state) =>(state.officeusermessage),
-    getUpdateOfficeuserMessage:(state)=>(state.updateofficeusermessage),
-    getOfficeuser:(state) =>(state.officeuser),
-    infoOfficeuserById:(state) =>(state.OfficeuserById),
-    getAllOfficeusers:(state)=> (state.officeusers),
+  getOfficeuserMessage: (state) => (state.officeusermessage),
+  getUpdateOfficeuserMessage: (state) => (state.updateofficeusermessage),
+  getOfficeuser: (state) => (state.officeuser),
+  infoOfficeuserById: (state) => (state.OfficeuserById),
+  getAllOfficeusers: (state) => (state.officeusers),
 }
 
 const actions = {
-   
-    // CREATE
-    async createOfficeuser({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-        var formdata = new FormData();
-        //var image_name =  form.id;
-        formdata.append("name", form.name);
-        formdata.append("function", form.function);
-        formdata.append("image", form.image);
-        formdata.append("image_name", form.image_name);
-     
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: formdata,
-          redirect: 'follow'
-        };
-        
-        fetch(`${url}/api/office`, requestOptions)
-          .then(response => response.json())
-          .then(result =>  {
-              commit('createOfficeuserMessage',result);
-              /* location.reload(); */
-             
-            })
-          .catch(error => console.log('error', error));
-    },
-    
-    // EDIT
-    async editOfficeuser({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-            myHeaders.append('Content-Type','application/json');
-            var raw=JSON.stringify({
-              "name": form.name,
-              "function": form.function,
-              "image": form.image,
-              "image_name": form.image_name
-            });
-            console.log(form.image);
-            
-      var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-      };
-      
-      fetch(`${url}/api/office/${form.id}`, requestOptions)
-        .then(response => response.json())
-        .then(result =>  {
-            commit('updateOfficeuserMessage',result);
-            //location.reload();
-           
-          })
-        .catch(error => console.log('error', error));
+
+  // CREATE
+  async createOfficeuser({ commit }, form) {
+
+    const body = {
+      name: form.name,
+      function: form.function,
+      image: form.image,
+      weight: Number(form.weight),
+    }
+
+    var config = {
+      method: 'post',
+      url: `${newurl}`,
+      headers: headers,
+      data: body
+    };
+
+    axios(config)
+      .then(result => {
+        commit('createOfficeuserMessage', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 
-   
-      
-// FETCH BY ID
-    async fetchOfficeuserById({commit},id){
-                  var myHeaders = new Headers();
-                  myHeaders.append("Authorization", `Bearer ${token}`);
-      
-                  var requestOptions = {
-                  method: 'GET',
-                  headers: myHeaders,
-                  
-                  redirect: 'follow'
-                  };
-      
-                  fetch(`${url}/api/office/${id}`, requestOptions)
-                  .then(response => response.json())
-                  .then(result => {
-                    commit('OfficeuserById',result);
-    
-                  })
-                  .catch(error => console.log('error', error));
-                      },
-
-    // DELETE BY ID
-    async deleteOfficeuser({commit},id){
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-
-      var requestOptions = {
-      method: 'DELETE',
-      headers: myHeaders,
-      
-      redirect: 'follow'
-      };
-
-      fetch(`${url}/api/office/${id}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        commit('deleteOfficeuserById',result);
-
-      })
-      .catch(error => console.log('error', error));
-          },
-
-        //FETCH ALL
-     async fetchAllOfficeusers({commit}){
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-
-            var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            
-            redirect: 'follow'
-            };
-
-            fetch(`${url}/api/office`, requestOptions)
-            .then(response => response.json())
-            .then(result => commit('fetchAllOfficeusers',result))
-            .catch(error => console.log('error', error));
-                },
-
+  // EDIT
+  async editOfficeuser({ commit }, form) {
+    const body = {
+      name: form.name,
+      function: form.function,
+      image: form.image,
+      weight: Number(form.weight),
     }
-  
 
-const mutations = {
-createOfficeuserMessage:(state,officeusermessage)=>(state.officeusermessage = officeusermessage),
-updateOfficeuserMessage:(state,updateofficeusermessage)=>(state.updateofficeusermessage = updateofficeusermessage),
-fetchOfficeuser:(state,officeuser) =>(state.officeuser = officeuser),
-fetchAllOfficeusers:(state,officeusers)=>(state.officeusers = officeusers),
-OfficeuserById:(state,OfficeuserById)=>(state.OfficeuserById = OfficeuserById),
-deleteOfficeuserById:(state,deleteOfficeuserById)=>(state.deleteOfficeuserById = deleteOfficeuserById),
+    var config = {
+      method: 'put',
+      url: `${newurl}/${form.objectId}`,
+      headers: headers,
+      data: body
+    };
+
+    axios(config)
+      .then(result => {
+        commit('updateOfficeuserMessage', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+
+  // FETCH BY ID
+  async fetchOfficeuserById({ commit }, id) {
+    var config = {
+      method: 'get',
+      url: `${newurl}/${id}`,
+      headers: headers
+    };
+
+    axios(config)
+      .then(response => response.data)
+      .then(result => {
+        commit('OfficeuserById', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+
+  // DELETE BY ID
+  async deleteOfficeuser({ commit }, id) {
+    var config = {
+      method: 'delete',
+      url: `${newurl}/${id}`,
+      headers: headers
+    };
+
+    axios(config)
+      .then(response => response.data)
+      .then(result => {
+        commit('deleteOfficeuserById', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+
+  //FETCH ALL
+  async fetchAllOfficeusers({ commit }) {
+    var config = {
+      method: 'get',
+      url: newurl,
+      headers: headers
+    };
+
+    axios(config)
+      .then(response => response.data)
+      .then(result => {
+
+        commit('fetchAllOfficeusers', result.results.sort((a, b) => b.weight - a.weight))
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
 
 }
 
+const mutations = {
+  createOfficeuserMessage: (state, officeusermessage) => (state.officeusermessage = officeusermessage),
+  updateOfficeuserMessage: (state, updateofficeusermessage) => (state.updateofficeusermessage = updateofficeusermessage),
+  fetchOfficeuser: (state, officeuser) => (state.officeuser = officeuser),
+  fetchAllOfficeusers: (state, officeusers) => (state.officeusers = officeusers),
+  OfficeuserById: (state, OfficeuserById) => (state.OfficeuserById = OfficeuserById),
+  deleteOfficeuserById: (state, deleteOfficeuserById) => (state.deleteOfficeuserById = deleteOfficeuserById),
+}
 
-
-export default{
-    state,
-    getters,
-    actions,
-    mutations,
+export default {
+  state,
+  getters,
+  actions,
+  mutations,
 }

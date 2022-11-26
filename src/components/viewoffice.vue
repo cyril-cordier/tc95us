@@ -4,96 +4,19 @@
     <div class="container">
       <div class="grid">
         <div class="row row-col-3 row-cols-md-3 row-col-sm">
-          <div v-for="office in getAllOfficeusers" :key="office.id">
+          <div v-for="office in getAllOfficeusers" :key="office.objectId">
             <div class="col">
               <div class="card">
-                <div class="card-body" v-if="office.function == 'Président'">
-                  <h3 class="card-title" style="color: #1ea8ca">
-                    {{ office.name }}
-                  </h3>
-                  <h5 class="card-text">
-                    {{ office.function }}
-                  </h5>
-                  <img :src="office.image" style="width: 10rem" />
-                  <!-- <div v-for="content in getAllContents" :key="content.id">
-                    <div
-                      v-if="
-                        (content.id == 9 && office.id == 5) ||
-                        (content.id == 12 && office.id == 7) ||
-                        (content.id == 10 && office.id == 9) ||
-                        (content.id == 14 && office.id == 10) ||
-                        (content.id == 11 && office.id == 20)
-                      "
-                    >
-                      <div v-html="content.content"></div>
-                    </div>
-                  </div> -->
-                  <br />
-                </div>
-                <div class="card-body" v-if="office.function == 'Trésorier'">
-                  <h3 class="card-title" style="color: #1ea8ca">
-                    {{ office.name }}
-                  </h3>
-                  <h5 class="card-text">
-                    {{ office.function }}
-                  </h5>
-                  <img :src="office.image" style="width: 10rem" />
-                  <br />
-                </div>
-                <div class="card-body" v-if="office.function == 'Secrétaire'">
-                  <h3 class="card-title" style="color: #1ea8ca">
-                    {{ office.name }}
-                  </h3>
-                  <h5 class="card-text">
-                    {{ office.function }}
-                  </h5>
-                  <img :src="office.image" style="width: 10rem" />
-                  <br />
-                </div>
-                <div
-                  class="card-body"
-                  v-if="office.function == 'Responsable des équipes'"
-                >
-                  <h3 class="card-title mt-4 mb-5" style="color: #1ea8ca">
-                    {{ office.name }}
-                  </h3>
-                  <h5 class="card-text">
-                    {{ office.function }}
-                  </h5>
-                  <img :src="office.image" style="width: 10rem" />
-                  <br />
-                </div>
-                <div
-                  class="card-body"
-                  v-if="office.function == 'Enseignants tennis'"
-                >
-                  <h3 class="card-title" style="color: #1ea8ca">
-                    {{ office.name }}
-                  </h3>
-                  <h5 class="card-text">
-                    {{ office.function }}
-                  </h5>
-                  <img :src="office.image" style="width: 12rem" />
-                  <br />
-                </div>
-                <div class="card-body" v-if="office.function == 'Animateurs'">
-                  <h3 class="card-title mb-2 mt-2" style="color: #1ea8ca">
-                    {{ office.name }}
-                  </h3>
-                  <h5 class="card-text mb-2 mt-4">
-                    {{ office.function }}
-                  </h5>
-                  <img :src="office.image" style="width: 12rem" />
-                  <br />
-                </div>
-                <div class="card-body" v-if="office.function == 'Animatrice'">
-                  <h3 class="card-title" style="color: #1ea8ca">
-                    {{ office.name }}
-                  </h3>
-                  <h5 class="card-text">
-                    {{ office.function }}
-                  </h5>
-                  <img :src="office.image" style="width: 10rem" />
+                <div class="card-body mb-5">
+                  <div  style="height: 7rem">
+                    <h3 class="card-title" style="color: #1ea8ca">
+                      {{ office.name }}
+                    </h3>
+                    <h5 class="card-text">
+                      {{ office.function }}
+                    </h5>
+                  </div>
+                  <img :src="office.image" style="height: 13rem" />
                   <br />
                 </div>
               </div>
