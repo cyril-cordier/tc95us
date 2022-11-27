@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="championnat in getAllChampionnats.slice().reverse()"
+          v-for="championnat in getAllChampionnats"
           :key="championnat.date"
           orderBy="competition"
         >

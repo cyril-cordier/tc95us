@@ -186,7 +186,6 @@ const actions = {
             fetch(`${url}/api/users/me`, requestOptions)
             .then(response => response.json())
             .then(result => {
-              console.log("🚀 ~ file: users.js ~ line 189 ~ fetchUser ~ result", result)
               return commit('fetchUser',result)
             })
             .catch(error => console.log('error', error));

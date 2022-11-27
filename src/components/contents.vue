@@ -89,6 +89,9 @@
                   <div class="signup-row">
                     <img :src="content.image" style="width: 10rem" />
                   </div>
+                  <div class="signup-row">
+                    Importance : <h6>{{ content.weight }}</h6>
+                  </div>
                   <div class="modal-footer">
                     <button
                       type="button"
