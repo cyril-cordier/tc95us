@@ -180,7 +180,6 @@
                       />
                     </div>
                     <div class="form-group col-md-2">
-
                       <label for="importance">Importance</label>
                         <input
                         id="importance"

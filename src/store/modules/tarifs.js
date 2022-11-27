@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const newurl = process.env.VUE_APP_API_URL + `/classes/tarifs`;
+const url = process.env.VUE_APP_API_URL + `/classes/tarifs`;
 let headers = {
   'X-Parse-Application-Id': process.env.VUE_APP_APPLICATION_ID,
   'X-Parse-REST-API-Key': process.env.VUE_APP_REST_API_KEY,
@@ -49,7 +49,7 @@ const actions = {
 
     var config = {
       method: 'post',
-      url: `${newurl}`,
+      url: `${url}`,
       headers: headers,
       data: body
     };
@@ -78,7 +78,7 @@ const actions = {
 
     var config = {
       method: 'put',
-      url: `${newurl}/${form.objectId}`,
+      url: `${url}/${form.objectId}`,
       headers: headers,
       data: body
     };
@@ -98,7 +98,7 @@ const actions = {
   async fetchTarifById({ commit }, id) {
     var config = {
       method: 'get',
-      url: `${newurl}/${id}`,
+      url: `${url}/${id}`,
       headers: headers
     };
 
@@ -116,7 +116,7 @@ const actions = {
   async deleteTarif({ commit }, id) {
     var config = {
       method: 'delete',
-      url: `${newurl}/${id}`,
+      url: `${url}/${id}`,
       headers: headers
     };
 
@@ -134,7 +134,7 @@ const actions = {
   async fetchAllTarifs({ commit }) {
     var config = {
       method: 'get',
-      url: newurl,
+      url: url,
       headers: headers
     };
 
