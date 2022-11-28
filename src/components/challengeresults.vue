@@ -91,7 +91,7 @@
           <!-- Edit Challengeresult modal -->
 
 
-          <div class="modal fade" :id="'challengeresulteditmodal'+challengeresult.id" tabindex="-1" role="dialog"
+          <div class="modal fade" :id="'challengeresulteditmodal'+challengeresult.objectId" tabindex="-1" role="dialog"
             aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -101,7 +101,7 @@
                     <div class="form-group col-md-4">
                       Vainqueur : <select id="winner" class="form-control" v-model="challengeresult.winner">
                         <option selected></option>
-                        <option v-for="challengeuser in getAllChallengeusers" :key="challengeuser.id">
+                        <option v-for="challengeuser in getAllChallengeusers" :key="challengeuser.objectId">
                           {{challengeuser.challengename}}</option>
                       </select>
                       
@@ -109,9 +109,9 @@
                   </div>
                   <div class="signup-row">
                     <div class="form-group col-md-4">
-                      Perdant : <select id="winner" class="form-control" v-model="challengeresult.looser">
+                      Perdant : <select id="looser" class="form-control" v-model="challengeresult.looser">
                         <option selected></option>
-                        <option v-for="challengeuser in getAllChallengeusers" :key="challengeuser.id">
+                        <option v-for="challengeuser in getAllChallengeusers" :key="challengeuser.objectId">
                           {{challengeuser.challengename}}</option>
                       </select>
                     </div>

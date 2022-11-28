@@ -9,7 +9,6 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Id</th>
                 <th>Date</th>
                 <th>Competition</th>
                 <th>Rencontre</th>
@@ -18,28 +17,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(championnat, index) in getAllChampionnats" :key="championnat.id">
-                <th>{{championnat.id}}</th>
+              <tr v-for="(championnat, index) in getAllChampionnats" :key="championnat.objectId">
                 <th>{{championnat.date}}</th>
                 <th>{{championnat.competition}}</th>
                 <th>{{championnat.match}}</th>
                 <th>{{championnat.score}}</th>
                 <th>
                   <a href="#" class="icon">
-                    <i v-on:click="onDeleteChampionnat(championnat.id, index)" class="fa fa-trash"></i>
+                    <i v-on:click="onDeleteChampionnat(championnat.objectId, index)" class="fa fa-trash"></i>
                   </a> |
                   <a href="#" class="icon">
-                    <i  @click="id=championnat.id" class="fas fa-edit" data-toggle="modal" :data-target="'#championnateditmodal'+championnat.id"></i>
+                    <i  @click="objectId=championnat.objectId" class="fas fa-edit" data-toggle="modal" :data-target="'#championnateditmodal'+championnat.objectId"></i>
                   </a> |
                   <a href="#" class="icon">
-                    <i  @click="id=championnat.id" class="fas fa-eye" data-toggle="modal" :data-target="'#championnatshowmodal'+championnat.id"></i>
+                    <i  @click="objectId=championnat.objectId" class="fas fa-eye" data-toggle="modal" :data-target="'#championnatshowmodal'+championnat.objectId"></i>
                   </a>
                 </th>
 
               <!-- Show Championnat modal -->
 
 
-          <div class="modal fade" :id="'championnatshowmodal'+championnat.id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          <div class="modal fade" :id="'championnatshowmodal'+championnat.objectId" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -57,10 +55,12 @@
                   <div class="signup-row">
                    Score : <h6>{{championnat.score}}</h6>
                   </div>
-                  
+                  <div class="signup-row">
+                    Importance : <h6>{{ championnat.weight }}</h6>
+                  </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button @click="id=championnat.id" data-toggle="modal" :data-target="'#championnateditmodal'+championnat.id" class="btn btn-primary">Modifier</button>
+                    <button @click="objectId=championnat.objectId" data-toggle="modal" :data-target="'#championnateditmodal'+championnat.objectId" class="btn btn-primary">Modifier</button>
                   </div>
                 </form>
               </div>
@@ -70,7 +70,7 @@
            <!-- Edit Championnat modal -->
 
 
-          <div class="modal fade" :id="'championnateditmodal'+championnat.id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          <div class="modal fade" :id="'championnateditmodal'+championnat.objectId" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -89,10 +89,20 @@
                     <textarea class="form-control" v-model="championnat.match" name="" value="" placeholder="Rencontre"></textarea>
                   </div>
                   <div class="signup-row">
-                    
-                    <input type="text" v-model="championnat.score" name="" value="" placeholder="score">
+                    <textarea class="form-control" v-model="championnat.score" name="" value="" placeholder="score"></textarea>
                   </div>
+                  <div class="form-group col-md-2">
 
+                    <label for="importance">Importance</label>
+                        <input
+                        id="importance"
+                        class="form-control"
+                        v-model="championnat.weight"
+                        name=""
+                        value=""
+                        placeholder="Poids"
+                      />
+                    </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -130,9 +140,17 @@
                     
                     <input type="text" class="form-control" v-model="score" name="" value="" placeholder="Score">
                   </div>
-
-
-
+                  <div class="form-group col-md-2">
+                    <label for="importance">Importance</label>
+                      <input
+                      id="importance"
+                      class="form-control"
+                      v-model="weight"
+                      name=""
+                      value=""
+                      placeholder="Poids"
+                    />
+                  </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary" >Enregistrer</button>
@@ -173,7 +191,7 @@
         competition: '',
         match: '',
         score: '',
-        
+        weight: "",
       }
     },
     methods: {
@@ -182,10 +200,11 @@
       onChampionnatsubmit(e) {
         e.preventDefault();
         var obj = {
-          'date': this.date,
-          'competition': this.competition,
-          'match': this.match,
-          'score': this.score,
+          date: this.date,
+          competition: this.competition,
+          match: this.match,
+          score: this.score,
+          weight: this.weight
 
         }
         this.createChampionnat(obj);
@@ -195,18 +214,20 @@
       onChampionnatEdit(championnat) {
         //e.preventDefault();
         var obj = {
-          'id':championnat.id,
-          'date': championnat.date,
-          'competition': championnat.competition,
-          'match': championnat.match,
-          'score': championnat.score,
+          objectId:championnat.objectId,
+          date: championnat.date,
+          competition: championnat.competition,
+          match: championnat.match,
+          score: championnat.score,
+          weight: championnat.weight
+
         }
         this.editChampionnat(obj);
         this.fetchAllChampionnats();
 
       },
-      onDeleteChampionnat(id, index) {
-        this.deleteChampionnat(id)
+      onDeleteChampionnat(objectId, index) {
+        this.deleteChampionnat(objectId)
         this.getAllChampionnats.splice(index, 1)
       },
 

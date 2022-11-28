@@ -140,7 +140,7 @@ export default {
   },
   methods: {
     logout() {
-      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("session-token");
       window.location.href = "/";
     },
   },

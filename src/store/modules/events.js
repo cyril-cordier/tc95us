@@ -1,16 +1,24 @@
-const token = window.localStorage.getItem('token') || "";
-var url = `https://tc95us.herokuapp.com`;
+const axios = require('axios');
+
+const url = process.env.VUE_APP_API_URL + `/classes/events`;
+let headers = {
+  'X-Parse-Application-Id': process.env.VUE_APP_APPLICATION_ID,
+  'X-Parse-REST-API-Key': process.env.VUE_APP_REST_API_KEY,
+  'X-Parse-Session-Token': window.localStorage.getItem('session-token') || "",
+  'X-Parse-Javascript-Key': process.env.VUE_APP_JAVASCRIPT_KEY,
+  'Content-Type': 'application/json'
+}
+if (window.localStorage.getItem('session-token')) {
+  headers['X-Parse-Session-Token'] = window.localStorage.getItem('session-token')
+}
 
 const state = {
-    eventmessage:[],
-    updateeventmessage:[],
-    event:[],
-    events:[],
-    eventById:[],
-    deleteEventById:[],
-
-   
-
+  eventmessage:[],
+  updateeventmessage:[],
+  event:[],
+  events:[],
+  eventById:[],
+  deleteEventById:[],
 }
 
 const getters = {
@@ -22,158 +30,140 @@ const getters = {
 }
 
 const actions = {
-   
-    // CREATE
-    async createEvent({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);  
-      var formdata = new FormData();
-        formdata.append("title", form.title);
-        formdata.append("details", form.details);
-        formdata.append("place", form.place);
-        formdata.append("date", form.date);
-        formdata.append("hour", form.hour);
-        formdata.append("price", form.price);
-        formdata.append("image", form.image);
-        formdata.append("image_name", form.image);
-       
-       
-        
-     
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: formdata,
-          redirect: 'follow'
-        };
-        
-        fetch(`${url}/api/events`, requestOptions)
-          .then(response => response.json())
-          .then(result =>  {
-              commit('createEventMessage',result);
-              /* location.reload(); */
 
-             
-            })
-          .catch(error => console.log('error', error));
+  // CREATE event
+  async createEvent({ commit }, form) {
 
+    const body = {
+      title: form.title,
+      details: form.details,
+      place: form.place,
+      date: form.date,
+      hour: form.hour,
+      price: form.price,
+      image: form.image,
+      image_name: form.image,
+      weight: Number(form.weight),
+    }
 
-          
-    },
-    
-    // EDIT
-    async editEvent({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-            myHeaders.append('Content-Type','application/json');
-            var raw=JSON.stringify({
-              "title": form.title,
-              "details": form.details,
-              "place": form.place,
-              "date": form.date,
-              "hour": form.hour,
-              "price": form.price,
-              "image": form.image,
-              "image_name": form.image_name
-            });
-   
-      var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-      };
-      
-      fetch(`${url}/api/events/${form.id}`, requestOptions)
-        .then(response => response.json())
-        .then(result =>  {
-            commit('updateEventMessage',result);
-            //location.reload();
-           
-          })
-        .catch(error => console.log('error', error));
+    var config = {
+      method: 'post',
+      url: `${url}`,
+      headers: headers,
+      data: body
+    };
+
+    axios(config)
+      .then(result => {
+        commit('createEventMessage', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 
-   
-      
-// FETCH BY ID
-    async fetchEventById({commit},id){
-                  var myHeaders = new Headers();
-                  myHeaders.append("Authorization", `Bearer ${token}`);
-      
-                  var requestOptions = {
-                  method: 'GET',
-                  headers: myHeaders,
-                  
-                  redirect: 'follow'
-                  };
-      
-                  fetch(`${url}/api/events/${id}`, requestOptions)
-                  .then(response => response.json())
-                  .then(result => {
-                    commit('EventById',result);
-    
-                  })
-                  .catch(error => console.log('error', error));
-                      },
+  // EDIT
+  async editEvent({ commit }, form) {
 
-    // DELETE BY ID
-    async deleteEvent({commit},id){
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
+    const body = {
+      title: form.title,
+      details: form.details.toString(),
+      place: form.place,
+      date: form.date,
+      hour: form.hour,
+      price: form.price,
+      image: form.image,
+      image_name: form.image,
+      weight: Number(form.weight),
+    }
 
-      var requestOptions = {
-      method: 'DELETE',
-      headers: myHeaders,
-      
-      redirect: 'follow'
-      };
+    var config = {
+      method: 'put',
+      url: `${url}/${form.objectId}`,
+      headers: headers,
+      data: body
+    };
 
-      fetch(`${url}/api/events/${id}`, requestOptions)
+    axios(config)
+      .then(result => {
+        commit('updateEventMessage', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+
+
+
+  // FETCH BY ID
+  async fetchEventById({ commit }, objectId) {
+    var config = {
+      method: 'get',
+      url: `${url}/${objectId}`,
+      headers: headers
+    };
+
+    axios(config)
+      .then(response => response.data)
+      .then(result => {
+        commit('EventById', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+
+  // DELETE BY ID
+  async deleteEvent({ commit }, objectId) {
+
+    var config = {
+      method: 'delete',
+      url: `${url}/${objectId}`,
+      headers: headers
+    };
+
+    axios(config)
       .then(response => response.json())
       .then(result => {
-        commit('deleteEventById',result);
+        commit('deleteEventById', result);
 
       })
-      .catch(error => console.log('error', error));
-          },
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
 
-        //FETCH ALL
-     async fetchAllEvents({commit}){
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
+  //FETCH ALL
+  async fetchAllEvents({ commit }) {
 
-            var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            
-            redirect: 'follow'
-            };
+    var config = {
+      method: 'get',
+      url: `${url}`,
+      headers: headers
+    };
 
-            fetch(`${url}/api/events`, requestOptions)
-            .then(response => response.json())
-            .then(result => commit('fetchAllEvents',result))
-            .catch(error => console.log('error', error));
-                },
-
-    }
-  
+    axios(config)
+      .then(response => response.data)
+      .then(result => { commit('fetchAllEvents', result.results.sort((a, b) => b.weight - a.weight)) })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+}
 
 const mutations = {
-createEventMessage:(state,eventmessage)=>(state.eventmessage = eventmessage),
-updateEventMessage:(state,updateeventmessage)=>(state.updateeventmessage = updateeventmessage),
-fetchEvent:(state,event) =>(state.event = event),
-fetchAllEvents:(state,events)=>(state.events = events),
-EventById:(state,EventById)=>(state.EventById = EventById),
-deleteEventById:(state,deleteeventById)=>(state.deleteEventById = deleteeventById),
-
-}
-
-
-
-export default{
-    state,
-    getters,
-    actions,
-    mutations,
-}
+  createEventMessage:(state,eventmessage)=>(state.eventmessage = eventmessage),
+  updateEventMessage:(state,updateeventmessage)=>(state.updateeventmessage = updateeventmessage),
+  fetchEvent:(state,event) =>(state.event = event),
+  fetchAllEvents:(state,events)=>(state.events = events),
+  EventById:(state,EventById)=>(state.EventById = EventById),
+  deleteEventById:(state,deleteeventById)=>(state.deleteEventById = deleteeventById),
+  
+  }
+  
+  export default{
+      state,
+      getters,
+      actions,
+      mutations,
+  }

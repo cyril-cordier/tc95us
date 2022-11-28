@@ -13,7 +13,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Id</th>
           <th>Titre</th>
           <th>Lieu</th>
           <th>Date</th>
@@ -23,8 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(event, index) in getAllEvents" :key="event.id">
-          <th>{{ event.id }}</th>
+        <tr v-for="(event, index) in getAllEvents" :key="event.objectId">
           <th>{{ event.title }}</th>
           <th>{{ event.place }}</th>
           <th>{{ event.date }}</th>
@@ -40,19 +38,19 @@
             |
             <a href="#" class="icon">
               <i
-                @click="id = event.id"
+                @click="objectId = event.objectId"
                 class="fas fa-edit"
                 data-toggle="modal"
-                :data-target="'#eventeditmodal' + event.id"
+                :data-target="'#eventeditmodal' + event.objectId"
               ></i>
             </a>
             |
             <a href="#" class="icon">
               <i
-                @click="id = event.id"
+                @click="objectId = event.objectId"
                 class="fas fa-eye"
                 data-toggle="modal"
-                :data-target="'#eventshowmodal' + event.id"
+                :data-target="'#eventshowmodal' + event.objectId"
               ></i>
             </a>
           </th>
@@ -61,7 +59,7 @@
 
           <div
             class="modal fade"
-            :id="'eventshowmodal' + event.id"
+            :id="'eventshowmodal' + event.objectId"
             tabindex="-1"
             role="dialog"
             aria-labelledby="myLargeModalLabel"
@@ -93,7 +91,9 @@
                   <div class="signup-row">
                     <img :src="event.image" style="width: 10rem" />
                   </div>
-
+                  <div class="signup-row">
+                    Importance : <h6>{{ event.weight }}</h6>
+                  </div>
                   <div class="modal-footer">
                     <button
                       type="button"
@@ -103,9 +103,9 @@
                       Fermer
                     </button>
                     <button
-                      @click="id = event.id"
+                      @click="objectId = event.objectId"
                       data-toggle="modal"
-                      :data-target="'#eventeditmodal' + event.id"
+                      :data-target="'#eventeditmodal' + event.objectId"
                       class="btn btn-primary"
                     >
                       Modifier
@@ -120,7 +120,7 @@
 
           <div
             class="modal fade"
-            :id="'eventeditmodal' + event.id"
+            :id="'eventeditmodal' + event.objectId"
             tabindex="-1"
             role="dialog"
             aria-labelledby="myLargeModalLabel"
@@ -188,6 +188,17 @@
                       placeholder="Prix"
                     ></textarea>
                   </div>
+                  <div class="signup-row">
+                      <label for="importance">Importance</label>
+                        <input
+                        id="importance"
+                        class="form-control"
+                        v-model="event.weight"
+                        name=""
+                        value=""
+                        placeholder="Poids"
+                      />
+                    </div>
                   <div class="signup-row">
                     <input
                       type="file"
@@ -284,6 +295,18 @@
               ></textarea>
             </div>
             <div class="signup-row">
+
+              <label for="importance">Importance</label>
+                <input
+                id="importance"
+                class="form-control"
+                v-model="weight"
+                name=""
+                value=""
+                placeholder="Poids"
+              />
+            </div>
+            <div class="signup-row">
               <input
                 type="file"
                 id="files"
@@ -333,6 +356,7 @@ export default {
       image: "",
       price: "",
       image_name: "",
+      weight: "",
     };
   },
   methods: {
@@ -378,6 +402,7 @@ export default {
         price: this.price,
         image: this.image,
         image_name: this.image,
+        weight: this.weight
       };
       console.log(obj);
       this.createEvent(obj);
@@ -386,21 +411,21 @@ export default {
     onEventEdit(event) {
       //e.preventDefault();
       var obj = {
-        id: event.id,
+        objectId: event.objectId,
         title: event.title,
         details: event.details,
         place: event.place,
         date: event.date,
         hour: event.hour,
         price: event.price,
-        image: this.image,
-        image_name: this.image,
-      };
+        image: this.image ? this.image : event.image,
+        weight: event.weight
+        };
       this.editEvent(obj);
       this.fetchAllEvents();
     },
-    onDeleteEvent(id, index) {
-      this.deleteEvent(id);
+    onDeleteEvent(objectId, index) {
+      this.deleteEvent(objectId);
       this.getAllEvents.splice(index, 1);
     },
   },
