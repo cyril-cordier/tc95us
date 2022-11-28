@@ -295,7 +295,7 @@
     </footer>
 
     <div class="footer">
-      Site créé par Cyril CORDIER - Dernière mise à jour : 30/10/2022
+      Site créé par Cyril CORDIER - Dernière mise à jour : 28/11/2022
       <router-link to="/admin">
         <div class="footer">Accès Admin</div>
       </router-link>
@@ -330,10 +330,10 @@ export default {
   },
   methods: {
     ...mapActions(["fetchUser", "fetchUserById"]),
-    /* logout() {
-        window.localStorage.removeItem('token');
+    logout() {
+        window.localStorage.removeItem('session-token');
         window.location.href = "/";
-      },  */
+      },  
     refresh() {
       window.location.href = "/";
     },
@@ -358,6 +358,7 @@ export default {
   ]),
   created() {
     this.fetchUser();
+    window.localStorage.removeItem('token');
   },
 };
 </script>
