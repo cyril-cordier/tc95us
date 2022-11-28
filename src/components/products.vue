@@ -2,44 +2,37 @@
   <div class="products">
     <h1>Gestion produits</h1>
     
-                 
-        
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".productaddmodal">+ Ajouter un
       Produit</button>
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Id</th>
                 <th>Nom</th>
                 <th>Détail</th>
                 <th>Prix</th>
-                
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(product, index) in getAllProducts" :key="product.id">
-                <th>{{product.id}}</th>
+              <tr v-for="(product, index) in getAllProducts" :key="product.objectId">
                 <th>{{product.name}}</th>
                 <th>{{product.details}}</th>
                 <th>{{product.price}}</th>
                 
                 <th>
                   <a href="#" class="icon">
-                    <i v-on:click="onDeleteProduct(product.id, index)" class="fa fa-trash"></i>
+                    <i v-on:click="onDeleteProduct(product.objectId, index)" class="fa fa-trash"></i>
                   </a> |
                   <a href="#" class="icon">
-                    <i  @click="id=product.id" class="fas fa-edit" data-toggle="modal" :data-target="'#producteditmodal'+product.id"></i>
+                    <i  @click="objectId=product.objectId" class="fas fa-edit" data-toggle="modal" :data-target="'#producteditmodal'+product.objectId"></i>
                   </a> |
                   <a href="#" class="icon">
-                    <i  @click="id=product.id" class="fas fa-eye" data-toggle="modal" :data-target="'#productshowmodal'+product.id"></i>
+                    <i  @click="objectId=product.objectId" class="fas fa-eye" data-toggle="modal" :data-target="'#productshowmodal'+product.objectId"></i>
                   </a>
                 </th>
 
               <!-- Show Product modal -->
-
-
-          <div class="modal fade" :id="'productshowmodal'+product.id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          <div class="modal fade" :id="'productshowmodal'+product.objectId" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -54,10 +47,12 @@
                    <div class="signup-row">
                    <img :src="product.image" style="width:10rem;">
                   </div>
-                  
+                  <div class="signup-row">
+                    Importance : <h6>{{ product.weight }}</h6>
+                  </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button @click="id=product.id" data-toggle="modal" :data-target="'#producteditmodal'+product.id" class="btn btn-primary">Modifier</button>
+                    <button @click="objectId=product.objectId" data-toggle="modal" :data-target="'#producteditmodal'+product.objectId" class="btn btn-primary">Modifier</button>
                   </div>
                 </form>
               </div>
@@ -65,9 +60,7 @@
           </div>
 
            <!-- Edit Product modal -->
-
-
-          <div class="modal fade" :id="'producteditmodal'+product.id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          <div class="modal fade" :id="'producteditmodal'+product.objectId" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -86,10 +79,20 @@
                     <textarea class="form-control" v-model="product.price" name="" value="" placeholder="Prix"></textarea>
                   </div>
                   <div class="signup-row">
+                      <label for="importance">Importance</label>
+                        <input
+                        id="importance"
+                        class="form-control"
+                        v-model="product.weight"
+                        name=""
+                        value=""
+                        placeholder="Poids"
+                      />
+                    </div>
+                  <div class="signup-row">
                     
                     <input type="file" name="image" class="form-control" @change="onImageChange">
                   </div>
-
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -124,14 +127,22 @@
                     <textarea class="form-control" v-model="price" name="" value="" placeholder="Prix"></textarea>
                   </div>
                   <div class="signup-row">
-                    
+
+                    <label for="importance">Importance</label>
+                      <input
+                      id="importance"
+                      class="form-control"
+                      v-model="weight"
+                      name=""
+                      value=""
+                      placeholder="Poids"
+                    />
+                  </div>
+                  <div class="signup-row">
                     <strong>Image:</strong>
 
                         <input type="file" name="image" class="form-control" @change="onImageChange">
                   </div>
-
-
-
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary" >Enregistrer</button>
@@ -140,16 +151,6 @@
               </div>
             </div>
           </div>
-
-
-
-        
-
-
-
-
-
-
       </div>
 
 
@@ -180,9 +181,7 @@
         details: '',
         price: '',
         image: '',
-        image_name:'',
-        
-        
+        weight: "",        
       }
     },
     methods: {
@@ -208,8 +207,6 @@ fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", re
     
     this.image = result.url;
       console.log(result,'ok');
-      
-      
       })
 
   .catch(error => console.log('Error image', error));
@@ -219,13 +216,11 @@ fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", re
         
         e.preventDefault();
         var obj = {
-          'name': this.name,
-          'details': this.details,
-          'price': this.price,
-          'image': this.image,
-          'image_name':this.image,
-         
-
+          name: this.name,
+          details: this.details,
+          price: this.price,
+          image: this.image,
+          weight: this.weight
         }
         this.createProduct(obj);
         this.fetchAllProducts();
@@ -235,20 +230,19 @@ fetch("https://www.filestackapi.com/api/store/S3?key=AKwGY2TUrQSWgxXQrp9wmz", re
         
         //e.preventDefault();
         var obj = {
-          'id':product.id,
-          'name': product.name,
-          'details': product.details,
-          'price': product.price,
-          'image': this.image,
-          'image_name':this.image,
-     
+          objectId: product.objectId,
+          name: product.name,
+          details: product.details,
+          price: product.price,
+          image: this.image ? this.image : product.image,
+          weight: product.weight
         }
         this.editProduct(obj);
         this.fetchAllProducts();
 
       },
-      onDeleteProduct(id, index) {
-        this.deleteProduct(id)
+      onDeleteProduct(objectId, index) {
+        this.deleteProduct(objectId)
         this.getAllProducts.splice(index, 1)
       },
 

@@ -14,7 +14,7 @@
       </li>
     </ul>
 
-    <div v-for="user in getUser" :key="user.id">
+    <div v-for="user in getUser" :key="user.objectId">
       <div v-if="user.admin == false in getUser">
         <p>Bonjour {{ user.firstname }} {{ user.lastname }} !</p>
 
@@ -280,7 +280,7 @@ export default {
     ...mapActions(["fetchUser"]),
 
     logout() {
-      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("session-token");
       window.location.href = "/";
     },
   },

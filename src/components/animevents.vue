@@ -7,7 +7,7 @@
     >
 
     <br /><br /><br />
-    <div v-for="event in getAllEvents.slice().reverse()" :key="event.id">
+    <div v-for="event in getAllEvents" :key="event.objectId">
       <div class="card">
         <div class="card-header">
           <img :src="event.image" style="width: 15rem" />

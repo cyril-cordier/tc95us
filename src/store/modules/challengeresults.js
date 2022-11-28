@@ -1,5 +1,16 @@
-const token = window.localStorage.getItem('token') || "";
-var url = `https://tc95us.herokuapp.com`;
+const axios = require('axios');
+
+const url = process.env.VUE_APP_API_URL + `/classes/challengeresults`;
+let headers = {
+  'X-Parse-Application-Id': process.env.VUE_APP_APPLICATION_ID,
+  'X-Parse-REST-API-Key': process.env.VUE_APP_REST_API_KEY,
+  'X-Parse-Session-Token': window.localStorage.getItem('session-token') || "",
+  'X-Parse-Javascript-Key': process.env.VUE_APP_JAVASCRIPT_KEY,
+  'Content-Type': 'application/json'
+}
+if (window.localStorage.getItem('session-token')) {
+  headers['X-Parse-Session-Token'] = window.localStorage.getItem('session-token')
+}
 
 const state = {
     challengeresultmessage:[],
@@ -8,9 +19,6 @@ const state = {
     challengeresults:[],
     ChallengeresultById:[],
     deleteChallengeresultById:[],
-
-   
-
 }
 
 const getters = {
@@ -25,135 +33,130 @@ const actions = {
    
     // CREATE
     async createChallengeresult({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-        var formdata = new FormData();
-        formdata.append("winner", form.winner);
-        formdata.append("looser", form.looser);
-        formdata.append("S1W", form.S1W);
-        formdata.append("S1L", form.S1L);
-        formdata.append("S2W", form.S2W);
-        formdata.append("S2L", form.S2L);
-        formdata.append("S3W", form.S3W);
-        formdata.append("S3L", form.S3L);
-        formdata.append("pointsW", form.pointsW);
-        formdata.append("pointsL", form.pointsL);
-        formdata.append("details", form.details);
-    
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: formdata,
-          redirect: 'follow'
-        };
-        
-        fetch(`${url}/api/challengeresults`, requestOptions)
-          .then(response => response.json())
-          .then(result =>  {
-              commit('createChallengeresultMessage',result);
-              /* location.reload(); */
-             
-            })
-          .catch(error => console.log('error', error));
-    },
+      const body = {
+        "winner": form.winner,
+        "looser": form.looser,
+        "S1W": Number(form.S1W),
+        "S1L": Number(form.S1L),
+        "S2W": Number(form.S2W),
+        "S2L": Number(form.S2L),
+        "S3W": Number(form.S3W),
+        "S3L": Number(form.S3L),
+        "pointsW": Number(form.pointsW),
+        "pointsL": Number(form.pointsL),
+        "details": form.details,
+        "date": form.date,
+        "year": form.year,
+      }
+
+      var config = {
+        method: 'post',
+        url: `${url}`,
+        headers: headers,
+        data: body
+      };
+
+      axios(config)
+      .then(result => {
+        commit('createChallengeresultMessage', result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
     
     // EDIT
     async editChallengeresult({commit},form){
-      var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-            myHeaders.append('Content-Type','application/json');
-            var raw=JSON.stringify({
-              "winner": form.winner,
-              "looser": form.looser,
-              "S1W": form.S1W,
-              "S1L": form.S1L,
-              "S2W": form.S2W,
-              "S2L": form.S2L,
-              "S3W": form.S3W,
-              "S3L": form.S3L,
-              "pointsW": form.pointsW,
-              "pointsL": form.pointsL,
-              "details": form.details,
-            });
-   
-      var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-      };
-      
-      fetch(`${url}/api/challengeresults/${form.id}`, requestOptions)
-        .then(response => response.json())
-        .then(result =>  {
-            commit('updateChallengeresultMessage',result);
-            //location.reload();
-           
-          })
-        .catch(error => console.log('error', error));
-  },
 
+      const body = {
+        "winner": form.winner,
+        "looser": form.looser,
+        "S1W": Number(form.S1W),
+        "S1L": Number(form.S1L),
+        "S2W": Number(form.S2W),
+        "S2L": Number(form.S2L),
+        "S3W": Number(form.S3W),
+        "S3L": Number(form.S3L),
+        "pointsW": Number(form.pointsW),
+        "pointsL": Number(form.pointsL),
+        "details": form.details,
+        "date": form.date,
+        "year": form.year,
+      }
+  
+      var config = {
+        method: 'put',
+        url: `${url}/${form.objectId}`,
+        headers: headers,
+        data: body
+      };
+  
+      axios(config)
+        .then(response => response.json())
+        .then(result => {
+          commit('updateChallengeresultMessage', result)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
    
       
 // FETCH BY ID
-    async fetchChallengeresultById({commit},id){
-                  var myHeaders = new Headers();
-                  myHeaders.append("Authorization", `Bearer ${token}`);
-      
-                  var requestOptions = {
-                  method: 'GET',
-                  headers: myHeaders,
-                  
-                  redirect: 'follow'
-                  };
-      
-                  fetch(`${url}/api/challengeresults/${id}`, requestOptions)
-                  .then(response => response.json())
-                  .then(result => {
-                    commit('ChallengeresultById',result);
-    
-                  })
-                  .catch(error => console.log('error', error));
-                      },
+    async fetchChallengeresultById({commit},objectId){
+
+      var config = {
+        method: 'get',
+        url: `${url}/${objectId}`,
+        headers: headers
+      };
+  
+      axios(config)
+        .then(response => response.data)
+        .then(result => {
+          commit('ChallengeresultById', result)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
 
     // DELETE BY ID
-    async deleteChallengeresult({commit},id){
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
+    async deleteChallengeresult({commit},objectId){
 
-      var requestOptions = {
-      method: 'DELETE',
-      headers: myHeaders,
-      
-      redirect: 'follow'
+      var config = {
+        method: 'delete',
+        url: `${url}/${objectId}`,
+        headers: headers
       };
-
-      fetch(`${url}/api/challengeresults/${id}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        commit('deleteChallengeresultById',result);
-
-      })
-      .catch(error => console.log('error', error));
-          },
+  
+      axios(config)
+        .then(response => response.json())
+        .then(result => {
+          commit('deleteChallengeresultById', result);
+  
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
 
         //FETCH ALL
      async fetchAllChallengeresults({commit}){
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
 
-            var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            
-            redirect: 'follow'
-            };
-
-            fetch(`${url}/api/challengeresults`, requestOptions)
-            .then(response => response.json())
-            .then(result => commit('fetchAllChallengeresults',result))
-            .catch(error => console.log('error', error));
-                },
+      var config = {
+        method: 'get',
+        url: `${url}`,
+        headers: headers
+      };
+  
+      axios(config)
+        .then(response => response.data)
+        .then(result => { commit('fetchAllChallengeresults', result.results.sort((a, b) => b.date - a.date)) })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
 
     }
   

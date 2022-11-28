@@ -12,7 +12,7 @@
       <img
         alt="Chargement..."
         src="../assets/GIF_TC_Us.gif"
-        style="width: 10%; "
+        style="width: 12rem; "
       />
       <div class="card-deck">
         <div class="card col-sm-12 col-md-8">

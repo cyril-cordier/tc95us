@@ -6,7 +6,7 @@
 <div class="container">
   <div class="grid">
   <div class="row row-col-3 row-cols-md-3 row-col-sm">
-    <div v-for="(product) in getAllProducts" :key="product.id">
+    <div v-for="(product) in getAllProducts" :key="product.objectId">
       
       
       
@@ -61,55 +61,12 @@
         details: '',
         price: '',
         image: '',
-        image_name: '',
-        extension: ''
 
       }
     },
     methods: {
 
       ...mapActions(['createProduct', 'editProduct', 'fetchAllProducts', 'fetchProductById', 'deleteProduct']),
-      onImageChange(e) {
-        //console.log(e.target.files[0]);
-        this.image = e.target.files[0];
-      },
-      onProductsubmit(e) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
-        e.preventDefault();
-        var obj = {
-          'name': this.name,
-          'details': this.details,
-          'price': this.price,
-          'image': this.image,
-          'image_name': Date.now(),
-          'extension': ext
-
-        }
-        this.createProduct(obj);
-        this.fetchAllProducts();
-
-      },
-      onProductEdit(product) {
-        let ext = this.image.name.substring(this.image.name.lastIndexOf('.') + 1);
-        //e.preventDefault();
-        var obj = {
-          'id': product.id,
-          'name': product.name,
-          'details': product.details,
-          'price': product.price,
-          'image': product.image,
-          'image_name': Date.now(),
-          'extension': ext
-        }
-        this.editProduct(obj);
-        this.fetchAllProducts();
-
-      },
-      onDeleteProduct(id, index) {
-        this.deleteProduct(id)
-        this.getAllProducts.splice(index, 1)
-      },
-
     },
     computed: mapGetters(['getProductMessage', 'getAllProducts', 'getProduct', 'infoProductById',
       'getUpdateProductMessage'
