@@ -120,6 +120,7 @@ export default {
   created() {
     this.fetchAllContents();
     this.isLoading = false
+    window.localStorage.removeItem('token');
   },
 };
 </script>
