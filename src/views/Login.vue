@@ -1,6 +1,6 @@
 <template>
   <div class="Register container-fluid mt-5">
-    <div v-for="message in getLogin" :key="message.id">
+    <div v-for="message in getLogin" :key="message.objectId">
       <div v-if="getLogin.error" class="alert alert-danger" role="alert">
         <p>{{ message.toString() }}</p>
       </div>
@@ -11,28 +11,6 @@
           <h1 class="card-title">Connexion</h1>
           <br />
           <p>Accès réservé à l'administration du site</p>
-
-          <div class="signup-row">
-            <input
-              type="email"
-              v-model="email"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              autocomplete="off"
-              placeholder="Enter email"
-            />
-            <small id="emailHelp" class="form-text text-muted"
-              >Nous ne partagerons jamais votre adresse email</small
-            >
-          </div>
-          <div class="signup-row">
-            <input
-              type="password"
-              v-model="password1"
-              id="exampleInputPassword1"
-              placeholder="Password1"
-            />
-          </div>
           <div class="signup-row">
             <input
               type="username"
@@ -45,9 +23,9 @@
           <div class="signup-row">
             <input
               type="password"
-              v-model="password2"
+              v-model="password"
               id="exampleInputPassword2"
-              placeholder="Password2"
+              placeholder="Password"
             />
             
           </div>
@@ -80,10 +58,8 @@ export default {
   },
   data() {
     return {
-      email: "",
-      password1: "",
       username: "",
-      password2: "",
+      password: "",
     };
   },
   methods: {
@@ -91,10 +67,8 @@ export default {
     onsubmit(e) {
       e.preventDefault();
       var obj = {
-        email: this.email,
-        password1: this.password1,
         username: this.username,
-        password2: this.password2,
+        password: this.password,
       };
       this.loginForm(obj);
     },

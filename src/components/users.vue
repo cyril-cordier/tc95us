@@ -8,7 +8,6 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Id</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Email</th>
@@ -18,8 +17,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(user, index) in getAllUsers" :key="user.id">
-                <th>{{user.id}}</th>
+              <tr v-for="(user, index) in getAllUsers" :key="user.objectId">
                 <th>{{user.lastname}}</th>
                 <th>{{user.firstname}}</th>
                 <th>{{user.email}}</th>
@@ -27,19 +25,19 @@
                 <th>{{user.admin}}</th>
                 <th>
                   <a href="#" class="icon">
-                    <i v-on:click="onDelete(user.id, index)" class="fa fa-trash"></i>
+                    <i v-on:click="onDelete(user.objectId, index)" class="fa fa-trash"></i>
                   </a> |
                   <a href="#" class="icon">
-                    <i  @click="id=user.id" class="fas fa-edit" data-toggle="modal" :data-target="'#usereditmodal'+user.id"></i>
+                    <i  @click="objectId=user.objectId" class="fas fa-edit" data-toggle="modal" :data-target="'#usereditmodal'+user.objectId"></i>
                   </a> |
                   <a href="#" class="icon">
-                    <i  @click="id=user.id" class="fas fa-eye" data-toggle="modal" :data-target="'#usershowmodal'+user.id"></i>
+                    <i  @click="objectId=user.objectId" class="fas fa-eye" data-toggle="modal" :data-target="'#usershowmodal'+user.objectId"></i>
                   </a>
                 </th>
 <!-- Show User modal -->
 
 
-          <div class="modal fade" :id="'usershowmodal'+user.id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          <div class="modal fade" :id="'usershowmodal'+user.objectId" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -61,7 +59,7 @@
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button @click="id=user.id" data-toggle="modal" :data-target="'#usereditmodal'+user.id" class="btn btn-primary">Modifier</button>
+                    <button @click="objectId=user.objectId" data-toggle="modal" :data-target="'#usereditmodal'+user.id" class="btn btn-primary">Modifier</button>
                   </div>
                 </form>
               </div>
@@ -71,7 +69,7 @@
           <!-- Edit User modal -->
 
 
-          <div class="modal fade" :id="'usereditmodal'+user.id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          <div class="modal fade" :id="'usereditmodal'+user.objectId" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -219,7 +217,7 @@
         password: '',
         c_password: '',
         editUser: {
-          'id': '',
+          'objectId': '',
           'lastname': '',
           'firstname': '',
           'email': '',
@@ -240,7 +238,6 @@
           'email': this.email,
           'admin': this.admin,
           'password': this.password,
-          'c_password': this.c_password,
 
         }
         this.createForm(obj);
@@ -250,7 +247,7 @@
       onEdit(user) {
         //e.preventDefault();
         var obj = {
-          'id':user.id,
+          objectId: user.objectId,
           'firstname': user.firstname,
           'lastname': user.lastname,
           'email': user.email,
@@ -261,8 +258,8 @@
         this.fetchAllUsers();
 
       },
-      onDelete(id, index) {
-        this.deleteUser(id)
+      onDelete(objectId, index) {
+        this.deleteUser(objectId)
         this.getAllUsers.splice(index, 1)
       },
 

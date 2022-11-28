@@ -7,7 +7,7 @@ import VueAnalytics from 'vue-analytics';
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  const isLogged = localStorage.getItem('token');
+  const isLogged = localStorage.getItem('session-token');
     if (isLogged) next()
     else{
       if(to.meta.requiresVisitor) next()

@@ -112,7 +112,7 @@
 
         }
         console.log(obj);
-        this.registerForm(obj);
+        this.createForm(obj);
 
       }
     },

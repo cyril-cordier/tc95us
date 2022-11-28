@@ -330,10 +330,10 @@ export default {
   },
   methods: {
     ...mapActions(["fetchUser", "fetchUserById"]),
-    /* logout() {
-        window.localStorage.removeItem('token');
+    logout() {
+        window.localStorage.removeItem('session-token');
         window.location.href = "/";
-      },  */
+      },  
     refresh() {
       window.location.href = "/";
     },
