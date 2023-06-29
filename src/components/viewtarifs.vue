@@ -31,11 +31,12 @@
         <th v-if="tarif.type == 'Cotisation'">{{ tarif.price1 }}</th>
       </tr>
     </table>
-    <p>Réduction de 20€ pour une famille de 4 personnes</p>
+    <p>Réduction famille 4 pers ou + (5€ par pers)</p>
 
     <br /><br /><br />
 
-    <h2>COURS (Dispensés par un Diplômé d'Etat</h2>
+    <h2>COURS (Dispensés par un Diplômé d'Etat)</h2>
+    <h3>Formules complètes (Cours, licence et cotisation incluses)</h3>
     <table class="table">
       <thead>
         <tr>
@@ -47,11 +48,31 @@
         </tr>
       </thead>
       <tr v-for="tarif in getAllTarifs" :key="tarif.id">
-        <th v-if="tarif.type == 'Cours'">{{ tarif.category }}</th>
-        <th v-if="tarif.type == 'Cours'">{{ tarif.price1 }}</th>
-        <th v-if="tarif.type == 'Cours'">{{ tarif.price2 }}</th>
-        <th v-if="tarif.type == 'Cours'">{{ tarif.price3 }}</th>
+        <th v-if="tarif.type == 'Cours' && tarif.details !== 'Seul'">{{ tarif.category }}</th>
+        <th v-if="tarif.type == 'Cours' && tarif.details !== 'Seul'">{{ tarif.price1 }}</th>
+        <th v-if="tarif.type == 'Cours' && tarif.details !== 'Seul'">{{ tarif.price2 }}</th>
+        <th v-if="tarif.type == 'Cours' && tarif.details !== 'Seul'">{{ tarif.price3 }}</th>
         <!-- <th v-if="tarif.type == 'Cours'">{{ tarif.details }}</th> -->
+      </tr>
+    </table>
+
+    <br /><br />
+
+    <h3>Cours seul (dans le cas d’une adhésion couple licence incluse)</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Temps/semaine</th>
+          <th>1 heure</th>
+          <th>1 heure 30</th>
+        </tr>
+      </thead>
+      <tr v-for="tarif in getAllTarifs" :key="tarif.id">
+        <th v-if="tarif.type == 'Cours' && tarif.details == 'Seul'">{{ tarif.category }}</th>
+        <th v-if="tarif.type == 'Cours' && tarif.details == 'Seul'">{{ tarif.price1 }}</th>
+        <th v-if="tarif.type == 'Cours' && tarif.details == 'Seul'">{{ tarif.price2 }}</th>
+        <th v-if="tarif.type == 'Cours' && tarif.details == 'Seul'">{{ tarif.price3 }}</th>
+        <!-- <th v-if="tarif.type == 'Cours' && tarif.details == 'Seul'">{{ tarif.details }}</th> -->
       </tr>
     </table>
 
