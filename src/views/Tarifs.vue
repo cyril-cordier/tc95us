@@ -29,30 +29,12 @@
               >
             </div>
             <div class="col 6">
-              <a
-                class="footer-link"
-                href="https://www.fft.fr/sites/default/files/documents/cerfa_15699-01_0.pdf"
-                target="blank"
-                ><button type="button" class="btn btn-info mx-2 my-1">
-                  Questionnaire santé (adultes)
-                </button></a
-              >
-              <a
+               <a
                 class="footer-link"
                 href="https://www.fft.fr/sites/default/files/documents/QUESTIONNAIRE%20DE%20SANTE%20MINEURS.pdf"
                 target="blank"
                 ><button type="button" class="btn btn-info mx-2 my-1">
                   Questionnaire santé (mineurs)
-                </button></a
-              >
-            </div>
-            <div class="col 6">
-              <a
-                class="footer-link"
-                href="https://www.fft.fr/sites/default/files/documents/modele_attestation_adulte.pdf.pdf"
-                target="blank"
-                ><button type="button" class="btn btn-info mx-2 my-1">
-                  Attestation questionnaire de santé (adultes)
                 </button></a
               >
               <a
@@ -64,6 +46,7 @@
                 </button></a
               >
             </div>
+            
             <Tarifs />
             <br /><br /><br />
           </div>
@@ -111,7 +94,7 @@ export default {
       image_name: "",
       extension: "",
       image: "",
-      url: "https://res.cloudinary.com/dcp7bq2a1/image/upload/v1688023842/tc95us/US23_INSCRIPTION_xoplbz.jpg",
+      url: "https://res.cloudinary.com/dcp7bq2a1/image/upload/v1688026593/tc95us/US23_INSCRIPTION_b0qoom.jpg",
     };
   },
   methods: {
