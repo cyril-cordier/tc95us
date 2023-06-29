@@ -111,7 +111,7 @@ export default {
       image_name: "",
       extension: "",
       image: "",
-      url: "https://res.cloudinary.com/dcp7bq2a1/image/upload/v1662035047/tc95us/fiche_inscription_TC_Us_uanr50.jpg",
+      url: "https://res.cloudinary.com/dcp7bq2a1/image/upload/v1688023842/tc95us/US23_INSCRIPTION_xoplbz.jpg",
     };
   },
   methods: {
