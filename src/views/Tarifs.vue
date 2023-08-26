@@ -94,7 +94,7 @@ export default {
       image_name: "",
       extension: "",
       image: "",
-      url: "https://res.cloudinary.com/dcp7bq2a1/image/upload/v1688027246/tc95us/US23_INSCRIPTION_x4ljnf.jpg",
+      url: "https://res.cloudinary.com/dcp7bq2a1/image/upload/v1693091734/tc95us/US23-INSCRIPTION-250823_npyiai.jpg",
     };
   },
   methods: {
